@@ -70,7 +70,12 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      // Las migraciones van por conexión directa (Neon: DATABASE_URL_UNPOOLED);
+      // el resto, por el pooler. En local ambas son la misma.
+      connectionString:
+        (process.env.PAYLOAD_MIGRATING === 'true' && process.env.DATABASE_URL_UNPOOLED) ||
+        process.env.DATABASE_URL ||
+        '',
     },
     // El esquema se gestiona siempre con migraciones, también en local (CLAUDE.md §3)
     push: false,
@@ -83,6 +88,8 @@ export default buildConfig({
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
       collections: { media: true, archivos_gpx: true },
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
+      // Subida directa del navegador a Blob: las funciones de Vercel no aceptan cuerpos > 4,5 MB
+      clientUploads: true,
     }),
   ],
 })

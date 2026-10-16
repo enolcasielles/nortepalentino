@@ -52,7 +52,7 @@ No añadas dependencias sin necesidad clara. Antes de instalar una librería, co
 | `pnpm payload migrate` | Aplicar migraciones pendientes en local |
 | `pnpm payload migrate:create <nombre>` | Nueva migración tras cambiar el esquema |
 | `pnpm generate:types` | Regenerar `payload-types.ts` tras cambiar colecciones |
-| `pnpm generate:importmap` | Regenerar el import map del admin tras añadir componentes custom |
+| `pnpm generate:importmap` | Regenerar el import map del admin tras añadir campos `richText`, plugins o componentes custom (si falta, el admin falla al cargar ese campo) |
 | `pnpm seed [--update]` | Importar `/seed/*.json` (§10). *Pendiente de implementar* |
 
 `push` está desactivado también en local: el esquema solo cambia mediante migraciones.

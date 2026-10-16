@@ -6,7 +6,8 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 
-const siteIndexable = process.env.SITE_INDEXABLE === 'true'
+// Misma regla que lib/seo/indexability.ts. Se evalúa en build: cambiarla exige redeploy.
+const siteIndexable = process.env.SITE_INDEXABLE === 'true' && process.env.VERCEL_ENV !== 'preview'
 
 const nextConfig: NextConfig = {
   images: {

@@ -1,0 +1,10 @@
+[
+  {
+    "slug": { "es": "demo-iglesias-romanicas", "en": "demo-romanesque-churches" },
+    "nombre": { "es": "[DEMO] Iglesia románica", "en": "[DEMO] Romanesque church" },
+    "nombre_plural": { "es": "[DEMO] Iglesias románicas", "en": "[DEMO] Romanesque churches" },
+    "tipo_schema": "Church",
+    "color_token": "romanico",
+    "icono": "iglesia"
+  }
+]

@@ -53,7 +53,7 @@ No añadas dependencias sin necesidad clara. Antes de instalar una librería, co
 | `pnpm payload migrate:create <nombre>` | Nueva migración tras cambiar el esquema |
 | `pnpm generate:types` | Regenerar `payload-types.ts` tras cambiar colecciones |
 | `pnpm generate:importmap` | Regenerar el import map del admin tras añadir campos `richText`, plugins o componentes custom (si falta, el admin falla al cargar ese campo) |
-| `pnpm seed [--update]` | Importar `/seed/*.json` (§10). *Pendiente de implementar* |
+| `pnpm seed [--update] [--dry-run] [--dir <ruta>]` | Importar `/seed/*.json` (§10). Contra una BD no local exige `--remote` |
 
 `push` está desactivado también en local: el esquema solo cambia mediante migraciones.
 
@@ -261,7 +261,9 @@ Cada ficha enlaza a su municipio, a su municipio+categoría y a 3–6 elementos 
 - **Payload es la fuente de verdad.** `/seed/*.json` sirve para la carga inicial y para los lotes de Pablo.
 - `seed/import.ts` es **idempotente por `slug`**. Por defecto crea lo que falta y **no toca lo que ya existe**. Con `--update` sobrescribe solo los campos presentes en el JSON. Nunca borra nada.
 - El import valida cada registro (con zod, contra el contrato) y falla con un informe legible si encuentra referencias rotas (`categoria`, `nucleo`), slugs reservados o campos obligatorios vacíos.
-- Contrato actualizado respecto al brief: los slugs de `rutas`, `recursos`, `planes` y las categorías son `{ "es": "...", "en": "..." }`. Los negocios usan `"categoria"` (slug ES de `categorias_negocio`). Se añaden `seed/categorias.json`, `seed/recursos.json`, `seed/autores.json` y `seed/landings.json`. Mantén un ejemplo válido de cada fichero en `seed/examples/`.
+- Contrato actualizado respecto al brief: los slugs de `rutas`, `recursos`, `planes` y las categorías son `{ "es": "...", "en": "..." }`. Los negocios usan `"categoria"` (slug ES de `categorias_negocio`). Se añaden `seed/categorias.json`, `seed/tipos_recurso.json`, `seed/recursos.json`, `seed/autores.json` y `seed/landings.json`; los núcleos van dentro de cada municipio en `municipios.json`. Mantén un ejemplo válido de cada fichero en `seed/examples/`.
+- **El contrato es `seed/schema.ts`** (zod); `seed/README.md` lo resume para quien prepara los datos. Si cambias una colección, actualiza los dos y los ejemplos.
+- El import escribe todo el lote en **una transacción** (o entra entero o nada), salvo los ficheros GPX, que se suben a disco/Blob y no se deshacen. Fotos y planes no se importan: se gestionan en el panel.
 - Los valores numéricos de las rutas son verificados, nunca estimados. Si faltan, el campo va vacío y la ficha no se publica.
 
 ---

@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "demo-villa",
+    "nombre": "[DEMO] Villa de ejemplo",
+    "comarca_zona": { "es": "[DEMO] Zona de ejemplo", "en": "[DEMO] Sample area" },
+    "lat": 42.866,
+    "lng": -4.497,
+    "altitud_m": 900,
+    "distancias_km": { "palencia": 100 },
+    "intro": { "es": "[DEMO] Introducción de ejemplo.", "en": "[DEMO] Sample introduction." },
+    "faqs": [
+      {
+        "pregunta": { "es": "[DEMO] ¿Pregunta de ejemplo?", "en": "[DEMO] Sample question?" },
+        "respuesta": { "es": "[DEMO] Respuesta de ejemplo.", "en": "[DEMO] Sample answer." }
+      }
+    ],
+    "autor": "demo-autora",
+    "nucleos": [
+      { "slug": "demo-villa", "nombre": "[DEMO] Villa de ejemplo", "lat": 42.866, "lng": -4.497 },
+      { "slug": "demo-aldea", "nombre": "[DEMO] Aldea de ejemplo", "lat": 42.88, "lng": -4.51 }
+    ]
+  }
+]

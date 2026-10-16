@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="[DEMO] nortepalentino" xmlns="http://www.topografix.com/GPX/1/1">
+  <trk><name>[DEMO] Senda de ejemplo</name><trkseg>
+    <trkpt lat="42.8670" lon="-4.4980"/>
+    <trkpt lat="42.8690" lon="-4.4950"/>
+    <trkpt lat="42.8720" lon="-4.4930"/>
+    <trkpt lat="42.8700" lon="-4.4990"/>
+    <trkpt lat="42.8670" lon="-4.4980"/>
+  </trkseg></trk>
+</gpx>

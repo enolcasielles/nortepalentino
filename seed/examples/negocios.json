@@ -1,0 +1,31 @@
+[
+  {
+    "slug": "demo-restaurante-ejemplo",
+    "nombre": "[DEMO] Restaurante de ejemplo",
+    "categoria": "demo-restaurantes",
+    "nucleo": "demo-villa",
+    "direccion": "[DEMO] C/ Ejemplo 1",
+    "lat": 42.866,
+    "lng": -4.497,
+    "telefono": "+34 979 000 000",
+    "web": "https://example.com",
+    "horario_texto": { "es": "[DEMO] Mar–Dom 13:00–16:00", "en": "[DEMO] Tue–Sun 1pm–4pm" },
+    "precio_rango": "€€",
+    "descripcion": { "es": "[DEMO] Descripción de ejemplo.", "en": "[DEMO] Sample description." },
+    "atributos_familia": ["admite-ninos", "trona"],
+    "fuente_url": "https://example.com",
+    "fecha_verificacion": "2026-10-16",
+    "estado": "publicado"
+  },
+  {
+    "slug": "demo-casa-rural-ejemplo",
+    "nombre": "[DEMO] Casa rural de ejemplo",
+    "categoria": "demo-casas-rurales",
+    "nucleo": "demo-aldea",
+    "lat": 42.88,
+    "lng": -4.51,
+    "horario_texto": "[DEMO] Texto plano: solo se guarda en ES",
+    "descripcion": { "es": "[DEMO] Solo en español: esta ficha no existirá en EN." },
+    "atributos_familia": ["cuna", "jardin-cerrado"]
+  }
+]

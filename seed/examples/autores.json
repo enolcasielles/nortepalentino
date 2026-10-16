@@ -1,0 +1,9 @@
+[
+  {
+    "slug": "demo-autora",
+    "nombre": "[DEMO] Autora de ejemplo",
+    "bio": { "es": "[DEMO] Biografía de ejemplo.", "en": "[DEMO] Sample bio." },
+    "relacion_con_la_zona": { "es": "[DEMO] Relación con la zona.", "en": "[DEMO] Connection to the area." },
+    "enlaces": [{ "etiqueta": "Web", "url": "https://example.com" }]
+  }
+]

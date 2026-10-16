@@ -42,6 +42,7 @@ next-env.d.ts
 
 # uploads locales de Payload (en prod van a Vercel Blob)
 /media
+/archivos_gpx
 
 # entorno (solo se versiona el ejemplo)
 .env*

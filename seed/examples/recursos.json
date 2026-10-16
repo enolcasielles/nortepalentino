@@ -1,0 +1,17 @@
+[
+  {
+    "slug": { "es": "demo-iglesia-ejemplo", "en": "demo-sample-church" },
+    "nombre": { "es": "[DEMO] Iglesia de ejemplo", "en": "[DEMO] Sample church" },
+    "tipo": "demo-iglesias-romanicas",
+    "nucleo": "demo-aldea",
+    "lat": 42.881,
+    "lng": -4.511,
+    "resumen": { "es": "[DEMO] Resumen de ejemplo.", "en": "[DEMO] Sample summary." },
+    "horario_acceso": { "es": "[DEMO] Horario de ejemplo.", "en": "[DEMO] Sample opening hours." },
+    "precio_entrada": { "es": "[DEMO] Gratis", "en": "[DEMO] Free" },
+    "descripcion": { "es": "[DEMO] Descripción de ejemplo.", "en": "[DEMO] Sample description." },
+    "fuente_url": "https://example.com",
+    "fecha_verificacion": "2026-10-16",
+    "estado": "publicado"
+  }
+]

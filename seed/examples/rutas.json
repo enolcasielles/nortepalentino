@@ -1,0 +1,32 @@
+[
+  {
+    "slug": { "es": "demo-senda-ejemplo", "en": "demo-sample-trail" },
+    "nombre": { "es": "[DEMO] Senda de ejemplo", "en": "[DEMO] Sample trail" },
+    "inicio_nucleo": "demo-villa",
+    "inicio_lat": 42.867,
+    "inicio_lng": -4.498,
+    "distancia_km": 5.2,
+    "desnivel_m": 120,
+    "duracion_h": 2,
+    "dificultad": "facil",
+    "circular": true,
+    "apta_ninos": true,
+    "apta_carrito": false,
+    "temporada": ["primavera", "otono"],
+    "resumen": { "es": "[DEMO] Resumen de ejemplo.", "en": "[DEMO] Sample summary." },
+    "premio_final": { "es": "[DEMO] Premio final de ejemplo.", "en": "[DEMO] Sample reward." },
+    "descripcion": { "es": "[DEMO] Descripción de ejemplo.", "en": "[DEMO] Sample description." },
+    "experiencia_propia": { "es": "[DEMO] Experiencia de ejemplo." },
+    "gpx": "gpx/demo-senda-ejemplo.gpx",
+    "autor": "demo-autora",
+    "faqs": [
+      {
+        "pregunta": { "es": "[DEMO] ¿Pregunta de ejemplo?", "en": "[DEMO] Sample question?" },
+        "respuesta": { "es": "[DEMO] Respuesta de ejemplo.", "en": "[DEMO] Sample answer." }
+      }
+    ],
+    "fuente_url": "https://example.com",
+    "fecha_verificacion": "2026-10-16",
+    "estado": "publicado"
+  }
+]

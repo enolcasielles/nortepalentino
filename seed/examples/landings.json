@@ -1,0 +1,21 @@
+[
+  {
+    "ambito": "negocios",
+    "municipio": "demo-villa",
+    "categoria": "demo-restaurantes",
+    "intro": { "es": "[DEMO] Intro de listado.", "en": "[DEMO] Listing intro." },
+    "autor": "demo-autora"
+  },
+  {
+    "ambito": "rutas",
+    "filtro": "con-ninos",
+    "titulo": { "es": "[DEMO] Rutas con niños", "en": "[DEMO] Family-friendly walks" },
+    "intro": { "es": "[DEMO] Intro de landing de filtro.", "en": "[DEMO] Filter landing intro." },
+    "faqs": [
+      {
+        "pregunta": { "es": "[DEMO] ¿Pregunta?", "en": "[DEMO] Question?" },
+        "respuesta": { "es": "[DEMO] Respuesta." }
+      }
+    ]
+  }
+]

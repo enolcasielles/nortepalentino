@@ -1,0 +1,18 @@
+[
+  {
+    "slug": { "es": "demo-restaurantes", "en": "demo-restaurants" },
+    "nombre": { "es": "[DEMO] Restaurante", "en": "[DEMO] Restaurant" },
+    "nombre_plural": { "es": "[DEMO] Restaurantes", "en": "[DEMO] Restaurants" },
+    "tipo_schema": "Restaurant",
+    "color_token": "comer",
+    "icono": "restaurante"
+  },
+  {
+    "slug": { "es": "demo-casas-rurales", "en": "demo-country-houses" },
+    "nombre": { "es": "[DEMO] Casa rural", "en": "[DEMO] Country house" },
+    "nombre_plural": { "es": "[DEMO] Casas rurales", "en": "[DEMO] Country houses" },
+    "tipo_schema": "LodgingBusiness",
+    "color_token": "dormir",
+    "icono": "casa-rural"
+  }
+]

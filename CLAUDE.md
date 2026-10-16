@@ -56,6 +56,7 @@ No añadas dependencias sin necesidad clara. Antes de instalar una librería, co
 | `pnpm generate:types` | Regenerar `payload-types.ts` tras cambiar colecciones |
 | `pnpm generate:importmap` | Regenerar el import map del admin tras añadir campos `richText`, plugins o componentes custom (si falta, el admin falla al cargar ese campo) |
 | `pnpm seed [--update] [--dry-run] [--dir <ruta>]` | Importar `/seed/*.json` (§10). Contra una BD no local exige `--remote` |
+| `pnpm seed:prod [--update] [--dry-run]` | Lo mismo contra producción, con `.env.production.local` (`vercel env pull .env.production.local --environment=production`; `PAYLOAD_SECRET` llega vacía y se pega a mano). Lo lanza una persona, nunca un agente |
 
 `push` está desactivado también en local: el esquema solo cambia mediante migraciones.
 

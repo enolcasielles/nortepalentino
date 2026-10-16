@@ -15,6 +15,7 @@
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "seed": "cross-env NODE_OPTIONS=--no-deprecation tsx --env-file-if-exists=.env seed/import.ts",
+    "seed:prod": "cross-env NODE_OPTIONS=--no-deprecation tsx --env-file=.env.production.local seed/import.ts --remote",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types"
   },
   "engines": {

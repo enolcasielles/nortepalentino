@@ -51,4 +51,12 @@ Las fotos y los planes editoriales no se importan: se gestionan en el panel (`/a
 
 ## Contra producción
 
-Por defecto el import se niega a escribir en una base de datos que no sea local. Para cargar un lote en producción hay que añadir `--remote`, con la `DATABASE_URL` de producción en el entorno. Haz antes un `--dry-run`.
+Por defecto el import se niega a escribir en una base de datos que no sea local. Para producción está `pnpm seed:prod`, que lee `.env.production.local` en lugar de `.env` y añade `--remote`:
+
+```bash
+vercel env pull .env.production.local --environment=production   # una vez; luego pega PAYLOAD_SECRET a mano
+pnpm seed:prod --dry-run
+pnpm seed:prod
+```
+
+Ese fichero trae `VERCEL_ENV=production`, así que los registros `[DEMO]` se rechazan. Lo cargado no se ve en la web hasta el siguiente despliegue.

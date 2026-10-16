@@ -1,0 +1,137 @@
+@import 'tailwindcss';
+
+/*
+ * Tokens de diseño (DESIGN.md §3). Los componentes usan solo estos tokens.
+ * Se anulan las paletas y fuentes por defecto de Tailwind para que no se
+ * puedan usar valores crudos (text-green-700, etc.).
+ */
+@theme {
+  --color-*: initial;
+  --font-*: initial;
+  --shadow-*: initial;
+
+  /* Base */
+  --color-bg: #fafaf7;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f1f0ea;
+  --color-text: #1c2321;
+  --color-text-muted: #5a6360;
+  --color-border: #dad8cf;
+  --color-border-strong: #8c918c;
+  --color-primary: #2f5d3a;
+  --color-primary-hover: #244a2e;
+  --color-primary-contrast: #ffffff;
+  --color-primary-soft: #e6eee6;
+  --color-accent: #c8762b; /* solo gráfico, no apto para texto */
+  --color-accent-text: #9a5518;
+  --color-success: #3f7a3a;
+  --color-warning: #8a6a00;
+  --color-danger: #b3362b;
+  --color-focus: #c8762b;
+  --color-white: #ffffff;
+
+  /* Categorías */
+  --color-cat-dormir: #3e5c76;
+  --color-cat-dormir-contrast: #ffffff;
+  --color-cat-comer: #a4462f;
+  --color-cat-comer-contrast: #ffffff;
+  --color-cat-activo: #c8762b;
+  --color-cat-activo-contrast: #1c2321;
+  --color-cat-rutas: #2f5d3a;
+  --color-cat-rutas-contrast: #ffffff;
+  --color-cat-romanico: #7a5a44;
+  --color-cat-romanico-contrast: #ffffff;
+  --color-cat-naturaleza: #5b7b3a;
+  --color-cat-naturaleza-contrast: #ffffff;
+  --color-cat-museo: #5e4b6b;
+  --color-cat-museo-contrast: #ffffff;
+
+  /* Dificultad (solo baliza gráfica) */
+  --color-difficulty-facil: #3f7a3a;
+  --color-difficulty-moderada: #d9a300;
+  --color-difficulty-moderada-border: #8a6a00;
+  --color-difficulty-dificil: #b3362b;
+
+  /* Escala tipográfica fluida (cuerpo nunca < 16 px) */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.45;
+  --text-base: clamp(1rem, 0.97rem + 0.12vw, 1.0625rem);
+  --text-base--line-height: 1.6;
+  --text-lg: clamp(1.125rem, 1.08rem + 0.2vw, 1.25rem);
+  --text-lg--line-height: 1.5;
+  --text-xl: clamp(1.25rem, 1.18rem + 0.35vw, 1.5rem);
+  --text-xl--line-height: 1.35;
+  --text-2xl: clamp(1.5rem, 1.37rem + 0.6vw, 1.875rem);
+  --text-2xl--line-height: 1.25;
+  --text-3xl: clamp(1.875rem, 1.65rem + 1vw, 2.5rem);
+  --text-3xl--line-height: 1.15;
+  --text-4xl: clamp(2.25rem, 1.9rem + 1.6vw, 3.25rem);
+  --text-4xl--line-height: 1.1;
+
+  /* Forma y elevación */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-card: 0 2px 8px rgb(28 35 33 / 0.08);
+  --shadow-overlay: 0 8px 24px rgb(28 35 33 / 0.16);
+}
+
+/* Fuentes autoalojadas con next/font (variables definidas en el layout) */
+@theme inline {
+  --font-display: var(--font-inter-tight), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-6xl);
+  padding-inline: 16px;
+
+  @media (width >= 48rem) {
+    padding-inline: 24px;
+  }
+}

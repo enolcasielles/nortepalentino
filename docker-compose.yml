@@ -1,0 +1,17 @@
+# Postgres local para desarrollo. En producción se usa Neon.
+# Puerto 5435 en el host para no chocar con un Postgres nativo ni otros contenedores locales.
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nortepalentino
+    ports:
+      - '5435:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

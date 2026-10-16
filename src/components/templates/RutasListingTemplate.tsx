@@ -62,12 +62,13 @@ export async function RutasListingTemplate({ match, site, path, alternates, sear
       alternatePaths={alternates}
       breadcrumbs={crumbs}
       jsonLd={[collectionJsonLd(pageTitle, landing.intro, path, itemsLd), breadcrumbJsonLd(crumbs), ...(faqLd ? [faqLd] : [])]}
+      hero={{
+        title: pageTitle,
+        icon: 'senda',
+        summary: <Prose text={landing.intro} />,
+      }}
     >
-      <div className="space-y-10">
-        <header className="space-y-4">
-          <h1 className="text-4xl">{pageTitle}</h1>
-          <Prose text={landing.intro} />
-        </header>
+      <div className="space-y-16">
 
         <div className="space-y-4">
           <RouteFilterBar path={path} filters={filters} dict={dict} hideNinos={filtro === 'con-ninos'} />
@@ -83,7 +84,7 @@ export async function RutasListingTemplate({ match, site, path, alternates, sear
               ))}
             </CardGrid>
           ) : (
-            <p className="rounded-md bg-surface-alt p-6 text-center">{dict.listing.noResults}</p>
+            <p className="rounded-lg bg-surface-alt p-8 text-center">{dict.listing.noResults}</p>
           )}
         </div>
 

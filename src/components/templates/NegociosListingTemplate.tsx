@@ -11,6 +11,7 @@ import { MapBlock } from '@/components/map/MapBlock'
 import type { NegociosListing, Site } from '@/lib/data/site'
 import { fill, getDictionary, plural } from '@/lib/i18n'
 import { breadcrumbJsonLd, collectionJsonLd, faqJsonLd } from '@/lib/seo/jsonld'
+import { asColorToken } from '@/lib/ui/categoryColors'
 
 import { firstParagraph, homeCrumb, type PageMeta, type TemplateProps } from './shared'
 
@@ -69,13 +70,15 @@ export async function NegociosListingTemplate({ match, site, path, alternates }:
       alternatePaths={alternates}
       breadcrumbs={crumbs}
       jsonLd={[collectionJsonLd(title, landing.intro, path, itemsLd), breadcrumbJsonLd(crumbs), ...(faqLd ? [faqLd] : [])]}
+      hero={{
+        title,
+        icon: categoria.icono,
+        color: asColorToken(categoria.color_token),
+        summary: <Prose text={landing.intro} />,
+        children: <p className="text-sm font-medium text-text-muted">{plural(dict.listing.count, items.length, locale)}</p>,
+      }}
     >
-      <div className="space-y-10">
-        <header className="space-y-4">
-          <h1 className="text-4xl">{title}</h1>
-          <Prose text={landing.intro} />
-          <p className="text-sm text-text-muted">{plural(dict.listing.count, items.length, locale)}</p>
-        </header>
+      <div className="space-y-16">
 
         <CardGrid>
           {items.map((n) => (
@@ -95,7 +98,7 @@ export async function NegociosListingTemplate({ match, site, path, alternates }:
                 <li key={l.municipio!.id}>
                   <a
                     href={site.url.negociosListing(l)}
-                    className="group inline-flex min-h-11 items-center gap-2 font-medium text-primary"
+                    className="group inline-flex min-h-11 items-center gap-2 font-semibold text-primary"
                   >
                     {negociosListingTitle(l, site)}
                     <TrailArrow />

@@ -1,4 +1,4 @@
-import { X } from 'lucide-react'
+import { SlidersHorizontal, X } from 'lucide-react'
 
 import { fill, type Dictionary } from '@/lib/i18n'
 import { difficulties, type Difficulty } from '@/lib/taxonomies'
@@ -47,18 +47,22 @@ export function RouteFilterBar({
     filters.carrito && { key: 'carrito' as const, label: dict.facts.aptaCarrito },
   ].filter((a): a is { key: keyof RouteFilters; label: string } => Boolean(a))
 
-  const field = 'flex min-h-11 items-center gap-2'
+  const field =
+    'flex min-h-11 cursor-pointer items-center gap-2 rounded-full bg-surface px-4 text-sm font-medium ring-1 ring-border-strong/40 has-checked:bg-primary-soft has-checked:text-primary has-checked:ring-primary/40'
   return (
     <div className="space-y-3">
-      <details open={active.length > 0} className="rounded-md border border-border bg-surface">
-        <summary className="flex min-h-11 cursor-pointer items-center px-4 font-medium">{dict.listing.filter}</summary>
-        <form method="get" action={path} className="flex flex-wrap items-end gap-4 border-t border-border p-4">
-          <label className="flex flex-col gap-1 text-sm">
+      <details open={active.length > 0} className="group rounded-lg bg-surface shadow-card ring-1 ring-border">
+        <summary className="flex min-h-12 cursor-pointer list-none items-center gap-2 px-5 font-semibold [&::-webkit-details-marker]:hidden">
+          <SlidersHorizontal aria-hidden="true" size={18} className="text-primary" />
+          {dict.listing.filter}
+        </summary>
+        <form method="get" action={path} className="flex flex-wrap items-end gap-3 border-t border-border p-5">
+          <label className="flex flex-col gap-1 text-sm font-medium">
             {dict.listing.dificultad}
             <select
               name="dificultad"
               defaultValue={filters.dificultad ?? ''}
-              className="min-h-11 rounded-sm border border-border-strong bg-surface px-3"
+              className="min-h-11 rounded-md border border-border-strong bg-surface px-3"
             >
               <option value="">{dict.listing.any}</option>
               {difficulties.map((d) => (
@@ -70,15 +74,15 @@ export function RouteFilterBar({
           </label>
           {!hideNinos && (
             <label className={field}>
-              <input type="checkbox" name="ninos" value="1" defaultChecked={filters.ninos} className="size-5 accent-primary" />
+              <input type="checkbox" name="ninos" value="1" defaultChecked={filters.ninos} className="size-4 accent-primary" />
               {dict.facts.aptaNinos}
             </label>
           )}
           <label className={field}>
-            <input type="checkbox" name="carrito" value="1" defaultChecked={filters.carrito} className="size-5 accent-primary" />
+            <input type="checkbox" name="carrito" value="1" defaultChecked={filters.carrito} className="size-4 accent-primary" />
             {dict.facts.aptaCarrito}
           </label>
-          <button type="submit" className="min-h-11 rounded-md bg-primary px-5 font-semibold text-primary-contrast hover:bg-primary-hover">
+          <button type="submit" className="min-h-11 rounded-full bg-primary px-6 font-semibold text-primary-contrast shadow-card hover:bg-primary-hover">
             {dict.listing.apply}
           </button>
         </form>
@@ -90,7 +94,7 @@ export function RouteFilterBar({
               <a
                 href={hrefWithout(path, filters, a.key)}
                 aria-label={fill(dict.listing.removeFilter, { label: a.label })}
-                className="inline-flex min-h-11 items-center gap-1 rounded-full bg-primary-soft px-3 text-sm text-primary"
+                className="inline-flex min-h-11 items-center gap-1 rounded-full bg-primary-soft px-4 text-sm font-medium text-primary hover:bg-primary hover:text-primary-contrast"
               >
                 {a.label}
                 <X aria-hidden="true" size={16} />

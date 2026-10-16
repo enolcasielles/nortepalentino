@@ -1,4 +1,4 @@
-import { Inter, Inter_Tight } from 'next/font/google'
+import { Bricolage_Grotesque, Inter } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import type { ReactNode } from 'react'
 
@@ -14,11 +14,11 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const interTight = Inter_Tight({
+// Display para títulos, cifras y wordmark (DESIGN.md §3.2). Variable: un fichero.
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin', 'latin-ext'],
-  weight: ['600', '700'],
   display: 'swap',
-  variable: '--font-inter-tight',
+  variable: '--font-bricolage',
 })
 
 export const metadata = {
@@ -43,7 +43,7 @@ export default async function LocaleLayout({
   const dict = getDictionary(locale)
 
   return (
-    <html lang={locale} className={`${inter.variable} ${interTight.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${bricolage.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <SkipLink label={dict.a11y.skipToContent} />
         {children}

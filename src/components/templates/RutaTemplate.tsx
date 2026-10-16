@@ -1,5 +1,6 @@
-import { Download } from 'lucide-react'
+import { Download, Flag } from 'lucide-react'
 import Image from 'next/image'
+import type { ReactNode } from 'react'
 
 import { AnswerSummary } from '@/components/content/AnswerSummary'
 import { AuthorByline } from '@/components/content/AuthorByline'
@@ -81,6 +82,15 @@ export async function RutaTemplate({ match, site, path, alternates }: TemplatePr
     })
   }
 
+  // Lo esencial a la vista en la cabecera: dificultad y si es apta para familias
+  type Chip = { key: string; content: ReactNode }
+  const heroChips = ([
+    r.dificultad && { key: 'dificultad', content: <DifficultyMark difficulty={r.dificultad} label={dict.difficulty[r.dificultad]} /> },
+    { key: 'circular', content: r.circular ? dict.facts.circular : dict.facts.lineal },
+    r.apta_ninos && { key: 'ninos', content: dict.facts.aptaNinos },
+    r.apta_carrito && { key: 'carrito', content: dict.facts.aptaCarrito },
+  ] as (Chip | false | null | undefined)[]).filter((c): c is Chip => Boolean(c))
+
   const photos = (r.fotos ?? []).map((f) => imageOf(site, f)).filter((p): p is ImageData => p !== null)
   const faqLd = faqJsonLd(r.faqs)
 
@@ -90,36 +100,52 @@ export async function RutaTemplate({ match, site, path, alternates }: TemplatePr
       alternatePaths={alternates}
       breadcrumbs={crumbs}
       jsonLd={[rutaJsonLd(r, path, site, start), breadcrumbJsonLd(crumbs), ...(faqLd ? [faqLd] : [])]}
+      hero={{
+        title: r.nombre,
+        eyebrow: nucleo?.nombre,
+        icon: 'senda',
+        summary: <AnswerSummary text={r.resumen} />,
+        children: heroChips.length > 0 && (
+          <ul className="flex flex-wrap gap-2">
+            {heroChips.map((c) => (
+              <li key={c.key} className="inline-flex min-h-9 items-center rounded-full bg-surface px-3.5 text-sm font-semibold shadow-card ring-1 ring-border">
+                {c.content}
+              </li>
+            ))}
+          </ul>
+        ),
+      }}
     >
-      <div className="space-y-12">
-        <div className="grid gap-8 lg:grid-cols-[1fr_22rem]">
-          <div className="space-y-4">
-            <h1 className="text-4xl">{r.nombre}</h1>
-            <AnswerSummary text={r.resumen} />
-          </div>
-          <aside className="lg:row-span-2">
+      <div className="space-y-16">
+        <div className="grid gap-10 lg:grid-cols-[1fr_22rem] lg:items-start">
+          <aside className="lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1">
             <KeyFacts title={dict.facts.title} stats={stats} rows={rows} color="rutas" />
           </aside>
-          <div className="space-y-10">
+          <div className="min-w-0 space-y-12 lg:col-start-1 lg:row-start-1">
             {r.premio_final && (
-              <section aria-labelledby="premio" className="rounded-md bg-primary-soft p-5">
-                <h2 id="premio" className="mb-2 text-xl">
-                  {dict.content.premioFinal}
-                </h2>
-                <Prose text={r.premio_final} />
+              <section aria-labelledby="premio" className="flex gap-4 rounded-lg bg-primary-soft p-6">
+                <span aria-hidden="true" className="grid size-11 shrink-0 place-items-center rounded-md bg-primary text-primary-contrast shadow-card">
+                  <Flag size={22} />
+                </span>
+                <div>
+                  <h2 id="premio" className="mb-1.5 text-xl text-ink">
+                    {dict.content.premioFinal}
+                  </h2>
+                  <Prose text={r.premio_final} />
+                </div>
               </section>
             )}
             <div className="space-y-3">
               <MapBlock match={match} site={site} path={path} name={r.nombre} dict={dict} />
               {gpx?.url && (
-                <a href={gpx.url} download className="inline-flex min-h-11 items-center gap-2 font-medium text-primary underline-offset-2 hover:underline">
+                <a href={gpx.url} download className="inline-flex min-h-11 items-center gap-2 rounded-full bg-surface px-5 font-semibold text-primary ring-1 ring-primary/40 transition-colors hover:bg-primary-soft">
                   <Download aria-hidden="true" size={18} />
                   {dict.content.downloadGpx}
                 </a>
               )}
             </div>
-            <section aria-labelledby="la-ruta" className="space-y-3">
-              <h2 id="la-ruta" className="text-2xl">
+            <section aria-labelledby="la-ruta" className="space-y-4">
+              <h2 id="la-ruta" className="text-3xl text-ink">
                 {dict.content.laRuta}
               </h2>
               <Prose text={r.descripcion} />
@@ -129,7 +155,7 @@ export async function RutaTemplate({ match, site, path, alternates }: TemplatePr
               <section aria-label={dict.content.fotos} className="grid gap-4 sm:grid-cols-2">
                 {photos.map((p) => (
                   <figure key={p.src}>
-                    <Image src={p.src} alt={p.alt} width={p.width} height={p.height} sizes="(min-width: 640px) 50vw, 100vw" className="aspect-[4/3] w-full rounded-md object-cover" />
+                    <Image src={p.src} alt={p.alt} width={p.width} height={p.height} sizes="(min-width: 640px) 50vw, 100vw" className="aspect-[4/3] w-full rounded-lg object-cover" />
                     {p.credit && <figcaption className="mt-1 text-xs text-text-muted">{fill(dict.content.photoCredit, { credit: p.credit })}</figcaption>}
                   </figure>
                 ))}
@@ -139,7 +165,7 @@ export async function RutaTemplate({ match, site, path, alternates }: TemplatePr
         </div>
         {start && <NearbyList origin={start} site={site} dict={dict} exclude={{ collection: 'rutas', id: r.id }} groups={['comer', 'dormir', 'queVer']} />}
         <FaqList faqs={r.faqs} dict={dict} />
-        <div className="space-y-2">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <AuthorByline autor={r.autor} updatedAt={r.updatedAt} site={site} dict={dict} />
           <VerifiedNote date={r.fecha_verificacion} sourceUrl={r.fuente_url} locale={locale} dict={dict} />
         </div>

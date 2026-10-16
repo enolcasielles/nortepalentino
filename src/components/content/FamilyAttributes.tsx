@@ -21,7 +21,7 @@ export function FamilyAttributes({
         return (
           <li
             key={attr}
-            className={`inline-flex items-center gap-1.5 rounded-full bg-primary-soft text-primary ${compact ? 'px-2 py-0.5 text-xs' : 'px-3 py-1 text-sm'}`}
+            className={`inline-flex items-center gap-1.5 rounded-full bg-primary-soft font-medium text-primary ${compact ? 'px-2.5 py-0.5 text-xs' : 'px-3.5 py-1.5 text-sm'}`}
           >
             <Icon aria-hidden="true" size={compact ? 14 : 18} />
             {dict.familyAttributes[attr]}

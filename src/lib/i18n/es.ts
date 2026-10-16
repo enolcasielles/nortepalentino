@@ -8,6 +8,14 @@ export const es = {
     disclaimer:
       'Norte Palentino es una guía independiente; no es la web oficial de ningún organismo.',
   },
+  home: {
+    eyebrow: 'Guía independiente',
+    lead: 'Dónde dormir, comer y caminar en el norte de Palencia, con cada sitio verificado.',
+    explore: 'Empieza por aquí',
+  },
+  footer: {
+    explore: 'Explora',
+  },
   a11y: {
     skipToContent: 'Saltar al contenido',
     home: 'Inicio',

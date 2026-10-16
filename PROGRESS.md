@@ -95,12 +95,20 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 - **Capa de datos** (`lib/data/`): cada colección se carga entera por idioma con `unstable_cache` + tag; `getSite(locale)` construye el índice de lo que existe aplicando `lib/seo/indexability.ts` (§7.4). Modelo de caché "anterior" de Next 16 (sin `cacheComponents`).
 - **Enrutado**: catch-all `src/app/(frontend)/[locale]/[...path]` → `matchRoute` (`lib/routes/match.ts`). `siteInventory` (`lib/routes/inventory.ts`) enumera todas las URLs para `generateStaticParams`, sitemap y `llms.txt`. Si una URL no existe, se resuelve contra `redirects` (`resolveRedirect`, sigue cadenas) y responde **308**.
 - **Plantillas** (`src/components/templates/`): home, municipio, listado de negocios (municipio+categoría, comarcal, filtro `con-ninos`), negocio, listado de rutas con filtros por query (sin JS, `noindex,follow`), ruta, listado de recursos, recurso. 404 bilingüe.
-- **Componentes** (DESIGN.md §5): `KeyFacts`, `DifficultyMark`, `TrailArrow`, `FamilyAttributes`, `VerifiedNote`, `AuthorByline`, `FaqList`, `ExperienceBlock`, `Prose`, tarjetas (`BusinessCard`, `RouteCard`, `SightCard`, `MunicipioCard`), `ContactActions` (fijo abajo en móvil, con `data-event` para analítica futura), `NearbyList`, `RouteFilterBar`, `Breadcrumbs`, `SiteHeader` (menú con `<details>`), `SiteFooter`.
+- **Componentes** (DESIGN.md §5, rediseñados en la sesión 2): `KeyFacts`, `DifficultyMark`, `TrailArrow`, `FamilyAttributes`, `VerifiedNote`, `AuthorByline`, `FaqList`, `ExperienceBlock`, `Prose`, tarjetas (`BusinessCard`, `RouteCard`, `SightCard`, `MunicipioCard`), `ContactActions` (fijo abajo en móvil, con `data-event` para analítica futura), `NearbyList`, `RouteFilterBar`, `Breadcrumbs`, `SiteHeader` (menú con `<details>`), `SiteFooter`.
 - **Mapas**: `MapFacade` (única isla de cliente) + imagen de Static Maps servida desde `/mapas/{locale}/{ruta de la página}` para no exponer la clave. Sin clave no se renderiza.
 - **SEO**: `buildMetadata` (título con marca, descripción recortada, canonical, hreflang + `x-default`), JSON-LD por tipo en `lib/seo/jsonld/` (City, tipos de negocio, TouristTrip, Church/TouristAttraction, CollectionPage+ItemList, BreadcrumbList, FAQPage, WebSite, Organization), `/sitemap.xml` (índice) + `/sitemaps/{es,en}.xml` con alternates, `/llms.txt`, `/llms-full.txt`, `robots.txt` con bots de IA y sitemap.
 - Microcopy ES/EN en `lib/i18n/{es,en}.ts` (incluye plurales y etiquetas de taxonomías); formateo de fechas/cifras en `lib/i18n/format.ts`.
 
 **Verificado:** todas las plantillas en ES y EN con fixtures (código HTTP, título, canonical, hreflang, un único H1, tipos JSON-LD), filtros y redirect en build de producción, 360 px sin scroll horizontal y objetivos táctiles ≥ 44 px, despliegue en producción.
+
+### 4.5 Sistema visual "producto outdoor" (sesión 2)
+
+- Nueva dirección en DESIGN.md: fondo blanco, verde bosque `#17734A`, `ink` para hero y pie, naranja atardecer como acento, tintes `-soft` por categoría, `Bricolage Grotesque` para títulos (sustituye a Inter Tight), radios 6/10/16/24 px y sombras suaves en reposo. Contrastes AA recalculados (tabla de DESIGN.md §3.1).
+- Recursos gráficos propios: textura de curvas de nivel (`public/textures/contours.svg`, aplicada como máscara con la utilidad `contours`), siluetas de cumbres (`brand/Ridges.tsx`) y símbolo provisional de cumbres anidadas (`brand/Wordmark.tsx`). Se generaron con scripts de un solo uso (campo de alturas + `d3-contour`); no son dependencias del proyecto. Para regenerarlos hay que rehacer el script.
+- `PageHero` (prop `hero` de `PageLayout`) en todas las plantillas salvo la home; la home usa `masthead`. Tarjetas 16:10 con `MediaPlaceholder` cuando no hay foto, píldora de categoría o baliza de dificultad, iconos en los datos de ruta. `KeyFacts` y acciones en columna lateral `sticky` desde `lg`.
+- Microcopy nuevo: `home.eyebrow`, `home.lead`, `home.explore`, `footer.explore` (ES/EN). La entradilla de la home es provisional: cámbiala si el tono no convence.
+- Verificado: ES/EN en home, municipio, listados, fichas y 404; 360 px sin scroll horizontal; sin islas de cliente nuevas.
 
 ---
 
@@ -153,3 +161,7 @@ Ideas menores: el núcleo que cambia de municipio no actualiza sus negocios hast
 ### Sesión 1 · 2026-10-16/17
 
 Estructura inicial, modelo de datos completo con hooks y migraciones, despliegue en Vercel con Neon y Blob, import de seeds, plantillas de municipio/listados/fichas/rutas/recursos con SEO técnico, sitemap y `llms.txt`. Incidencias resueltas: idioma de escritura en hooks, esquema de Blob distinto entre entornos (build roto en prod), CLI de Payload inestable con Node 22, `dynamicParams` heredado, 500 con locale inválido, borrado accidental de las variables de Neon en Vercel (restauradas). Commits `ab49715` → `b1959ee`.
+
+### Sesión 2 · 2026-10-17
+
+Rediseño de la UI hacia "producto outdoor" (§4.5): tokens, tipografía, cabecera fija, pie con siluetas, hero de la home, `PageHero`, tarjetas, KeyFacts, FAQs, filtros y acciones. DESIGN.md actualizado al nuevo sistema.

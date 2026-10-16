@@ -1,3 +1,5 @@
+import { Menu } from 'lucide-react'
+
 import { Wordmark } from '@/components/brand/Wordmark'
 import { getSite } from '@/lib/data/site'
 import type { Dictionary, Locale } from '@/lib/i18n'
@@ -11,8 +13,8 @@ type Props = {
   alternatePaths: Partial<Record<Locale, string>>
 }
 
-// Solo enlaza a listados que existen (CLAUDE.md §7.4). En móvil el menú se
-// despliega con <details>, sin JS.
+// Solo enlaza a listados que existen (CLAUDE.md §7.4). Fija arriba con fondo
+// translúcido; en móvil el menú se despliega con <details>, sin JS.
 export async function SiteHeader({ locale, dict, alternatePaths }: Props) {
   const site = await getSite(locale)
   const links = [
@@ -24,47 +26,52 @@ export async function SiteHeader({ locale, dict, alternatePaths }: Props) {
     }),
   ].filter((l): l is { href: string; label: string } => Boolean(l))
 
-  const nav = (
-    <ul className="flex flex-col gap-1 md:flex-row md:items-center md:gap-1">
-      {links.map((l) => (
-        <li key={l.href}>
-          <a
-            href={l.href}
-            className="flex min-h-11 items-center rounded-md px-3 text-sm font-medium hover:bg-primary-soft hover:text-primary"
-          >
-            {l.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  )
+  const link = 'flex min-h-11 items-center rounded-full px-4 text-[0.9375rem] font-medium transition-colors hover:bg-primary-soft hover:text-primary'
 
   return (
-    <header className="border-b border-border bg-surface">
-      <div className="container-page flex min-h-16 flex-wrap items-center justify-between gap-x-4">
-        <a
-          href={homePath(locale)}
-          aria-label={`${dict.site.name} · ${dict.a11y.home}`}
-          className="inline-flex min-h-11 items-center"
-        >
+    <header className="sticky top-0 z-30 border-b border-border/80 bg-surface/90 backdrop-blur-md">
+      <div className="relative container-page flex min-h-16 items-center justify-between gap-x-4">
+        <a href={homePath(locale)} aria-label={`${dict.site.name} · ${dict.a11y.home}`} className="inline-flex min-h-11 items-center rounded-md">
           <Wordmark />
         </a>
         <div className="flex items-center gap-1">
           {links.length > 0 && (
             <nav aria-label={dict.nav.label} className="hidden md:block">
-              {nav}
+              <ul className="flex items-center gap-0.5">
+                {links.map((l) => (
+                  <li key={l.href}>
+                    <a href={l.href} className={link}>
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </nav>
           )}
           <LanguageSwitcher locale={locale} paths={alternatePaths} dict={dict} />
+          {links.length > 0 && (
+            <details className="group md:hidden">
+              <summary className="grid size-11 cursor-pointer list-none place-items-center rounded-full ring-1 ring-border hover:bg-primary-soft [&::-webkit-details-marker]:hidden">
+                <Menu aria-hidden="true" size={20} />
+                <span className="sr-only">{dict.nav.menu}</span>
+              </summary>
+              <nav
+                aria-label={dict.nav.label}
+                className="absolute inset-x-4 top-full mt-2 rounded-lg bg-surface p-2 shadow-overlay ring-1 ring-border"
+              >
+                <ul className="flex flex-col">
+                  {links.map((l) => (
+                    <li key={l.href}>
+                      <a href={l.href} className={`${link} rounded-md`}>
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </details>
+          )}
         </div>
-        {links.length > 0 && (
-          <details className="w-full pb-2 md:hidden">
-            <summary className="flex min-h-11 cursor-pointer list-none items-center text-sm font-medium">
-              {dict.nav.menu}
-            </summary>
-            <nav aria-label={dict.nav.label}>{nav}</nav>
-          </details>
-        )}
       </div>
     </header>
   )

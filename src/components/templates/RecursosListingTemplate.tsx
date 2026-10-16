@@ -33,13 +33,15 @@ export async function RecursosListingTemplate({ match, site, path, alternates }:
       alternatePaths={alternates}
       breadcrumbs={crumbs}
       jsonLd={[collectionJsonLd(pageTitle, landing.intro, path, itemsLd), breadcrumbJsonLd(crumbs), ...(faqLd ? [faqLd] : [])]}
+      hero={{
+        title: pageTitle,
+        icon: 'iglesia',
+        color: 'romanico',
+        summary: <Prose text={landing.intro} />,
+        children: <p className="text-sm font-medium text-text-muted">{plural(dict.listing.count, items.length, locale)}</p>,
+      }}
     >
-      <div className="space-y-10">
-        <header className="space-y-4">
-          <h1 className="text-4xl">{pageTitle}</h1>
-          <Prose text={landing.intro} />
-          <p className="text-sm text-text-muted">{plural(dict.listing.count, items.length, locale)}</p>
-        </header>
+      <div className="space-y-16">
         <CardGrid>
           {items.map((r) => (
             <li key={r.id}>

@@ -63,30 +63,35 @@ export async function NegocioTemplate({ match, site, path, alternates }: Templat
     .join(' · ')
 
   return (
-    <PageLayout locale={locale} alternatePaths={alternates} breadcrumbs={crumbs} jsonLd={[negocioJsonLd(n, path, site), breadcrumbJsonLd(crumbs)]}>
-      <div className="space-y-12 pb-20 lg:pb-0">
-        <div className="grid gap-8 lg:grid-cols-[1fr_22rem]">
-          <div className="space-y-6">
-            <header className="space-y-3">
-              <p className="text-xs font-semibold tracking-[0.06em] text-text-muted uppercase">{eyebrow}</p>
-              <h1 className="text-4xl">{n.nombre}</h1>
-            </header>
-            <div className="text-lg">
-              <Prose text={n.descripcion} />
-            </div>
-            <FamilyAttributes values={n.atributos_familia} dict={dict} />
-          </div>
-          <aside className="space-y-4 lg:row-span-2">
+    <PageLayout
+      locale={locale}
+      alternatePaths={alternates}
+      breadcrumbs={crumbs}
+      jsonLd={[negocioJsonLd(n, path, site), breadcrumbJsonLd(crumbs)]}
+      hero={{
+        title: n.nombre,
+        eyebrow,
+        color: asColorToken(categoria.color_token),
+        icon: categoria.icono,
+        children: <FamilyAttributes values={n.atributos_familia} dict={dict} />,
+      }}
+    >
+      <div className="space-y-16 pb-20 lg:pb-0">
+        <div className="grid gap-10 lg:grid-cols-[1fr_22rem] lg:items-start">
+          <aside className="space-y-4 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1">
             <KeyFacts title={dict.facts.title} rows={rows} color={asColorToken(categoria.color_token)} />
             <ContactActions telefono={n.telefono} web={n.web} lat={n.coordenadas.lat} lng={n.coordenadas.lng} dict={dict} />
           </aside>
-          <div className="space-y-6">
+          <div className="min-w-0 space-y-8 lg:col-start-1 lg:row-start-1">
+            <div className="text-lg">
+              <Prose text={n.descripcion} />
+            </div>
             <MapBlock match={match} site={site} path={path} name={n.nombre} dict={dict} />
             {photos.length > 0 && (
               <section aria-label={dict.content.fotos} className="grid gap-4 sm:grid-cols-2">
                 {photos.map((p) => (
                   <figure key={p.src}>
-                    <Image src={p.src} alt={p.alt} width={p.width} height={p.height} sizes="(min-width: 640px) 50vw, 100vw" className="aspect-[4/3] w-full rounded-md object-cover" />
+                    <Image src={p.src} alt={p.alt} width={p.width} height={p.height} sizes="(min-width: 640px) 50vw, 100vw" className="aspect-[4/3] w-full rounded-lg object-cover" />
                     {p.credit && <figcaption className="mt-1 text-xs text-text-muted">{fill(dict.content.photoCredit, { credit: p.credit })}</figcaption>}
                   </figure>
                 ))}

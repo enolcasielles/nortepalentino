@@ -74,7 +74,7 @@ export function MapFacade({ staticSrc, alt, width, height, apiKey, markers, poly
       }
       if (polyline) {
         const path = maps.geometry.encoding.decodePath(polyline)
-        new maps.Polyline({ map, path, strokeColor: '#2F5D3A', strokeWeight: 4 })
+        new maps.Polyline({ map, path, strokeColor: '#17734A', strokeWeight: 4 })
         path.forEach((p) => bounds.extend(p))
       }
       if (markers.length === 1 && !polyline) {
@@ -90,7 +90,7 @@ export function MapFacade({ staticSrc, alt, width, height, apiKey, markers, poly
   }
 
   return (
-    <div className="relative overflow-hidden rounded-lg border border-border" style={{ aspectRatio: `${width} / ${height}` }}>
+    <div className="relative overflow-hidden rounded-lg shadow-card ring-1 ring-border" style={{ aspectRatio: `${width} / ${height}` }}>
       <div ref={container} className="absolute inset-0" />
       {state !== 'interactive' && (
         <>
@@ -100,7 +100,7 @@ export function MapFacade({ staticSrc, alt, width, height, apiKey, markers, poly
               type="button"
               onClick={open}
               disabled={state === 'loading'}
-              className="absolute right-3 bottom-3 inline-flex min-h-11 items-center rounded-md bg-surface px-4 text-sm font-semibold text-primary shadow-overlay hover:bg-primary-soft disabled:opacity-70"
+              className="absolute right-3 bottom-3 inline-flex min-h-11 items-center rounded-full bg-surface px-5 text-sm font-semibold text-primary shadow-overlay hover:bg-primary-soft disabled:opacity-70"
             >
               {openLabel}
             </button>

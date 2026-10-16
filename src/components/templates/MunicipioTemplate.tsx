@@ -71,17 +71,19 @@ export async function MunicipioTemplate({ match, site, path, alternates }: Templ
       alternatePaths={alternates}
       breadcrumbs={crumbs}
       jsonLd={[municipioJsonLd(m, path, site), breadcrumbJsonLd(crumbs), ...(faqLd ? [faqLd] : [])]}
+      hero={{
+        title: fill(dict.titles.municipio, { name: m.nombre }),
+        eyebrow: m.comarca_zona,
+        icon: 'cumbre',
+        summary: <AnswerSummary text={m.intro} />,
+      }}
     >
-      <div className="grid gap-8 lg:grid-cols-[1fr_20rem]">
-        <div className="space-y-4">
-          <h1 className="text-4xl">{fill(dict.titles.municipio, { name: m.nombre })}</h1>
-          <AnswerSummary text={m.intro} />
-        </div>
-        <aside className="lg:row-span-2">
+      <div className="grid gap-10 lg:grid-cols-[1fr_20rem] lg:items-start">
+        <aside className="lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1">
           <KeyFacts title={dict.facts.title} rows={rows} />
         </aside>
 
-        <div className="space-y-12">
+        <div className="min-w-0 space-y-14 lg:col-start-1 lg:row-start-1">
           {recursos.length > 0 && (
             <Section
               id="que-ver"
@@ -113,7 +115,7 @@ export async function MunicipioTemplate({ match, site, path, alternates }: Templ
                     <li key={l.categoria.id}>
                       <a
                         href={site.url.negociosListing(l)}
-                        className="group inline-flex min-h-11 items-center gap-2 font-medium text-primary"
+                        className="group inline-flex min-h-11 items-center gap-2 font-semibold text-primary"
                       >
                         {fill(dict.titles.categoryIn, { category: l.categoria.nombre_plural, place: m.nombre })}
                         <TrailArrow />

@@ -56,19 +56,27 @@ export async function RecursoTemplate({ match, site, path, alternates }: Templat
   }
 
   return (
-    <PageLayout locale={locale} alternatePaths={alternates} breadcrumbs={crumbs} jsonLd={[recursoJsonLd(r, path, site), breadcrumbJsonLd(crumbs)]}>
-      <div className="space-y-12">
-        <div className="grid gap-8 lg:grid-cols-[1fr_22rem]">
-          <div className="space-y-4">
-            <h1 className="text-4xl">{r.nombre}</h1>
-            <AnswerSummary text={r.resumen} />
-          </div>
-          <aside className="lg:row-span-2">
+    <PageLayout
+      locale={locale}
+      alternatePaths={alternates}
+      breadcrumbs={crumbs}
+      jsonLd={[recursoJsonLd(r, path, site), breadcrumbJsonLd(crumbs)]}
+      hero={{
+        title: r.nombre,
+        eyebrow: [tipo?.nombre, place].filter(Boolean).join(' · '),
+        color: asColorToken(tipo?.color_token),
+        icon: tipo?.icono,
+        summary: <AnswerSummary text={r.resumen} />,
+      }}
+    >
+      <div className="space-y-16">
+        <div className="grid gap-10 lg:grid-cols-[1fr_22rem] lg:items-start">
+          <aside className="lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1">
             <KeyFacts title={dict.facts.title} rows={rows} color={asColorToken(tipo?.color_token)} />
           </aside>
-          <div className="space-y-8">
-            <section aria-labelledby="descripcion" className="space-y-3">
-              <h2 id="descripcion" className="text-2xl">
+          <div className="min-w-0 space-y-10 lg:col-start-1 lg:row-start-1">
+            <section aria-labelledby="descripcion" className="space-y-4">
+              <h2 id="descripcion" className="text-3xl text-ink">
                 {dict.content.descripcion}
               </h2>
               <Prose text={r.descripcion} />

@@ -18,15 +18,15 @@ export function directionsUrl(lat: number, lng: number): string {
 // medición de clics salientes cuando exista la isla AnalyticsEvents.
 export function ContactActions({ telefono, web, lat, lng, dict }: Props) {
   const button =
-    'inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-md px-2 text-sm font-semibold'
+    'inline-flex min-h-12 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-md px-2 text-sm font-semibold transition-colors'
   return (
-    <div className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-surface p-3 shadow-overlay lg:static lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none">
-      <div className="flex gap-2">
+    <div className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-surface/95 p-3 shadow-overlay backdrop-blur-md lg:static lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none">
+      <div className="flex gap-2 lg:flex-col">
         {telefono && (
           <a
             href={`tel:${telefono.replace(/\s+/g, '')}`}
             data-event="outbound_call"
-            className={`${button} bg-primary text-primary-contrast hover:bg-primary-hover`}
+            className={`${button} bg-primary text-primary-contrast shadow-card hover:bg-primary-hover`}
           >
             <Phone aria-hidden="true" size={18} />
             {dict.actions.call}
@@ -36,7 +36,7 @@ export function ContactActions({ telefono, web, lat, lng, dict }: Props) {
           href={directionsUrl(lat, lng)}
           rel="noopener"
           data-event="outbound_directions"
-          className={`${button} border border-primary text-primary hover:bg-primary-soft`}
+          className={`${button} bg-surface text-primary ring-1 ring-primary/40 hover:bg-primary-soft`}
         >
           <MapPinned aria-hidden="true" size={18} />
           {dict.actions.directions}
@@ -46,7 +46,7 @@ export function ContactActions({ telefono, web, lat, lng, dict }: Props) {
             href={web}
             rel="noopener"
             data-event="outbound_web"
-            className={`${button} border border-primary text-primary hover:bg-primary-soft`}
+            className={`${button} bg-surface text-primary ring-1 ring-primary/40 hover:bg-primary-soft`}
           >
             <ExternalLink aria-hidden="true" size={18} />
             <span className="sr-only lg:not-sr-only">{dict.actions.website}</span>

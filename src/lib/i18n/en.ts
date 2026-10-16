@@ -7,6 +7,14 @@ export const en: Dictionary = {
     tagline: 'Mountains, villages & Romanesque of northern Spain',
     disclaimer: 'Norte Palentino is an independent guide, not an official tourism website.',
   },
+  home: {
+    eyebrow: 'Independent guide',
+    lead: 'Where to stay, eat and walk in northern Palencia, with every place checked.',
+    explore: 'Start here',
+  },
+  footer: {
+    explore: 'Explore',
+  },
   a11y: {
     skipToContent: 'Skip to content',
     home: 'Home',

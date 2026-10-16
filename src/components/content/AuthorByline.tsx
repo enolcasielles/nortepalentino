@@ -24,14 +24,18 @@ export function AuthorByline({
   const photo = imageOf(site, autor.foto)
   return (
     <div className="flex items-center gap-3 text-sm">
-      {photo && (
+      {photo ? (
         <Image
           src={photo.src}
           alt=""
           width={40}
           height={40}
-          className="aspect-square size-10 rounded-full object-cover"
+          className="aspect-square size-10 rounded-full object-cover ring-2 ring-surface"
         />
+      ) : (
+        <span aria-hidden="true" className="grid size-10 place-items-center rounded-full bg-primary-soft font-display font-bold text-primary">
+          {autor.nombre.match(/\p{L}/u)?.[0]}
+        </span>
       )}
       <p className="text-text-muted">
         {dict.content.by} <span className="font-medium text-text">{autor.nombre}</span>

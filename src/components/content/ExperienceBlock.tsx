@@ -1,3 +1,5 @@
+import { Quote } from 'lucide-react'
+
 import type { Dictionary } from '@/lib/i18n'
 
 import { Prose } from './Prose'
@@ -14,12 +16,15 @@ export function ExperienceBlock({
 }) {
   if (!text?.trim()) return null
   return (
-    <section aria-labelledby="experiencia" className="rounded-md border-l-4 border-accent bg-surface p-5">
-      <h2 id="experiencia" className="mb-3 text-xl">
+    <section aria-labelledby="experiencia" className="relative rounded-lg bg-accent-soft p-6 md:p-8">
+      <Quote aria-hidden="true" size={36} className="absolute top-5 right-5 text-accent opacity-60" />
+      <h2 id="experiencia" className="mb-3 pr-12 text-2xl text-ink">
         {dict.content.experiencia}
       </h2>
-      <Prose text={text} />
-      {author && <p className="mt-3 text-sm font-medium text-text-muted">— {author}</p>}
+      <div className="text-lg">
+        <Prose text={text} />
+      </div>
+      {author && <p className="mt-4 text-sm font-semibold text-accent-text">— {author}</p>}
     </section>
   )
 }

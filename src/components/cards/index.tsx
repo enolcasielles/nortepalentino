@@ -1,3 +1,5 @@
+import { Clock, MoveHorizontal, TrendingUp } from 'lucide-react'
+
 import { DifficultyMark } from '@/components/content/DifficultyMark'
 import { FamilyAttributes } from '@/components/content/FamilyAttributes'
 import { imageOf } from '@/lib/data/media'
@@ -11,8 +13,6 @@ import { Card } from './Card'
 
 type Common = { site: Site; dict: Dictionary; headingLevel?: 'h2' | 'h3' }
 
-const join = (...parts: (string | null | undefined)[]) => parts.filter(Boolean).join(' · ')
-
 export function BusinessCard({ negocio, site, dict, headingLevel }: Common & { negocio: Negocio }) {
   const href = site.url.negocio(negocio)
   if (!href) return null
@@ -22,11 +22,12 @@ export function BusinessCard({ negocio, site, dict, headingLevel }: Common & { n
     <Card
       href={href}
       title={negocio.nombre}
-      eyebrow={join(categoria?.nombre, nucleo?.nombre)}
+      category={categoria?.nombre}
+      place={nucleo?.nombre}
       color={asColorToken(categoria?.color_token)}
       icon={categoria?.icono}
       image={imageOf(site, negocio.fotos?.[0])}
-      facts={negocio.precio_rango}
+      facts={negocio.precio_rango && <span aria-label={`${dict.facts.precio}: ${negocio.precio_rango}`}>{negocio.precio_rango}</span>}
       chips={<FamilyAttributes values={negocio.atributos_familia} dict={dict} compact />}
       headingLevel={headingLevel}
     />
@@ -38,11 +39,11 @@ export function RouteCard({ ruta, site, dict, headingLevel }: Common & { ruta: R
   if (!href) return null
   const nucleo = site.nucleoById.get(relId(ruta.inicio_nucleo) ?? -1)
   const { locale } = site
-  const stats = join(
-    ruta.distancia_km != null ? `${formatNumber(ruta.distancia_km, locale)} km` : null,
-    ruta.desnivel_m != null ? `+${formatNumber(ruta.desnivel_m, locale, 0)} m` : null,
-    ruta.duracion_h != null ? formatDuration(ruta.duracion_h) : null,
-  )
+  const stats = [
+    ruta.distancia_km != null && { icon: MoveHorizontal, label: dict.facts.distancia, text: `${formatNumber(ruta.distancia_km, locale)} km` },
+    ruta.desnivel_m != null && { icon: TrendingUp, label: dict.facts.desnivel, text: `+${formatNumber(ruta.desnivel_m, locale, 0)} m` },
+    ruta.duracion_h != null && { icon: Clock, label: dict.facts.duracion, text: formatDuration(ruta.duracion_h) },
+  ].filter((s): s is { icon: typeof Clock; label: string; text: string } => Boolean(s))
   const chips = [ruta.apta_ninos && dict.facts.aptaNinos, ruta.apta_carrito && dict.facts.aptaCarrito].filter(
     (c): c is string => Boolean(c),
   )
@@ -50,21 +51,31 @@ export function RouteCard({ ruta, site, dict, headingLevel }: Common & { ruta: R
     <Card
       href={href}
       title={ruta.nombre}
-      eyebrow={nucleo?.nombre}
+      place={nucleo?.nombre}
       color="rutas"
       icon="senda"
       image={imageOf(site, ruta.fotos?.[0])}
+      badge={ruta.dificultad && <DifficultyMark difficulty={ruta.dificultad} label={dict.difficulty[ruta.dificultad]} />}
       facts={
-        <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          <span>{stats}</span>
-          {ruta.dificultad && <DifficultyMark difficulty={ruta.dificultad} label={dict.difficulty[ruta.dificultad]} />}
-        </span>
+        stats.length > 0 && (
+          <dl className="flex flex-wrap gap-x-4 gap-y-1">
+            {stats.map(({ icon: Icon, label, text }) => (
+              <div key={label} className="flex items-center gap-1.5">
+                <dt className="text-text-muted">
+                  <Icon aria-hidden="true" size={16} />
+                  <span className="sr-only">{label}</span>
+                </dt>
+                <dd>{text}</dd>
+              </div>
+            ))}
+          </dl>
+        )
       }
       chips={
         chips.length > 0 && (
-          <ul className="flex flex-wrap gap-2">
+          <ul className="flex flex-wrap gap-1.5">
             {chips.map((c) => (
-              <li key={c} className="rounded-full bg-primary-soft px-2 py-0.5 text-xs text-primary">
+              <li key={c} className="rounded-full bg-primary-soft px-2.5 py-0.5 text-xs font-medium text-primary">
                 {c}
               </li>
             ))}
@@ -85,7 +96,8 @@ export function SightCard({ recurso, site, headingLevel }: Common & { recurso: R
     <Card
       href={href}
       title={recurso.nombre}
-      eyebrow={join(tipo?.nombre, nucleo?.nombre)}
+      category={tipo?.nombre}
+      place={nucleo?.nombre}
       color={asColorToken(tipo?.color_token)}
       icon={tipo?.icono}
       image={imageOf(site, recurso.fotos?.[0])}
@@ -101,9 +113,9 @@ export function MunicipioCard({ municipio, site, headingLevel }: Common & { muni
     <Card
       href={href}
       title={municipio.nombre}
-      eyebrow={municipio.comarca_zona}
+      place={municipio.comarca_zona}
       color="rutas"
-      icon="lugar"
+      icon="cumbre"
       image={imageOf(site, municipio.foto_portada)}
       headingLevel={headingLevel}
     />

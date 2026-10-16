@@ -67,8 +67,20 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    users: User;
+    municipios: Municipio;
+    nucleos: Nucleo;
+    negocios: Negocio;
+    categorias_negocio: CategoriasNegocio;
+    recursos: Recurso;
+    tipos_recurso: TiposRecurso;
+    rutas: Ruta;
+    archivos_gpx: ArchivosGpx;
+    planes: Plane;
+    landings: Landing;
+    autores: Autore;
     media: Media;
+    redirects: Redirect;
+    users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -76,8 +88,20 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
+    municipios: MunicipiosSelect<false> | MunicipiosSelect<true>;
+    nucleos: NucleosSelect<false> | NucleosSelect<true>;
+    negocios: NegociosSelect<false> | NegociosSelect<true>;
+    categorias_negocio: CategoriasNegocioSelect<false> | CategoriasNegocioSelect<true>;
+    recursos: RecursosSelect<false> | RecursosSelect<true>;
+    tipos_recurso: TiposRecursoSelect<false> | TiposRecursoSelect<true>;
+    rutas: RutasSelect<false> | RutasSelect<true>;
+    archivos_gpx: ArchivosGpxSelect<false> | ArchivosGpxSelect<true>;
+    planes: PlanesSelect<false> | PlanesSelect<true>;
+    landings: LandingsSelect<false> | LandingsSelect<true>;
+    autores: AutoresSelect<false> | AutoresSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    redirects: RedirectsSelect<false> | RedirectsSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -119,6 +143,524 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "municipios".
+ */
+export interface Municipio {
+  id: number;
+  nombre: string;
+  /**
+   * Se genera del nombre si lo dejas vacío. Igual en ES y EN. Cambiarlo crea un redirect 301.
+   */
+  slug: string;
+  comarca_zona?: string | null;
+  /**
+   * Grados decimales (WGS84). Ej.: 42.866, -4.497
+   */
+  coordenadas: {
+    lat: number;
+    lng: number;
+  };
+  altitud_m?: number | null;
+  /**
+   * Solo datos verificados. Vacío si no se conoce.
+   */
+  distancias_km?: {
+    palencia?: number | null;
+    santander?: number | null;
+    madrid?: number | null;
+    bilbao?: number | null;
+  };
+  /**
+   * Resumen answer-first de 2–3 frases. Sin él, la página no existe en ese idioma.
+   */
+  intro?: string | null;
+  foto_portada?: (number | null) | Media;
+  faqs?:
+    | {
+        pregunta?: string | null;
+        respuesta?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  autor?: (number | null) | Autore;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  /**
+   * Describe lo que se ve y dónde. Nunca "imagen" ni el nombre del archivo.
+   */
+  alt: string;
+  credito?: string | null;
+  licencia?: string | null;
+  es_propia?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "autores".
+ */
+export interface Autore {
+  id: number;
+  nombre: string;
+  /**
+   * Se genera del nombre si lo dejas vacío. Igual en ES y EN. Cambiarlo crea un redirect 301.
+   */
+  slug: string;
+  foto?: (number | null) | Media;
+  bio?: string | null;
+  relacion_con_la_zona?: string | null;
+  enlaces?:
+    | {
+        etiqueta: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nucleos".
+ */
+export interface Nucleo {
+  id: number;
+  nombre: string;
+  /**
+   * Se genera del nombre si lo dejas vacío. Igual en ES y EN. Cambiarlo crea un redirect 301.
+   */
+  slug: string;
+  municipio: number | Municipio;
+  /**
+   * Grados decimales (WGS84). Ej.: 42.866, -4.497
+   */
+  coordenadas: {
+    lat: number;
+    lng: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "negocios".
+ */
+export interface Negocio {
+  id: number;
+  nombre: string;
+  /**
+   * Se genera del nombre si lo dejas vacío. Igual en ES y EN. Cambiarlo crea un redirect 301.
+   */
+  slug: string;
+  categoria: number | CategoriasNegocio;
+  nucleo: number | Nucleo;
+  /**
+   * Se deriva del núcleo.
+   */
+  municipio?: (number | null) | Municipio;
+  /**
+   * Redacción propia. Sin ella, la ficha no existe en ese idioma.
+   */
+  descripcion?: string | null;
+  direccion?: string | null;
+  /**
+   * Grados decimales (WGS84). Ej.: 42.866, -4.497
+   */
+  coordenadas: {
+    lat: number;
+    lng: number;
+  };
+  telefono?: string | null;
+  email?: string | null;
+  web?: string | null;
+  horario_texto?: string | null;
+  precio_rango?: ('€' | '€€' | '€€€' | '€€€€') | null;
+  atributos_familia?:
+    | (
+        | 'admite-ninos'
+        | 'cuna'
+        | 'trona'
+        | 'menu-infantil'
+        | 'accesible-carrito'
+        | 'jardin-cerrado'
+        | 'admite-mascotas'
+        | 'parking'
+        | 'chimenea'
+      )[]
+    | null;
+  fotos?: (number | Media)[] | null;
+  /**
+   * Menor primero. Vacío: orden alfabético.
+   */
+  orden?: number | null;
+  /**
+   * Sin efecto en la fase 1.
+   */
+  destacado?: boolean | null;
+  /**
+   * Web del negocio o fuente oficial de los datos.
+   */
+  fuente_url?: string | null;
+  fecha_verificacion?: string | null;
+  estado: 'borrador' | 'publicado';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categorias_negocio".
+ */
+export interface CategoriasNegocio {
+  id: number;
+  nombre: string;
+  nombre_plural: string;
+  /**
+   * Se genera del nombre si lo dejas vacío. Uno por idioma. Cambiarlo crea un redirect 301.
+   */
+  slug: string;
+  tipo_schema:
+    | 'Restaurant'
+    | 'BarOrPub'
+    | 'CafeOrCoffeeShop'
+    | 'Store'
+    | 'Hotel'
+    | 'BedAndBreakfast'
+    | 'Campground'
+    | 'Hostel'
+    | 'LodgingBusiness'
+    | 'SportsActivityLocation'
+    | 'LocalBusiness';
+  /**
+   * Uno de los siete grupos de DESIGN.md §3.1.
+   */
+  color_token: 'dormir' | 'comer' | 'activo' | 'rutas' | 'romanico' | 'naturaleza' | 'museo';
+  icono:
+    | 'hotel'
+    | 'casa-rural'
+    | 'cama'
+    | 'camping'
+    | 'restaurante'
+    | 'cafeteria'
+    | 'bar'
+    | 'tienda'
+    | 'producto-local'
+    | 'turismo-activo'
+    | 'bici'
+    | 'ruta'
+    | 'senda'
+    | 'iglesia'
+    | 'monumento'
+    | 'castillo'
+    | 'mirador'
+    | 'cascada'
+    | 'bosque'
+    | 'cumbre'
+    | 'fauna'
+    | 'museo'
+    | 'yacimiento'
+    | 'lugar';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "recursos".
+ */
+export interface Recurso {
+  id: number;
+  nombre: string;
+  /**
+   * Se genera del nombre si lo dejas vacío. Uno por idioma. Cambiarlo crea un redirect 301.
+   */
+  slug: string;
+  tipo: number | TiposRecurso;
+  nucleo: number | Nucleo;
+  /**
+   * Se deriva del núcleo.
+   */
+  municipio?: (number | null) | Municipio;
+  /**
+   * Grados decimales (WGS84). Ej.: 42.866, -4.497
+   */
+  coordenadas: {
+    lat: number;
+    lng: number;
+  };
+  /**
+   * Respuesta de 2–3 frases bajo el título (answer-first).
+   */
+  resumen?: string | null;
+  horario_acceso?: string | null;
+  precio_entrada?: string | null;
+  /**
+   * Sin ella, el recurso no existe en ese idioma.
+   */
+  descripcion?: string | null;
+  fotos?: (number | Media)[] | null;
+  /**
+   * Web del negocio o fuente oficial de los datos.
+   */
+  fuente_url?: string | null;
+  fecha_verificacion?: string | null;
+  estado: 'borrador' | 'publicado';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tipos_recurso".
+ */
+export interface TiposRecurso {
+  id: number;
+  nombre: string;
+  nombre_plural: string;
+  /**
+   * Se genera del nombre si lo dejas vacío. Uno por idioma. Cambiarlo crea un redirect 301.
+   */
+  slug: string;
+  tipo_schema:
+    'TouristAttraction' | 'Church' | 'Museum' | 'LandmarksOrHistoricalBuildings' | 'Mountain' | 'Waterfall' | 'Park';
+  /**
+   * Uno de los siete grupos de DESIGN.md §3.1.
+   */
+  color_token: 'dormir' | 'comer' | 'activo' | 'rutas' | 'romanico' | 'naturaleza' | 'museo';
+  icono:
+    | 'hotel'
+    | 'casa-rural'
+    | 'cama'
+    | 'camping'
+    | 'restaurante'
+    | 'cafeteria'
+    | 'bar'
+    | 'tienda'
+    | 'producto-local'
+    | 'turismo-activo'
+    | 'bici'
+    | 'ruta'
+    | 'senda'
+    | 'iglesia'
+    | 'monumento'
+    | 'castillo'
+    | 'mirador'
+    | 'cascada'
+    | 'bosque'
+    | 'cumbre'
+    | 'fauna'
+    | 'museo'
+    | 'yacimiento'
+    | 'lugar';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rutas".
+ */
+export interface Ruta {
+  id: number;
+  nombre: string;
+  /**
+   * Se genera del nombre si lo dejas vacío. Uno por idioma. Cambiarlo crea un redirect 301.
+   */
+  slug: string;
+  distancia_km?: number | null;
+  desnivel_m?: number | null;
+  duracion_h?: number | null;
+  dificultad?: ('facil' | 'moderada' | 'dificil') | null;
+  circular?: boolean | null;
+  apta_ninos?: boolean | null;
+  apta_carrito?: boolean | null;
+  temporada?: ('primavera' | 'verano' | 'otono' | 'invierno')[] | null;
+  inicio_nucleo: number | Nucleo;
+  /**
+   * Grados decimales (WGS84). Ej.: 42.866, -4.497
+   */
+  inicio_coordenadas?: {
+    lat?: number | null;
+    lng?: number | null;
+  };
+  gpx?: (number | null) | ArchivosGpx;
+  /**
+   * Respuesta de 2–3 frases bajo el título (answer-first).
+   */
+  resumen?: string | null;
+  /**
+   * Qué hay al llegar: el gancho familiar.
+   */
+  premio_final?: string | null;
+  /**
+   * Sin ella, la ruta no existe en ese idioma.
+   */
+  descripcion?: string | null;
+  experiencia_propia?: string | null;
+  faqs?:
+    | {
+        pregunta?: string | null;
+        respuesta?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  fotos?: (number | Media)[] | null;
+  /**
+   * Se deriva del núcleo de inicio.
+   */
+  municipio?: (number | null) | Municipio;
+  autor?: (number | null) | Autore;
+  /**
+   * Web del negocio o fuente oficial de los datos.
+   */
+  fuente_url?: string | null;
+  fecha_verificacion?: string | null;
+  estado: 'borrador' | 'publicado';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "archivos_gpx".
+ */
+export interface ArchivosGpx {
+  id: number;
+  polyline?: string | null;
+  bbox?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  puntos?: number | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "planes".
+ */
+export interface Plane {
+  id: number;
+  titulo: string;
+  /**
+   * Se genera del nombre si lo dejas vacío. Uno por idioma. Cambiarlo crea un redirect 301.
+   */
+  slug: string;
+  /**
+   * Respuesta de 2–3 frases bajo el título (answer-first).
+   */
+  resumen?: string | null;
+  foto_portada?: (number | null) | Media;
+  /**
+   * Sin él, el plan no existe en ese idioma.
+   */
+  cuerpo?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  rutas?: (number | Ruta)[] | null;
+  negocios?: (number | Negocio)[] | null;
+  recursos?: (number | Recurso)[] | null;
+  faqs?:
+    | {
+        pregunta?: string | null;
+        respuesta?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  autor?: (number | null) | Autore;
+  estado: 'borrador' | 'publicado';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landings".
+ */
+export interface Landing {
+  id: number;
+  ambito: 'negocios' | 'rutas' | 'recursos';
+  categoria?: (number | null) | CategoriasNegocio;
+  /**
+   * Vacío: listado de toda la comarca.
+   */
+  municipio?: (number | null) | Municipio;
+  filtro?: 'con-ninos' | null;
+  /**
+   * Vacío: se genera de la plantilla ("Restaurantes en Cervera de Pisuerga").
+   */
+  titulo?: string | null;
+  /**
+   * Respuesta answer-first. Sin ella, el listado no existe en ese idioma.
+   */
+  intro?: string | null;
+  faqs?:
+    | {
+        pregunta?: string | null;
+        respuesta?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  autor?: (number | null) | Autore;
+  nombre_interno?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Se crean solos al cambiar la URL de algo publicado. También se pueden añadir a mano.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects".
+ */
+export interface Redirect {
+  id: number;
+  desde: string;
+  hacia: string;
+  tipo: 'exacto' | 'prefijo';
+  locale?: ('es' | 'en') | null;
+  codigo: number;
+  origen: 'manual' | 'automatico';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -145,28 +687,6 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt: string;
-  credito?: string | null;
-  licencia?: string | null;
-  es_propia?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -190,12 +710,60 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: 'users';
-        value: number | User;
+        relationTo: 'municipios';
+        value: number | Municipio;
+      } | null)
+    | ({
+        relationTo: 'nucleos';
+        value: number | Nucleo;
+      } | null)
+    | ({
+        relationTo: 'negocios';
+        value: number | Negocio;
+      } | null)
+    | ({
+        relationTo: 'categorias_negocio';
+        value: number | CategoriasNegocio;
+      } | null)
+    | ({
+        relationTo: 'recursos';
+        value: number | Recurso;
+      } | null)
+    | ({
+        relationTo: 'tipos_recurso';
+        value: number | TiposRecurso;
+      } | null)
+    | ({
+        relationTo: 'rutas';
+        value: number | Ruta;
+      } | null)
+    | ({
+        relationTo: 'archivos_gpx';
+        value: number | ArchivosGpx;
+      } | null)
+    | ({
+        relationTo: 'planes';
+        value: number | Plane;
+      } | null)
+    | ({
+        relationTo: 'landings';
+        value: number | Landing;
+      } | null)
+    | ({
+        relationTo: 'autores';
+        value: number | Autore;
       } | null)
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'redirects';
+        value: number | Redirect;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: number | User;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -241,26 +809,275 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
+ * via the `definition` "municipios_select".
  */
-export interface UsersSelect<T extends boolean = true> {
-  updatedAt?: T;
-  createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  resetPasswordRequestedAt?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
-  sessions?:
+export interface MunicipiosSelect<T extends boolean = true> {
+  nombre?: T;
+  slug?: T;
+  comarca_zona?: T;
+  coordenadas?:
     | T
     | {
-        id?: T;
-        createdAt?: T;
-        expiresAt?: T;
+        lat?: T;
+        lng?: T;
       };
+  altitud_m?: T;
+  distancias_km?:
+    | T
+    | {
+        palencia?: T;
+        santander?: T;
+        madrid?: T;
+        bilbao?: T;
+      };
+  intro?: T;
+  foto_portada?: T;
+  faqs?:
+    | T
+    | {
+        pregunta?: T;
+        respuesta?: T;
+        id?: T;
+      };
+  autor?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nucleos_select".
+ */
+export interface NucleosSelect<T extends boolean = true> {
+  nombre?: T;
+  slug?: T;
+  municipio?: T;
+  coordenadas?:
+    | T
+    | {
+        lat?: T;
+        lng?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "negocios_select".
+ */
+export interface NegociosSelect<T extends boolean = true> {
+  nombre?: T;
+  slug?: T;
+  categoria?: T;
+  nucleo?: T;
+  municipio?: T;
+  descripcion?: T;
+  direccion?: T;
+  coordenadas?:
+    | T
+    | {
+        lat?: T;
+        lng?: T;
+      };
+  telefono?: T;
+  email?: T;
+  web?: T;
+  horario_texto?: T;
+  precio_rango?: T;
+  atributos_familia?: T;
+  fotos?: T;
+  orden?: T;
+  destacado?: T;
+  fuente_url?: T;
+  fecha_verificacion?: T;
+  estado?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categorias_negocio_select".
+ */
+export interface CategoriasNegocioSelect<T extends boolean = true> {
+  nombre?: T;
+  nombre_plural?: T;
+  slug?: T;
+  tipo_schema?: T;
+  color_token?: T;
+  icono?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "recursos_select".
+ */
+export interface RecursosSelect<T extends boolean = true> {
+  nombre?: T;
+  slug?: T;
+  tipo?: T;
+  nucleo?: T;
+  municipio?: T;
+  coordenadas?:
+    | T
+    | {
+        lat?: T;
+        lng?: T;
+      };
+  resumen?: T;
+  horario_acceso?: T;
+  precio_entrada?: T;
+  descripcion?: T;
+  fotos?: T;
+  fuente_url?: T;
+  fecha_verificacion?: T;
+  estado?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tipos_recurso_select".
+ */
+export interface TiposRecursoSelect<T extends boolean = true> {
+  nombre?: T;
+  nombre_plural?: T;
+  slug?: T;
+  tipo_schema?: T;
+  color_token?: T;
+  icono?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rutas_select".
+ */
+export interface RutasSelect<T extends boolean = true> {
+  nombre?: T;
+  slug?: T;
+  distancia_km?: T;
+  desnivel_m?: T;
+  duracion_h?: T;
+  dificultad?: T;
+  circular?: T;
+  apta_ninos?: T;
+  apta_carrito?: T;
+  temporada?: T;
+  inicio_nucleo?: T;
+  inicio_coordenadas?:
+    | T
+    | {
+        lat?: T;
+        lng?: T;
+      };
+  gpx?: T;
+  resumen?: T;
+  premio_final?: T;
+  descripcion?: T;
+  experiencia_propia?: T;
+  faqs?:
+    | T
+    | {
+        pregunta?: T;
+        respuesta?: T;
+        id?: T;
+      };
+  fotos?: T;
+  municipio?: T;
+  autor?: T;
+  fuente_url?: T;
+  fecha_verificacion?: T;
+  estado?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "archivos_gpx_select".
+ */
+export interface ArchivosGpxSelect<T extends boolean = true> {
+  polyline?: T;
+  bbox?: T;
+  puntos?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "planes_select".
+ */
+export interface PlanesSelect<T extends boolean = true> {
+  titulo?: T;
+  slug?: T;
+  resumen?: T;
+  foto_portada?: T;
+  cuerpo?: T;
+  rutas?: T;
+  negocios?: T;
+  recursos?: T;
+  faqs?:
+    | T
+    | {
+        pregunta?: T;
+        respuesta?: T;
+        id?: T;
+      };
+  autor?: T;
+  estado?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landings_select".
+ */
+export interface LandingsSelect<T extends boolean = true> {
+  ambito?: T;
+  categoria?: T;
+  municipio?: T;
+  filtro?: T;
+  titulo?: T;
+  intro?: T;
+  faqs?:
+    | T
+    | {
+        pregunta?: T;
+        respuesta?: T;
+        id?: T;
+      };
+  autor?: T;
+  nombre_interno?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "autores_select".
+ */
+export interface AutoresSelect<T extends boolean = true> {
+  nombre?: T;
+  slug?: T;
+  foto?: T;
+  bio?: T;
+  relacion_con_la_zona?: T;
+  enlaces?:
+    | T
+    | {
+        etiqueta?: T;
+        url?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -282,6 +1099,43 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects_select".
+ */
+export interface RedirectsSelect<T extends boolean = true> {
+  desde?: T;
+  hacia?: T;
+  tipo?: T;
+  locale?: T;
+  codigo?: T;
+  origen?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  resetPasswordRequestedAt?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

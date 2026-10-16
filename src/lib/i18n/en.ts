@@ -25,4 +25,26 @@ export const en: Dictionary = {
     nearby: 'Nearby',
     empty: "We haven't checked any places here yet.",
   },
+  familyAttributes: {
+    'admite-ninos': 'Children welcome',
+    cuna: 'Cot available',
+    trona: 'High chair',
+    'menu-infantil': "Children's menu",
+    'accesible-carrito': 'Pushchair-friendly',
+    'jardin-cerrado': 'Enclosed garden',
+    'admite-mascotas': 'Pets welcome',
+    parking: 'Parking',
+    chimenea: 'Fireplace',
+  },
+  difficulty: {
+    facil: 'Easy',
+    moderada: 'Moderate',
+    dificil: 'Hard',
+  },
+  season: {
+    primavera: 'Spring',
+    verano: 'Summer',
+    otono: 'Autumn',
+    invierno: 'Winter',
+  },
 }

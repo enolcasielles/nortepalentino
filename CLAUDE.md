@@ -153,18 +153,23 @@ Mantiene el del brief (§6) con estos cambios y añadidos. Los campos `{es,en}` 
 
 | Colección | Notas |
 | :-- | :-- |
-| `municipios` | Como el brief, más `faqs[]` localizadas, `autor→` y `foto_portada` opcional |
+| `municipios` | Como el brief, más `faqs[]` localizadas, `autor→`, `foto_portada` opcional, `altitud_m` y `distancias_km{palencia,santander,madrid,bilbao}` opcionales (KeyFacts) |
 | `nucleos` | Como el brief |
 | `categorias_negocio` | `slug{es,en}`, `nombre{es,en}`, `nombre_plural{es,en}`, `tipo_schema` (Restaurant, Hotel, BedAndBreakfast, Campground, Hostel, LodgingBusiness, LocalBusiness…), `color_token`, `icono` |
 | `tipos_recurso` | Misma forma que la anterior, para Recursos (iglesia-romanica, mirador, cascada, museo, yacimiento…) |
-| `negocios` | Como el brief, más `fotos[]` opcionales y `orden` manual opcional. `destacado` existe pero **no se usa** en la fase 1 (no altera el orden ni el estilo) |
-| `rutas` | Como el brief, más `slug{es,en}`, `autor→`, `fotos[]` y `faqs[]`. `gpx` se procesa en servidor a polyline y bbox, que se guardan en campos derivados |
-| `recursos` | Lugares que se visitan aunque tengan entrada de pago: `nombre{es,en}`, `slug{es,en}`, `tipo→`, `nucleo→`, coordenadas, horario/acceso, `descripcion{es,en}`, `fuente_url`, `fecha_verificacion`, `estado` |
-| `planes` | Guías editoriales: `titulo{es,en}`, `slug{es,en}`, `autor→`, cuerpo rich text, relaciones a rutas, negocios y recursos, `faqs[]` |
-| `landings` | Intro y FAQs de listados: `municipio→?`, `categoria→?`, `filtro?`, `intro{es,en}`, `faqs[]`, `autor→`. Alimenta municipio+categoría, categoría comarcal y landings de filtro |
+| `negocios` | Como el brief, más `fotos[]` opcionales y `orden` manual opcional. `horario_texto` localizado. `municipio→` derivado del núcleo (solo lectura). `destacado` existe pero **no se usa** en la fase 1 (no altera el orden ni el estilo) |
+| `rutas` | Como el brief, más `slug{es,en}`, `resumen{es,en}`, `autor→`, `fotos[]`, `faqs[]`, `inicio_coordenadas` opcional y `municipio→` derivado de `inicio_nucleo`. Cifras y dificultad obligatorias para publicar. `gpx→archivos_gpx` |
+| `recursos` | Lugares que se visitan aunque tengan entrada de pago: `nombre{es,en}`, `slug{es,en}`, `tipo→`, `nucleo→`, `municipio→` derivado, coordenadas, `resumen{es,en}`, `horario_acceso{es,en}`, `precio_entrada{es,en}`, `descripcion{es,en}`, `fotos[]`, `fuente_url`, `fecha_verificacion`, `estado` |
+| `archivos_gpx` | Upload de tracks. Al subir, un hook calcula `polyline` (simplificada, para Static Maps), `bbox` y `puntos`. Nunca deriva distancias ni desniveles |
+| `planes` | Guías editoriales: `titulo{es,en}`, `slug{es,en}`, `resumen{es,en}`, `foto_portada`, `autor→` (obligatorio para publicar), `cuerpo` rich text, relaciones a rutas, negocios y recursos, `faqs[]`, `estado` |
+| `landings` | Intro y FAQs de listados: `ambito` (negocios · rutas · recursos), `municipio→?`, `categoria→?`, `filtro?`, `titulo{es,en}?`, `intro{es,en}`, `faqs[]`, `autor→`. Alimenta municipio+categoría, categoría comarcal, `/rutas`, `/que-ver` y landings de filtro. Un hook valida las combinaciones y que sean únicas |
 | `autores` | Personas reales: `nombre`, `slug`, `bio{es,en}`, `foto`, `relacion_con_la_zona{es,en}`, `enlaces[]` |
-| `redirects` | `desde`, `hacia`, `locale`, `codigo` (301). Se mantiene automáticamente y también a mano |
+| `redirects` | `desde`, `hacia`, `tipo` (exacto · prefijo), `locale`, `codigo` (301), `origen` (automático · manual). Se mantiene automáticamente (sin cadenas ni bucles) y también a mano. Se aplica con `resolveRedirect()` de `lib/routes/redirects.ts`, que sigue cadenas |
 | `media` | Con `alt{es,en}` **obligatorio**, `credito`, `licencia` y `es_propia` (bool) |
+
+**Publicar exige** `fuente_url` y `fecha_verificacion` (fichas) y las cifras de ruta; se valida en Payload (`fields/validation.ts`). Que la ficha exista en un idioma depende además de su texto en ese idioma (§7.4), y eso se comprueba al renderizar. Los registros `[DEMO]` se rechazan cuando `VERCEL_ENV=production`.
+
+**Hooks y transacciones:** dentro de un hook, las operaciones con `req` comparten transacción. Hazlas **secuenciales** (nada de `Promise.all`) y no pases `context` a operaciones anidadas, porque se fusiona en `req.context` para el resto de la petición.
 
 **Frontera Negocio / Recurso:** un *Negocio* vende un servicio (comer, dormir, actividad guiada, tienda). Un *Recurso* es un lugar que se visita (iglesia, mirador, cascada, museo), aunque cobre entrada. Las taxonomías son separadas.
 

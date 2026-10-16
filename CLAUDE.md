@@ -36,6 +36,7 @@ Portal **independiente** de referencia sobre la Montaña Palentina (alojamiento,
 | Búsqueda | Full-text de PostgreSQL (`unaccent`, configuraciones `spanish`/`english`) |
 | Deploy | Vercel. Cada push a `main` despliega a producción |
 | Gestor de paquetes | pnpm |
+| Node | **24** (`.nvmrc`, `engines`). Con Node 22 la CLI de Payload falla al azar con código 13 (promesa sin resolver en sus `import()` dinámicos) |
 
 No añadas dependencias sin necesidad clara. Antes de instalar una librería, comprueba si la plataforma (Next, Payload, la web nativa) ya lo resuelve.
 

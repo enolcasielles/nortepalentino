@@ -1,5 +1,6 @@
 import * as migration_20261016_200732_initial from './20261016_200732_initial';
 import * as migration_20261016_202457_colecciones_contenido from './20261016_202457_colecciones_contenido';
+import * as migration_20261016_221342_storage_campos_blob from './20261016_221342_storage_campos_blob';
 
 export const migrations = [
   {
@@ -10,6 +11,11 @@ export const migrations = [
   {
     up: migration_20261016_202457_colecciones_contenido.up,
     down: migration_20261016_202457_colecciones_contenido.down,
-    name: '20261016_202457_colecciones_contenido'
+    name: '20261016_202457_colecciones_contenido',
+  },
+  {
+    up: migration_20261016_221342_storage_campos_blob.up,
+    down: migration_20261016_221342_storage_campos_blob.down,
+    name: '20261016_221342_storage_campos_blob'
   },
 ];

@@ -86,6 +86,9 @@ export default buildConfig({
     vercelBlobStorage({
       // Sin token (local) los uploads se guardan en disco
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      // Los campos del plugin existen siempre, haya token o no: el esquema (y
+      // las migraciones generadas en local) debe ser igual en todos los entornos
+      alwaysInsertFields: true,
       collections: { media: true, archivos_gpx: true },
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
       // Subida directa del navegador a Blob: las funciones de Vercel no aceptan cuerpos > 4,5 MB

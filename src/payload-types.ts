@@ -199,6 +199,8 @@ export interface Media {
   credito?: string | null;
   licencia?: string | null;
   es_propia?: boolean | null;
+  prefix?: string | null;
+  _objectKey?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -548,6 +550,8 @@ export interface ArchivosGpx {
     | boolean
     | null;
   puntos?: number | null;
+  prefix?: string | null;
+  _objectKey?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -999,6 +1003,8 @@ export interface ArchivosGpxSelect<T extends boolean = true> {
   polyline?: T;
   bbox?: T;
   puntos?: T;
+  prefix?: T;
+  _objectKey?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -1088,6 +1094,8 @@ export interface MediaSelect<T extends boolean = true> {
   credito?: T;
   licencia?: T;
   es_propia?: T;
+  prefix?: T;
+  _objectKey?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;

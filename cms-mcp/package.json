@@ -1,0 +1,20 @@
+{
+  "name": "nortepalentino-cms-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Extensión de Claude Desktop para gestionar el contenido de Norte Palentino",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/index.mjs --bundle --platform=node --format=esm --target=node20 --outfile=server/index.mjs",
+    "package": "pnpm build && mcpb pack . nortepalentino-cms.mcpb",
+    "start": "node server/index.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@anthropic-ai/mcpb": "2.1.2",
+    "esbuild": "^0.28.2"
+  }
+}

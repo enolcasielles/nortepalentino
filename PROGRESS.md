@@ -22,6 +22,7 @@ Registro del avance de la implementación. **Léelo después de [`CLAUDE.md`](CL
 - [ ] Fichas reales de las 3 cabeceras con JSON-LD validado en el Rich Results Test → falta contenido y la validación
 - [x] Filtros de rutas funcionando (faltan las 5 rutas reales)
 - [x] Payload admin accesible para que Pablo edite
+- [x] Extensión de Claude Desktop para que Pablo gestione el contenido desde Claude (`cms-mcp/`)
 
 ---
 
@@ -110,6 +111,16 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 - Microcopy nuevo: `home.eyebrow`, `home.lead`, `home.explore`, `footer.explore` (ES/EN). La entradilla de la home es provisional: cámbiala si el tono no convence.
 - Verificado: ES/EN en home, municipio, listados, fichas y 404; 360 px sin scroll horizontal; sin islas de cliente nuevas.
 
+### 4.5 Extensión de Claude Desktop (`cms-mcp/`)
+
+- Servidor MCP local empaquetado como `.mcpb` (`cd cms-mcp && pnpm run package`). Herramientas: `esquema`, `referencias`, `buscar`, `leer`, `revisar`, `crear`, `actualizar`, `subir_imagen`, `subir_gpx`, `borrar`. Reglas de contenido para Claude en `cms-mcp/src/instructions.mjs`; instalación en `cms-mcp/README.md`.
+- Va por la **API REST** con la API key del usuario (`users` con `useAPIKey`), así que pasa por validaciones, redirects y **revalidación**: los cambios se ven al momento, sin el problema del import remoto.
+- La web sirve el esquema de campos en `GET /api/cms/esquema` (`src/endpoints/schema.ts`, requiere sesión o API key): cambiar una colección no obliga a reempaquetar la extensión.
+- Campos traducidos como `{es, en}`: escribe ES y luego EN con `PATCH ?locale=en`. Las filas de listas (FAQs) se asocian por posición para no perder el otro idioma. `planes.cuerpo` en Markdown ↔ Lexical (`cms-mcp/src/lexical.mjs`).
+- La API key tiene **acceso total** (decisión de Enol): la herramienta `borrar` existe, y las instrucciones piden confirmación expresa.
+- Subidas limitadas a 4,4 MB por el límite de cuerpo de las funciones de Vercel.
+- Probado de extremo a extremo contra local (crear, actualizar parcial por idioma, FAQs, errores de validación, plan en Markdown, foto, GPX, borrar). **Sin probar todavía contra producción ni dentro de Claude Desktop.**
+
 ---
 
 ## 5. Decisiones y desviaciones (ya reflejadas en CLAUDE.md)
@@ -133,24 +144,26 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 6. **Node 22 + CLI de Payload**: fallos aleatorios con código 13 y sin mensaje. Usa Node 24.
 7. **`dynamicParams = false` en un layout** se hereda y bloquea las rutas no generadas (incluidas las URLs antiguas que deben redirigir). La home valida el locale ella misma.
 8. **`vercel env rm NOMBRE <entorno>`** borra la variable entera si una entrada cubre varios entornos. Para variables de integraciones, reconecta el recurso con `vercel integration resource connect ... -e production`.
-9. **Subidas no transaccionales**: los ficheros (GPX, imágenes) no se deshacen con un rollback; `--dry-run` no los sube.
+9. **`.env.production.local` en local**: `next build` y `next start` (modo producción) lo cargan, así que en local leen la BD de **producción** de Neon (y `next start` escribiría en ella y en Blob). `payload migrate` no (carga `.env`). Para un `next start` local, anula esas variables en el comando o no tengas el fichero.
+10. **Subidas no transaccionales**: los ficheros (GPX, imágenes) no se deshacen con un rollback; `--dry-run` no los sube.
 
 ---
 
 ## 7. Pendiente (en orden sugerido)
 
-1. **Revalidación remota**: ruta protegida (p. ej. `/api/revalidar` con `REVALIDATE_SECRET`) que el import llame al terminar con `--remote`. Sin ella, un lote cargado en producción no se ve hasta el siguiente despliegue. **Necesario antes del primer lote real de Pablo.**
-2. **Versiones `.md`** de cada página indexable (`{url}.md`, rewrite en `next.config` a un route handler), `<link rel="alternate" type="text/markdown">`, y que `llms.txt` apunte a ellas (CLAUDE.md §8).
-3. **Planes** (`/planes`, `/planes/{slug}`): plantilla con rich text de Lexical, tarjetas incrustadas, índice si > 3 H2, JSON-LD `Article`. Añadir al índice, `matchRoute` e inventario.
-4. **Autores** (`/autores/{slug}`, `ProfilePage` + `Person`) y enlazar `AuthorByline`.
-5. **Búsqueda** (`/buscar?q=`, `noindex`, full-text con `unaccent`; migración con la extensión) y `SearchAction` en `WebSite`.
-6. **Sobre nosotros y legales**: plantillas listas para textos que redacta una persona (no inventar contenido).
-7. **Consentimiento + GA4** (`vanilla-cookieconsent`, Consent Mode v2) y la isla `AnalyticsEvents` que lea los `data-event` existentes.
-8. **Imagen OG** con `next/og` y logotipo/símbolo SVG (DESIGN.md §9).
-9. **FilterBar en listados de negocios** (atributos de familia).
-10. **Email de Payload** (Resend o similar) para la recuperación de contraseña del admin.
-11. **Claves de Google Maps** y estilo JSON definitivo de Static Maps (DESIGN.md §9).
-12. Antes del lanzamiento: dominio + `NEXT_PUBLIC_SITE_URL`, validar plantillas en Rich Results Test, `SITE_INDEXABLE=true`, Search Console.
+1. **Pablo**: activar su API key en `/admin` de producción, mandarle `cms-mcp/nortepalentino-cms.mcpb` y probarlo con él en Claude Desktop.
+2. **Revalidación remota**: ruta protegida (p. ej. `/api/revalidar` con `REVALIDATE_SECRET`) que el import llame al terminar con `--remote`. Sin ella, un lote cargado en producción no se ve hasta el siguiente despliegue. Solo afecta al import por seeds: lo que entra por la extensión o el panel ya revalida.
+3. **Versiones `.md`** de cada página indexable (`{url}.md`, rewrite en `next.config` a un route handler), `<link rel="alternate" type="text/markdown">`, y que `llms.txt` apunte a ellas (CLAUDE.md §8).
+4. **Planes** (`/planes`, `/planes/{slug}`): plantilla con rich text de Lexical, tarjetas incrustadas, índice si > 3 H2, JSON-LD `Article`. Añadir al índice, `matchRoute` e inventario.
+5. **Autores** (`/autores/{slug}`, `ProfilePage` + `Person`) y enlazar `AuthorByline`.
+6. **Búsqueda** (`/buscar?q=`, `noindex`, full-text con `unaccent`; migración con la extensión) y `SearchAction` en `WebSite`.
+7. **Sobre nosotros y legales**: plantillas listas para textos que redacta una persona (no inventar contenido).
+8. **Consentimiento + GA4** (`vanilla-cookieconsent`, Consent Mode v2) y la isla `AnalyticsEvents` que lea los `data-event` existentes.
+9. **Imagen OG** con `next/og` y logotipo/símbolo SVG (DESIGN.md §9).
+10. **FilterBar en listados de negocios** (atributos de familia).
+11. **Email de Payload** (Resend o similar) para la recuperación de contraseña del admin.
+12. **Claves de Google Maps** y estilo JSON definitivo de Static Maps (DESIGN.md §9).
+13. Antes del lanzamiento: dominio + `NEXT_PUBLIC_SITE_URL`, validar plantillas en Rich Results Test, `SITE_INDEXABLE=true`, Search Console.
 
 Ideas menores: el núcleo que cambia de municipio no actualiza sus negocios hasta que se guardan; test automatizados (no hay ninguno; las pruebas de esta sesión fueron scripts de humo contra la BD local).
 
@@ -161,6 +174,10 @@ Ideas menores: el núcleo que cambia de municipio no actualiza sus negocios hast
 ### Sesión 1 · 2026-10-16/17
 
 Estructura inicial, modelo de datos completo con hooks y migraciones, despliegue en Vercel con Neon y Blob, import de seeds, plantillas de municipio/listados/fichas/rutas/recursos con SEO técnico, sitemap y `llms.txt`. Incidencias resueltas: idioma de escritura en hooks, esquema de Blob distinto entre entornos (build roto en prod), CLI de Payload inestable con Node 22, `dynamicParams` heredado, 500 con locale inválido, borrado accidental de las variables de Neon en Vercel (restauradas). Commits `ab49715` → `b1959ee`.
+
+### Sesión 2 · 2026-10-17
+
+Extensión de Claude Desktop (`cms-mcp/`) para gestionar el contenido por la API REST de Payload: API keys en `users` (migración `api_keys_usuarios`), endpoint `/api/cms/esquema` y servidor MCP empaquetado como `.mcpb`.
 
 ### Sesión 2 · 2026-10-17
 

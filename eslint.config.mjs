@@ -25,5 +25,6 @@ export default defineConfig([
     'src/payload-generated-schema.ts',
     'src/app/(payload)/',
     'src/migrations/',
+    'cms-mcp/server/',
   ]),
 ])

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/mcpb/main/dist/mcpb-manifest.schema.json",
+  "manifest_version": "0.4",
+  "name": "nortepalentino-cms",
+  "display_name": "Norte Palentino CMS",
+  "version": "0.1.0",
+  "description": "Gestiona el contenido de Norte Palentino (fichas, rutas, municipios, fotos) desde Claude.",
+  "long_description": "Conecta Claude con el CMS de Norte Palentino: buscar, leer, crear y actualizar contenido en español e inglés, subir fotos y GPX y revisar qué falta para publicar. Usa tu API key de usuario de /admin.",
+  "author": { "name": "Norte Palentino" },
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.mjs",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.mjs"],
+      "env": {
+        "CMS_URL": "${user_config.cms_url}",
+        "CMS_API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "esquema", "description": "Campos de cada colección" },
+    { "name": "referencias", "description": "Municipios, núcleos, categorías, tipos y autores con sus slugs" },
+    { "name": "buscar", "description": "Buscar contenido, incluidos borradores" },
+    { "name": "leer", "description": "Leer un documento en los dos idiomas" },
+    { "name": "revisar", "description": "Qué falta para publicar y en qué idiomas existe la página" },
+    { "name": "crear", "description": "Crear un documento (en borrador por defecto)" },
+    { "name": "actualizar", "description": "Cambiar campos, publicar o despublicar" },
+    { "name": "subir_imagen", "description": "Subir una foto desde el ordenador" },
+    { "name": "subir_gpx", "description": "Subir un track GPX" },
+    { "name": "borrar", "description": "Borrar un documento (irreversible)" }
+  ],
+  "user_config": {
+    "cms_url": {
+      "type": "string",
+      "title": "URL de la web",
+      "description": "Dirección de la web, sin barra final.",
+      "default": "https://nortepalentino.vercel.app",
+      "required": true
+    },
+    "api_key": {
+      "type": "string",
+      "title": "API key",
+      "description": "En /admin → Usuarios → tu usuario → Habilitar la API key. Copia la clave y pégala aquí.",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "compatibility": {
+    "platforms": ["darwin", "win32"],
+    "runtimes": { "node": ">=20.0.0" }
+  },
+  "license": "UNLICENSED"
+}

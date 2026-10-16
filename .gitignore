@@ -47,3 +47,8 @@ next-env.d.ts
 # entorno (solo se versiona el ejemplo)
 .env*
 !.env.example
+
+# extensión de Claude Desktop: dependencias, bundle y paquete se generan
+/cms-mcp/node_modules
+/cms-mcp/server
+/cms-mcp/*.mcpb

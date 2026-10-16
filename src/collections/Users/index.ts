@@ -10,6 +10,7 @@ export const Users: CollectionConfig = {
     useAsTitle: 'email',
     group: adminGroups.sistema,
   },
-  auth: true,
+  // API key por usuario: la usa la extensión de Claude Desktop (cms-mcp/)
+  auth: { useAPIKey: true },
   fields: [],
 }

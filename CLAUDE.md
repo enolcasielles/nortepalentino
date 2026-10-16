@@ -4,6 +4,7 @@ Portal **independiente** de referencia sobre la Montaña Palentina (alojamiento,
 
 - Visión, público, territorio y fases de negocio: [`docs/brief.md`](docs/brief.md). Léelo antes de tu primera tarea.
 - Sistema visual, componentes y anatomía de páginas: [`DESIGN.md`](DESIGN.md). Obligatorio antes de tocar UI.
+- Estado de la implementación, trampas conocidas y siguientes pasos: [`PROGRESS.md`](PROGRESS.md). Léelo al empezar y actualízalo al terminar cada sesión.
 - **Si este fichero contradice al brief, manda este fichero.** Las diferencias están listadas al final.
 
 ---

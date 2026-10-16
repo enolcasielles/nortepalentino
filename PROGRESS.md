@@ -111,7 +111,7 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 - Microcopy nuevo: `home.eyebrow`, `home.lead`, `home.explore`, `footer.explore` (ES/EN). La entradilla de la home es provisional: cámbiala si el tono no convence.
 - Verificado: ES/EN en home, municipio, listados, fichas y 404; 360 px sin scroll horizontal; sin islas de cliente nuevas.
 
-### 4.5 Extensión de Claude Desktop (`cms-mcp/`)
+### 4.6 Extensión de Claude Desktop (`cms-mcp/`, `ea24082`)
 
 - Servidor MCP local empaquetado como `.mcpb` (`cd cms-mcp && pnpm run package`). Herramientas: `esquema`, `referencias`, `buscar`, `leer`, `revisar`, `crear`, `actualizar`, `subir_imagen`, `subir_gpx`, `borrar`. Reglas de contenido para Claude en `cms-mcp/src/instructions.mjs`; instalación en `cms-mcp/README.md`.
 - Va por la **API REST** con la API key del usuario (`users` con `useAPIKey`), así que pasa por validaciones, redirects y **revalidación**: los cambios se ven al momento, sin el problema del import remoto.
@@ -177,8 +177,8 @@ Estructura inicial, modelo de datos completo con hooks y migraciones, despliegue
 
 ### Sesión 2 · 2026-10-17
 
-Extensión de Claude Desktop (`cms-mcp/`) para gestionar el contenido por la API REST de Payload: API keys en `users` (migración `api_keys_usuarios`), endpoint `/api/cms/esquema` y servidor MCP empaquetado como `.mcpb`.
-
-### Sesión 2 · 2026-10-17
-
 Rediseño de la UI hacia "producto outdoor" (§4.5): tokens, tipografía, cabecera fija, pie con siluetas, hero de la home, `PageHero`, tarjetas, KeyFacts, FAQs, filtros y acciones. DESIGN.md actualizado al nuevo sistema.
+
+### Sesión 3 · 2026-10-17
+
+Extensión de Claude Desktop (`cms-mcp/`, §4.6) para gestionar el contenido por la API REST de Payload: API keys en `users` (migración `api_keys_usuarios`), endpoint `/api/cms/esquema` y servidor MCP empaquetado como `.mcpb`. Commit `ea24082`.

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 import { MunicipioCard } from '@/components/cards'
 import { CardGrid } from '@/components/cards/Card'
@@ -6,17 +7,18 @@ import { Section } from '@/components/content/Section'
 import { TrailArrow } from '@/components/content/TrailArrow'
 import { PageLayout } from '@/components/layout/PageLayout'
 import { getSite } from '@/lib/data/site'
-import { getDictionary, locales, type Locale } from '@/lib/i18n'
+import { getDictionary, isLocale, locales, type Locale } from '@/lib/i18n'
 import { homePath } from '@/lib/routes'
 import { buildMetadata } from '@/lib/seo/buildMetadata'
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo/jsonld'
 
-type Props = { params: Promise<{ locale: Locale }> }
+type Props = { params: Promise<{ locale: string }> }
 
 const paths = Object.fromEntries(locales.map((l) => [l, homePath(l)])) as Record<Locale, string>
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
+  if (!isLocale(locale)) return {}
   const dict = getDictionary(locale)
   return buildMetadata({
     locale,
@@ -30,6 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // FAQs llegan cuando existan sus páginas y su contenido.
 export default async function HomePage({ params }: Props) {
   const { locale } = await params
+  // El layout también lo valida, pero la página se ejecuta en paralelo
+  if (!isLocale(locale)) notFound()
   const dict = getDictionary(locale)
   const site = await getSite(locale)
 

@@ -9,13 +9,76 @@
     "lng": -4.497,
     "telefono": "+34 979 000 000",
     "web": "https://example.com",
-    "horario_texto": { "es": "[DEMO] Mar–Dom 13:00–16:00", "en": "[DEMO] Tue–Sun 1pm–4pm" },
+    "horario_texto": {
+      "es": "[DEMO] Mar–Dom 13:00–16:00",
+      "en": "[DEMO] Tue–Sun 1pm–4pm"
+    },
     "precio_rango": "€€",
-    "descripcion": { "es": "[DEMO] Descripción de ejemplo.", "en": "[DEMO] Sample description." },
-    "atributos_familia": ["admite-ninos", "trona"],
+    "descripcion": {
+      "es": "[DEMO] Descripción de ejemplo.",
+      "en": "[DEMO] Sample description."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "trona"
+    ],
     "fuente_url": "https://example.com",
     "fecha_verificacion": "2026-10-16",
     "estado": "publicado"
+  },
+  {
+    "slug": "demo-restaurante-dos",
+    "nombre": "[DEMO] Restaurante dos",
+    "categoria": "demo-restaurantes",
+    "nucleo": "demo-villa",
+    "direccion": "[DEMO] C/ Ejemplo 1",
+    "lat": 42.8665,
+    "lng": -4.4985,
+    "web": "https://example.com",
+    "horario_texto": {
+      "es": "[DEMO] Mar–Dom 13:00–16:00",
+      "en": "[DEMO] Tue–Sun 1pm–4pm"
+    },
+    "precio_rango": "€€",
+    "descripcion": {
+      "es": "[DEMO] Descripción de ejemplo.",
+      "en": "[DEMO] Sample description."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "menu-infantil"
+    ],
+    "fuente_url": "https://example.com",
+    "fecha_verificacion": "2026-10-16",
+    "estado": "publicado",
+    "orden": 1
+  },
+  {
+    "slug": "demo-restaurante-tres",
+    "nombre": "[DEMO] Restaurante tres",
+    "categoria": "demo-restaurantes",
+    "nucleo": "demo-villa",
+    "direccion": "[DEMO] C/ Ejemplo 1",
+    "lat": 42.8655,
+    "lng": -4.496,
+    "web": "https://example.com",
+    "horario_texto": {
+      "es": "[DEMO] Mar–Dom 13:00–16:00",
+      "en": "[DEMO] Tue–Sun 1pm–4pm"
+    },
+    "precio_rango": "€€",
+    "descripcion": {
+      "es": "[DEMO] Descripción de ejemplo.",
+      "en": "[DEMO] Sample description."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "parking"
+    ],
+    "fuente_url": "https://example.com",
+    "fecha_verificacion": "2026-10-16",
+    "estado": "publicado",
+    "orden": 2
   },
   {
     "slug": "demo-casa-rural-ejemplo",
@@ -25,7 +88,12 @@
     "lat": 42.88,
     "lng": -4.51,
     "horario_texto": "[DEMO] Texto plano: solo se guarda en ES",
-    "descripcion": { "es": "[DEMO] Solo en español: esta ficha no existirá en EN." },
-    "atributos_familia": ["cuna", "jardin-cerrado"]
+    "descripcion": {
+      "es": "[DEMO] Solo en español: esta ficha no existirá en EN."
+    },
+    "atributos_familia": [
+      "cuna",
+      "jardin-cerrado"
+    ]
   }
 ]

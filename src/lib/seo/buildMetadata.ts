@@ -17,7 +17,16 @@ type BuildMetadataInput = {
 }
 
 // Toda página obtiene sus metadatos de aquí (CLAUDE.md §7.1)
-export function buildMetadata({ locale, title, description, paths, noindex }: BuildMetadataInput): Metadata {
+// Descripción meta: el primer tramo del texto, cortado en palabra
+function toDescription(text: string, max = 160): string {
+  const clean = text.replace(/\s+/g, ' ').trim()
+  if (clean.length <= max) return clean
+  return `${clean.slice(0, max - 1).replace(/\s+\S*$/, '')}…`
+}
+
+export function buildMetadata({ locale, title: rawTitle, description: rawDescription, paths, noindex }: BuildMetadataInput): Metadata {
+  const title = rawTitle.includes(siteName) ? rawTitle : `${rawTitle} · ${siteName}`
+  const description = toDescription(rawDescription)
   const canonicalPath = paths[locale]
   if (!canonicalPath) throw new Error(`buildMetadata: falta la ruta para "${locale}"`)
 

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 import { segments } from '@/lib/i18n'
+import { absoluteUrl } from '@/lib/routes'
 
 // Bots de IA permitidos explícitamente (CLAUDE.md §7.3)
 const aiBots = [
@@ -32,6 +33,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: aiBots, allow: '/', disallow },
       { userAgent: '*', allow: '/', disallow },
     ],
-    // sitemap: se añade cuando exista app/sitemap.ts
+    sitemap: absoluteUrl('/sitemap.xml'),
   }
 }

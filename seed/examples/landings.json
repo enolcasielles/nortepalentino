@@ -3,19 +3,65 @@
     "ambito": "negocios",
     "municipio": "demo-villa",
     "categoria": "demo-restaurantes",
-    "intro": { "es": "[DEMO] Intro de listado.", "en": "[DEMO] Listing intro." },
+    "intro": {
+      "es": "[DEMO] Intro de listado.",
+      "en": "[DEMO] Listing intro."
+    },
     "autor": "demo-autora"
   },
   {
     "ambito": "rutas",
     "filtro": "con-ninos",
-    "titulo": { "es": "[DEMO] Rutas con niños", "en": "[DEMO] Family-friendly walks" },
-    "intro": { "es": "[DEMO] Intro de landing de filtro.", "en": "[DEMO] Filter landing intro." },
+    "titulo": {
+      "es": "[DEMO] Rutas con niños",
+      "en": "[DEMO] Family-friendly walks"
+    },
+    "intro": {
+      "es": "[DEMO] Intro de landing de filtro.",
+      "en": "[DEMO] Filter landing intro."
+    },
     "faqs": [
       {
-        "pregunta": { "es": "[DEMO] ¿Pregunta?", "en": "[DEMO] Question?" },
-        "respuesta": { "es": "[DEMO] Respuesta." }
+        "pregunta": {
+          "es": "[DEMO] ¿Pregunta?",
+          "en": "[DEMO] Question?"
+        },
+        "respuesta": {
+          "es": "[DEMO] Respuesta."
+        }
       }
     ]
+  },
+  {
+    "ambito": "negocios",
+    "categoria": "demo-restaurantes",
+    "intro": {
+      "es": "[DEMO] Intro del listado comarcal.",
+      "en": "[DEMO] Region-wide listing intro."
+    }
+  },
+  {
+    "ambito": "negocios",
+    "municipio": "demo-villa",
+    "categoria": "demo-restaurantes",
+    "filtro": "con-ninos",
+    "intro": {
+      "es": "[DEMO] Intro de restaurantes con niños.",
+      "en": "[DEMO] Family-friendly restaurants intro."
+    }
+  },
+  {
+    "ambito": "rutas",
+    "intro": {
+      "es": "[DEMO] Intro del listado de rutas.",
+      "en": "[DEMO] Walks listing intro."
+    }
+  },
+  {
+    "ambito": "recursos",
+    "intro": {
+      "es": "[DEMO] Intro de qué ver.",
+      "en": "[DEMO] Sights listing intro."
+    }
   }
 ]

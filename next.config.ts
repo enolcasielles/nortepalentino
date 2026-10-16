@@ -12,11 +12,9 @@ const siteIndexable = process.env.SITE_INDEXABLE === 'true' && process.env.VERCE
 const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
-    localPatterns: [
-      {
-        pathname: '/api/media/file/**',
-      },
-    ],
+    localPatterns: [{ pathname: '/api/media/file/**' }, { pathname: '/mapas/**' }],
+    // Imágenes servidas desde Vercel Blob en producción
+    remotePatterns: [{ protocol: 'https', hostname: '*.public.blob.vercel-storage.com' }],
   },
   async redirects() {
     // `/` → `/es` siempre; nunca por IP ni Accept-Language (CLAUDE.md §5)

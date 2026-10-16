@@ -11,3 +11,4 @@ export function getDictionary(locale: Locale): Dictionary {
 export type { Dictionary }
 export * from './config'
 export * from './segments'
+export * from './format'

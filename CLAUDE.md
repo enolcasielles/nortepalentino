@@ -102,7 +102,9 @@ seed/                         # JSON de contenido (contrato con Pablo) + import.
 docs/                         # brief y documentación de producto
 ```
 
-**Las URLs se construyen siempre con `lib/routes`** (`urlFor(doc, locale)`). Nunca las concatenes a mano en un componente. Así hreflang, sitemap, enlaces internos, `.md` y redirects comparten la misma lógica.
+**Las URLs se construyen siempre con `lib/routes`** (`paths`, y `site.url.*` del índice de `lib/data/site.ts`, que solo devuelve URLs de lo que existe). Nunca las concatenes a mano en un componente. Así hreflang, sitemap, enlaces internos, `.md` y redirects comparten la misma lógica.
+
+**Qué existe lo decide `lib/data/site.ts`** con las reglas de `lib/seo/indexability.ts`. `matchRoute` (resolver una URL) e `inventory` (enumerar todas: `generateStaticParams`, sitemap, `llms.txt`) se apoyan en ese índice; no dupliques esas reglas en otro sitio.
 
 **Idioma del código:** colecciones, campos de Payload y claves de seeds en **español snake_case**, tal cual el contrato (`negocios`, `fecha_verificacion`, `apta_ninos`). Funciones, componentes, tipos y variables en **inglés** (`BusinessCard`, `buildLocalBusinessJsonLd`). Comentarios en español.
 
@@ -135,7 +137,7 @@ docs/                         # brief y documentación de producto
 - Los **topónimos y nombres propios no se traducen**: municipios, núcleos y negocios tienen el mismo slug en ambos idiomas.
 - Formato: minúsculas, ASCII, guiones, sin tildes; `ñ → n` (`branosera`, `la-pernia`). El slug se autogenera desde el nombre y se puede editar.
 - **Slugs reservados:** un hook de validación impide que un municipio use el slug de una categoría, un segmento fijo (`rutas`, `planes`, `que-ver`, `buscar`, `autores`…) o un slug de filtro (`con-ninos`…), y al revés. Lo mismo aplica a negocios frente a slugs de filtro dentro de `{municipio}/{categoria}`. La lista vive en `lib/routes/reserved.ts`.
-- **Cambio de URL = redirect 301 automático.** Si cambia el slug, el municipio o la categoría de un documento publicado, un hook `afterChange` crea la entrada en la colección `redirects`, y el middleware o `redirects()` la aplica. Nunca rompas una URL publicada.
+- **Cambio de URL = redirect 301 automático.** Si cambia el slug, el municipio o la categoría de un documento publicado, un hook `afterChange` crea la entrada en la colección `redirects`. La aplica el catch-all `[locale]/[...path]`: si una URL no existe, busca en `redirects` (siguiendo cadenas) antes de devolver 404 y responde con **308** (`permanentRedirect`, equivalente a 301 para buscadores). Nunca rompas una URL publicada.
 
 ### i18n
 
@@ -169,7 +171,7 @@ Mantiene el del brief (§6) con estos cambios y añadidos. Los campos `{es,en}` 
 
 **Publicar exige** `fuente_url` y `fecha_verificacion` (fichas) y las cifras de ruta; se valida en Payload (`fields/validation.ts`). Que la ficha exista en un idioma depende además de su texto en ese idioma (§7.4), y eso se comprueba al renderizar. Los registros `[DEMO]` se rechazan cuando `VERCEL_ENV=production`.
 
-**Hooks y transacciones:** dentro de un hook, las operaciones con `req` comparten transacción. Hazlas **secuenciales** (nada de `Promise.all`) y no pases `context` a operaciones anidadas, porque se fusiona en `req.context` para el resto de la petición.
+**Hooks y transacciones:** dentro de un hook, las operaciones con `req` comparten transacción. Hazlas **secuenciales** (nada de `Promise.all`) y no pases `context` a operaciones anidadas, porque se fusiona en `req.context` para el resto de la petición. Y nunca consultes otro idioma con `req` sin envolverlo en `withLocale()` (`lib/payload/withLocale.ts`): una operación con `locale` sobrescribe `req.locale` y la escritura del documento acabaría en ese idioma.
 
 **Frontera Negocio / Recurso:** un *Negocio* vende un servicio (comer, dormir, actividad guiada, tienda). Un *Recurso* es un lugar que se visita (iglesia, mirador, cascada, museo), aunque cobre entrada. Las taxonomías son separadas.
 
@@ -295,3 +297,13 @@ Cada ficha enlaza a su municipio, a su municipio+categoría y a 3–6 elementos 
 | Sin `landings` ni `redirects` | Añadidas (§6) |
 | `llms.txt` | Más `llms-full.txt` y versiones `.md` (§8) |
 | Formato de seeds | Slugs localizados y ficheros nuevos (§10) |
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

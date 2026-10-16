@@ -14,6 +14,8 @@ export function segmentPath(key: SegmentKey, locale: Locale): string {
 }
 
 export const paths = {
+  rutas: (locale: Locale) => segmentPath('rutas', locale),
+  recursos: (locale: Locale) => segmentPath('queVer', locale),
   municipio: (locale: Locale, municipio: string) => `/${locale}/${municipio}`,
   // Listado comarcal de una categoría: /es/restaurantes
   categoria: (locale: Locale, categoria: string) => `/${locale}/${categoria}`,

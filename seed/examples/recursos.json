@@ -1,15 +1,99 @@
 [
   {
-    "slug": { "es": "demo-iglesia-ejemplo", "en": "demo-sample-church" },
-    "nombre": { "es": "[DEMO] Iglesia de ejemplo", "en": "[DEMO] Sample church" },
+    "slug": {
+      "es": "demo-iglesia-ejemplo",
+      "en": "demo-sample-church"
+    },
+    "nombre": {
+      "es": "[DEMO] Iglesia de ejemplo",
+      "en": "[DEMO] Sample church"
+    },
     "tipo": "demo-iglesias-romanicas",
     "nucleo": "demo-aldea",
     "lat": 42.881,
     "lng": -4.511,
-    "resumen": { "es": "[DEMO] Resumen de ejemplo.", "en": "[DEMO] Sample summary." },
-    "horario_acceso": { "es": "[DEMO] Horario de ejemplo.", "en": "[DEMO] Sample opening hours." },
-    "precio_entrada": { "es": "[DEMO] Gratis", "en": "[DEMO] Free" },
-    "descripcion": { "es": "[DEMO] Descripción de ejemplo.", "en": "[DEMO] Sample description." },
+    "resumen": {
+      "es": "[DEMO] Resumen de ejemplo.",
+      "en": "[DEMO] Sample summary."
+    },
+    "horario_acceso": {
+      "es": "[DEMO] Horario de ejemplo.",
+      "en": "[DEMO] Sample opening hours."
+    },
+    "precio_entrada": {
+      "es": "[DEMO] Gratis",
+      "en": "[DEMO] Free"
+    },
+    "descripcion": {
+      "es": "[DEMO] Descripción de ejemplo.",
+      "en": "[DEMO] Sample description."
+    },
+    "fuente_url": "https://example.com",
+    "fecha_verificacion": "2026-10-16",
+    "estado": "publicado"
+  },
+  {
+    "slug": {
+      "es": "demo-iglesia-dos",
+      "en": "demo-church-two"
+    },
+    "nombre": {
+      "es": "[DEMO] Iglesia dos",
+      "en": "[DEMO] Church two"
+    },
+    "tipo": "demo-iglesias-romanicas",
+    "nucleo": "demo-villa",
+    "lat": 42.875,
+    "lng": -4.511,
+    "resumen": {
+      "es": "[DEMO] Resumen de ejemplo.",
+      "en": "[DEMO] Sample summary."
+    },
+    "horario_acceso": {
+      "es": "[DEMO] Horario de ejemplo.",
+      "en": "[DEMO] Sample opening hours."
+    },
+    "precio_entrada": {
+      "es": "[DEMO] Gratis",
+      "en": "[DEMO] Free"
+    },
+    "descripcion": {
+      "es": "[DEMO] Descripción de ejemplo.",
+      "en": "[DEMO] Sample description."
+    },
+    "fuente_url": "https://example.com",
+    "fecha_verificacion": "2026-10-16",
+    "estado": "publicado"
+  },
+  {
+    "slug": {
+      "es": "demo-iglesia-tres",
+      "en": "demo-church-three"
+    },
+    "nombre": {
+      "es": "[DEMO] Iglesia tres",
+      "en": "[DEMO] Church three"
+    },
+    "tipo": "demo-iglesias-romanicas",
+    "nucleo": "demo-villa",
+    "lat": 42.87,
+    "lng": -4.511,
+    "resumen": {
+      "es": "[DEMO] Resumen de ejemplo.",
+      "en": "[DEMO] Sample summary."
+    },
+    "horario_acceso": {
+      "es": "[DEMO] Horario de ejemplo.",
+      "en": "[DEMO] Sample opening hours."
+    },
+    "precio_entrada": {
+      "es": "[DEMO] Gratis",
+      "en": "[DEMO] Free"
+    },
+    "descripcion": {
+      "es": "[DEMO] Descripción de ejemplo.",
+      "en": "[DEMO] Sample description."
+    },
     "fuente_url": "https://example.com",
     "fecha_verificacion": "2026-10-16",
     "estado": "publicado"

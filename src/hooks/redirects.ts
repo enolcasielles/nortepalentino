@@ -2,6 +2,7 @@ import type { CollectionAfterChangeHook, PayloadRequest } from 'payload'
 
 import { defaultLocale, isLocale, locales, type Locale } from '@/lib/i18n'
 import { paths } from '@/lib/routes'
+import { withLocale } from '@/lib/payload/withLocale'
 import { resolveDocPath, type RoutableCollection } from '@/lib/routes/resolve'
 
 type RedirectInput = {
@@ -51,7 +52,7 @@ export function redirectOnUrlChange(collection: RoutableCollection, { localizedS
       const current =
         locale === editedLocale
           ? doc
-          : await req.payload.findByID({ collection, id: doc.id, depth: 0, locale, req })
+          : await withLocale(req, () => req.payload.findByID({ collection, id: doc.id, depth: 0, locale, req }))
       const previous =
         locale === editedLocale || !localizedSlug ? previousDoc : { ...previousDoc, slug: current.slug }
 

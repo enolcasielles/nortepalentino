@@ -1,6 +1,7 @@
 import { ValidationError, type CollectionBeforeValidateHook } from 'payload'
 
 import { locales } from '@/lib/i18n'
+import { withLocale } from '@/lib/payload/withLocale'
 
 // /es/{municipio} y /es/{categoria} comparten nivel de URL, así que un
 // municipio no puede usar el slug de una categoría (en ningún idioma) ni al
@@ -10,12 +11,9 @@ export const municipioSlugCollision: CollectionBeforeValidateHook = async ({ dat
   const slug = data?.slug
   if (typeof slug !== 'string' || !slug) return data
   for (const locale of locales) {
-    const { totalDocs } = await req.payload.count({
-      collection: 'categorias_negocio',
-      where: { slug: { equals: slug } },
-      locale,
-      req,
-    })
+    const { totalDocs } = await withLocale(req, () =>
+      req.payload.count({ collection: 'categorias_negocio', where: { slug: { equals: slug } }, locale, req }),
+    )
     if (totalDocs > 0) {
       throw new ValidationError({
         collection: collection.slug,

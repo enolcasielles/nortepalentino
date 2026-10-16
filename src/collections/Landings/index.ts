@@ -10,6 +10,7 @@ import { faqsField } from '@/fields/faqs'
 import { revalidateCollection } from '@/hooks/revalidate'
 import { filterSlugs } from '@/lib/i18n'
 import { relId } from '@/lib/payload/relations'
+import { withLocale } from '@/lib/payload/withLocale'
 
 import { adminGroups } from '../groups'
 
@@ -69,13 +70,9 @@ const setInternalName: CollectionBeforeChangeHook = async ({ data, originalDoc, 
     parts.push(m.slug)
   }
   if (categoriaId) {
-    const c = await req.payload.findByID({
-      collection: 'categorias_negocio',
-      id: categoriaId,
-      depth: 0,
-      locale: 'es',
-      req,
-    })
+    const c = await withLocale(req, () =>
+      req.payload.findByID({ collection: 'categorias_negocio', id: categoriaId, depth: 0, locale: 'es', req }),
+    )
     parts.push(c.slug)
   }
   if (merged.filtro) parts.push(merged.filtro)

@@ -2,6 +2,7 @@ import type { PayloadRequest } from 'payload'
 
 import type { Locale } from '@/lib/i18n'
 import { relId } from '@/lib/payload/relations'
+import { withLocale } from '@/lib/payload/withLocale'
 
 import { paths } from './index'
 
@@ -39,13 +40,9 @@ export async function resolveDocPath(
       if (!municipioId || !categoriaId) return null
       // Secuencial: las consultas comparten la transacción de `req`
       const municipio = await req.payload.findByID({ collection: 'municipios', id: municipioId, depth: 0, req })
-      const categoria = await req.payload.findByID({
-        collection: 'categorias_negocio',
-        id: categoriaId,
-        depth: 0,
-        locale,
-        req,
-      })
+      const categoria = await withLocale(req, () =>
+        req.payload.findByID({ collection: 'categorias_negocio', id: categoriaId, depth: 0, locale, req }),
+      )
       const categoriaSlug = str(categoria?.slug)
       if (!municipio?.slug || !categoriaSlug) return null
       return paths.negocio(locale, municipio.slug, categoriaSlug, slug)

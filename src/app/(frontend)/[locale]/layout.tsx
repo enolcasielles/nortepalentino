@@ -1,4 +1,4 @@
-import { Bricolage_Grotesque, Inter } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import type { ReactNode } from 'react'
 
@@ -8,17 +8,12 @@ import { siteUrl } from '@/lib/site'
 
 import '../globals.css'
 
+// Única familia de la web, también para títulos, cifras y wordmark
+// (DESIGN.md §3.2). Variable: un fichero.
 const inter = Inter({
   subsets: ['latin', 'latin-ext'],
   display: 'swap',
   variable: '--font-inter',
-})
-
-// Display para títulos, cifras y wordmark (DESIGN.md §3.2). Variable: un fichero.
-const bricolage = Bricolage_Grotesque({
-  subsets: ['latin', 'latin-ext'],
-  display: 'swap',
-  variable: '--font-bricolage',
 })
 
 export const metadata = {
@@ -43,7 +38,7 @@ export default async function LocaleLayout({
   const dict = getDictionary(locale)
 
   return (
-    <html lang={locale} className={`${inter.variable} ${bricolage.variable}`}>
+    <html lang={locale} className={inter.variable}>
       <body className="flex min-h-dvh flex-col">
         <SkipLink label={dict.a11y.skipToContent} />
         {children}

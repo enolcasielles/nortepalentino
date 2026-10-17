@@ -102,8 +102,8 @@ Contrastes calculados sobre `--color-bg`. Mínimo exigido: 4,5:1 en texto y 3:1 
 
 ### 3.2 Tipografía
 
-- **Dos familias.** `Bricolage Grotesque` (700–800) para títulos, cifras de datos clave y el wordmark; `Inter` (400, 500, 600) para el texto y la UI. Se autoalojan con `next/font/google`, `display: swap` y subsets `latin` y `latin-ext`. Son fuentes variables: un fichero por familia y ninguna otra fuente.
-- Tokens: `--font-display: "Bricolage Grotesque"`, `--font-body: "Inter"`.
+- **Una familia: `Inter`.** Pesos 700–800 para títulos, cifras de datos clave y el wordmark; 400, 500 y 600 para el texto y la UI. Se autoaloja con `next/font/google`, `display: swap` y subsets `latin` y `latin-ext`. Es variable: un solo fichero y ninguna otra fuente.
+- Tokens: `--font-display` y `--font-body`, los dos `"Inter"`. Se mantienen separados para poder cambiar la de títulos sin tocar componentes.
 - Títulos con `letter-spacing: -0.02em`, peso 700 y `text-wrap: balance`; el H1 a 800 y `-0.035em`. Títulos en `--color-ink`. Eyebrows con la utilidad `eyebrow` (mayúsculas, `text-xs`, peso 600, `letter-spacing: 0.08em`).
 - Escala fluida con `clamp()`: `text-xs`, `sm`, `base` (16–17 px; nunca menos de 16 px en el cuerpo), `lg`, `xl`, `2xl`, `3xl` (H2 de sección), `4xl` (H1) y `5xl` (solo el H1 de la home).
 - Longitud de línea de 60–75 caracteres en la prosa (`max-w-prose`).
@@ -131,7 +131,7 @@ El rasgo distintivo de la marca mezcla la cartografía y la señalética de send
 
 1. **Curvas de nivel** (`public/textures/contours.svg`, generadas a partir de un campo de alturas). Se usan con la utilidad `contours`, que las pinta con el color de texto actual mediante una máscara: en la media de las tarjetas sin foto y en `PageHero` (color pleno de la categoría al 20–25 % sobre su `-soft`) y en el hero de la home (blanco al 7 % sobre `ink`). La posición se desplaza por un *hash* del título (`contourOffset`) para que dos tarjetas seguidas no repitan dibujo. Nunca detrás de texto largo ni con más opacidad.
 2. **Siluetas de cumbres** (`Ridges`): tres planos de cresta. Cierran el hero de la home (fundiéndose con el fondo blanco) y abren el pie (fundiéndose con `ink`). Ningún otro uso.
-3. **`KeyFacts` como panel de inicio de ruta.** Tarjeta blanca con sombra, cabecera de 4 px en el color de la categoría (o `--color-primary`), eyebrow "Datos clave", cifras grandes en `Bricolage Grotesque` 700 `tabular-nums` en celdas `surface-alt` con su unidad en `--color-text-muted`, y filas de definición con separadores finos.
+3. **`KeyFacts` como panel de inicio de ruta.** Tarjeta blanca con sombra, cabecera de 4 px en el color de la categoría (o `--color-primary`), eyebrow "Datos clave", cifras grandes en `Inter` 700 `tabular-nums` en celdas `surface-alt` con su unidad en `--color-text-muted`, y filas de definición con separadores finos.
    ```
    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
     DATOS CLAVE
@@ -149,7 +149,7 @@ Las categorías se muestran con una píldora (icono en su color + nombre) sobre 
 
 ### 3.6 Logotipo
 
-- **Wordmark** "norte palentino" en minúsculas, `Bricolage Grotesque` 800, `letter-spacing: -0.03em`, en `--color-ink` (blanco sobre `ink`).
+- **Wordmark** "norte palentino" en minúsculas, `Inter` 800, `letter-spacing: -0.03em`, en `--color-ink` (blanco sobre `ink`).
 - **Símbolo:** tres cumbres anidadas de trazo uniforme y sin relleno, como las curvas de nivel de un perfil de sierra (evocación del Curavacas/Espigüete). SVG propio en `src/components/brand/Wordmark.tsx` (`LogoSymbol`). **Provisional** hasta cerrar el logotipo (§9).
 - **Versiones:** horizontal (placa redondeada `primary` con el símbolo en blanco + wordmark) para el header y el pie (placa blanca con símbolo `primary` sobre `ink`); solo símbolo para favicon, `apple-touch-icon`, imagen OG y la página 404.
 - **Colores:** verde bosque, `ink` y blanco. Nada más.

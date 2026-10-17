@@ -108,7 +108,7 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 
 ### 4.5 Sistema visual "producto outdoor" (sesión 2)
 
-- Nueva dirección en DESIGN.md: fondo blanco, verde bosque `#17734A`, `ink` para hero y pie, naranja atardecer como acento, tintes `-soft` por categoría, `Bricolage Grotesque` para títulos (sustituye a Inter Tight), radios 6/10/16/24 px y sombras suaves en reposo. Contrastes AA recalculados (tabla de DESIGN.md §3.1).
+- Nueva dirección en DESIGN.md: fondo blanco, verde bosque `#17734A`, `ink` para hero y pie, naranja atardecer como acento, tintes `-soft` por categoría, `Bricolage Grotesque` para títulos (sustituye a Inter Tight); desde la sesión 5, **Inter también en los títulos** (una sola familia), radios 6/10/16/24 px y sombras suaves en reposo. Contrastes AA recalculados (tabla de DESIGN.md §3.1).
 - Recursos gráficos propios: textura de curvas de nivel (`public/textures/contours.svg`, aplicada como máscara con la utilidad `contours`), siluetas de cumbres (`brand/Ridges.tsx`) y símbolo provisional de cumbres anidadas (`brand/Wordmark.tsx`). Se generaron con scripts de un solo uso (campo de alturas + `d3-contour`); no son dependencias del proyecto. Para regenerarlos hay que rehacer el script.
 - `PageHero` (prop `hero` de `PageLayout`) en todas las plantillas salvo la home; la home usa `masthead`. Tarjetas 16:10 con `MediaPlaceholder` cuando no hay foto, píldora de categoría o baliza de dificultad, iconos en los datos de ruta. `KeyFacts` y acciones en columna lateral `sticky` desde `lg`.
 - Microcopy nuevo: `home.eyebrow`, `home.lead`, `home.explore`, `footer.explore` (ES/EN). La entradilla de la home es provisional: cámbiala si el tono no convence.

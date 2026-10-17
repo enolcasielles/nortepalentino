@@ -3,7 +3,7 @@
   "manifest_version": "0.4",
   "name": "nortepalentino-cms",
   "display_name": "Norte Palentino CMS",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Gestiona el contenido de Norte Palentino (fichas, rutas, municipios, fotos) desde Claude.",
   "long_description": "Conecta Claude con el CMS de Norte Palentino: buscar, leer, crear y actualizar contenido en español e inglés, subir fotos y GPX y revisar qué falta para publicar. Usa tu API key de usuario de /admin.",
   "author": { "name": "Norte Palentino" },

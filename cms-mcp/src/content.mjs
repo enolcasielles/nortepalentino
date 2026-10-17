@@ -1,5 +1,5 @@
 import { ApiError } from './api.mjs'
-import { lexicalToMarkdown, markdownToLexical } from './lexical.mjs'
+import { EMBEDDABLE, internalRefs, LINKABLE, lexicalToMarkdown, markdownToLexical } from './lexical.mjs'
 
 export const LOCALES = ['es', 'en']
 const TITLE_FIELDS = ['nombre', 'titulo', 'nombre_interno', 'desde', 'filename']
@@ -11,7 +11,7 @@ const MAIN_TEXT = {
   negocios: 'descripcion',
   rutas: 'descripcion',
   recursos: 'descripcion',
-  planes: 'cuerpo',
+  articulos: 'cuerpo',
   landings: 'intro',
   autores: 'bio',
 }
@@ -21,7 +21,7 @@ const REQUIRED_TO_PUBLISH = {
   negocios: ['fuente_url', 'fecha_verificacion'],
   recursos: ['fuente_url', 'fecha_verificacion'],
   rutas: ['fuente_url', 'fecha_verificacion', 'distancia_km', 'desnivel_m', 'duracion_h', 'dificultad'],
-  planes: ['autor'],
+  articulos: ['autor'],
 }
 
 const isEmpty = (value) =>
@@ -56,6 +56,23 @@ export function createContent(api) {
     throw new ApiError(`No encuentro "${ref}" en ${slug}. Usa buscar para ver qué hay.`)
   }
 
+  // Enlaces internos y fichas del Markdown: "coleccion/slug" → id
+  async function resolveInternal(markdown) {
+    const ids = new Map()
+    for (const { collection, ref, kind } of internalRefs(markdown)) {
+      const allowed = kind === 'ficha' ? EMBEDDABLE : LINKABLE
+      if (!allowed.includes(collection)) {
+        throw new ApiError(
+          kind === 'ficha'
+            ? `::ficha[${collection}/${ref}]: solo se incrustan ${EMBEDDABLE.join(', ')}.`
+            : `interno:${collection}/${ref}: solo se enlazan ${LINKABLE.join(', ')}.`,
+        )
+      }
+      ids.set(`${collection}/${ref}`, await resolveId(collection, ref))
+    }
+    return ids
+  }
+
   async function convert(field, value) {
     if (value === null) return null
     if (field.tipo === 'relationship' || field.tipo === 'upload') {
@@ -73,7 +90,7 @@ export function createContent(api) {
       }
       return one(value)
     }
-    if (field.tipo === 'richText' && typeof value === 'string') return markdownToLexical(value)
+    if (field.tipo === 'richText' && typeof value === 'string') return markdownToLexical(value, await resolveInternal(value))
     return value
   }
 

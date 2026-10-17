@@ -14,7 +14,7 @@ const apiKey = process.env.CMS_API_KEY
 const api = createApi({ baseUrl, apiKey: apiKey ?? '' })
 const content = createContent(api)
 
-const server = new McpServer({ name: 'nortepalentino-cms', version: '0.1.0' }, { instructions })
+const server = new McpServer({ name: 'nortepalentino-cms', version: '0.2.0' }, { instructions })
 
 const text = (value) => ({
   content: [{ type: 'text', text: typeof value === 'string' ? value : JSON.stringify(value, null, 2) }],
@@ -35,7 +35,7 @@ function tool(name, config, handler) {
 
 const coleccion = z
   .string()
-  .describe('Colección: municipios, nucleos, negocios, categorias_negocio, recursos, tipos_recurso, rutas, planes, landings, autores, media, archivos_gpx o redirects')
+  .describe('Colección: municipios, nucleos, negocios, categorias_negocio, recursos, tipos_recurso, rutas, articulos, landings, autores, media, archivos_gpx o redirects')
 const ref = z.union([z.number(), z.string()]).describe('id numérico o slug (ES o EN) del documento')
 const datos = z
   .record(z.string(), z.unknown())
@@ -168,7 +168,7 @@ tool(
   {
     title: 'Qué falta para publicar',
     description:
-      'Indica qué le falta a un documento para poder publicarse y si su página existe en español y en inglés.',
+      'Indica qué le falta a un documento para poder publicarse y si su página existe en español y en inglés. En los artículos añade la revisión SEO de cada idioma (búsqueda objetivo, título, descripción, enlaces al directorio, enlaces rotos, longitud, FAQs).',
     inputSchema: { coleccion, ref },
     annotations: readOnly,
   },
@@ -176,7 +176,15 @@ tool(
     const { campos } = await content.collection(slug)
     const id = await content.resolveId(slug, docRef)
     const doc = await api.findById(slug, id, { locale: 'all', depth: 0 })
-    return `${content.titleOf(doc) ?? ''} (id ${id})\n${content.review(slug, campos, doc)}`
+    const lines = [`${content.titleOf(doc) ?? ''} (id ${id})`, content.review(slug, campos, doc)]
+    if (slug === 'articulos') {
+      const audit = await api.audit(id)
+      for (const [locale, { comprobaciones }] of Object.entries(audit)) {
+        lines.push('', `Revisión SEO ${locale.toUpperCase()} (✗ error · ! aviso · ✓ correcto):`)
+        for (const c of comprobaciones) lines.push(`${c.ok ? '✓' : c.level === 'error' ? '✗' : '!'} ${c.message}`)
+      }
+    }
+    return lines.join('\n')
   },
 )
 

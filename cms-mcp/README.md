@@ -23,12 +23,14 @@ La API key da los mismos permisos que tu usuario del panel. No la compartas. Si 
 | `referencias` | Municipios con núcleos, categorías, tipos de recurso y autores, con slugs |
 | `buscar` | Por texto, municipio o estado, incluidos borradores |
 | `leer` | Documento completo, con los traducidos como `{es, en}` y el rich text en Markdown |
-| `revisar` | Qué falta para publicar y si la página existe en ES y EN |
+| `revisar` | Qué falta para publicar y si la página existe en ES y EN. En artículos, la revisión SEO de cada idioma (endpoint `/api/cms/auditoria/:id`) |
 | `crear` / `actualizar` | Escribe primero ES y luego EN. Relaciones por slug |
 | `subir_imagen` / `subir_gpx` | Desde una ruta local |
 | `borrar` | Irreversible. Solo si el editor lo pide expresamente |
 
 Las reglas de contenido que recibe Claude están en [`src/instructions.mjs`](src/instructions.mjs).
+
+El cuerpo de los artículos se escribe en Markdown, con dos extensiones para enlazar el directorio (`src/lexical.mjs`): `[texto](interno:coleccion/slug)` crea un enlace interno a un documento (sobrevive a cambios de slug) y una línea `::ficha[coleccion/slug]` incrusta la tarjeta de una ficha. Al leer, salen igual (con el id si la relación no viene poblada).
 
 ## Desarrollo
 

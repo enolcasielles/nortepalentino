@@ -18,9 +18,9 @@ Registro del avance de la implementación. **Léelo después de [`CLAUDE.md`](CL
 **Fases del brief (§9, "MVP terminado"):**
 
 - [x] Desplegada en una URL de Vercel con `noindex`
-- [ ] 3 municipios con página completa en ES y EN → **falta contenido** (lo prepara Pablo; las plantillas están listas)
-- [ ] Fichas reales de las 3 cabeceras con JSON-LD validado en el Rich Results Test → falta contenido y la validación
-- [x] Filtros de rutas funcionando (faltan las 5 rutas reales)
+- [ ] 3 municipios con página completa en ES y EN → **lote real en `seed/`** (sesión 5), cargado en local; falta revisarlo y llevarlo a producción
+- [ ] Fichas reales de las 3 cabeceras con JSON-LD validado en el Rich Results Test → fichas en el lote; falta la validación
+- [x] Filtros de rutas funcionando (5 rutas reales en el lote)
 - [x] Payload admin accesible para que Pablo edite
 - [x] Extensión de Claude Desktop para que Pablo gestione el contenido desde Claude (`cms-mcp/`)
 - [x] Estructura Directorio + Blog + Home (sesión 4). Faltan los primeros artículos reales
@@ -35,13 +35,13 @@ pnpm install
 docker compose up -d          # Postgres en el puerto 5435
 cp .env.example .env          # y rellena PAYLOAD_SECRET (openssl rand -hex 32)
 pnpm payload migrate
-pnpm seed --dir seed/examples # fixtures [DEMO]: dan datos a todas las plantillas
+pnpm seed                     # lote real (seed/*.json); o --dir seed/examples para los fixtures [DEMO]
 pnpm dev                      # http://localhost:3000/es · /admin (crea un usuario local)
 ```
 
 URLs útiles con los fixtures: `/es/demo-villa`, `/es/demo-villa/demo-restaurantes`, `/es/demo-villa/demo-restaurantes/con-ninos`, `/es/demo-restaurantes`, `/es/demo-villa/demo-restaurantes/demo-restaurante-ejemplo`, `/es/rutas`, `/es/rutas/con-ninos`, `/es/rutas/demo-senda-ejemplo`, `/es/que-ver`, `/es/que-ver/demo-iglesia-ejemplo` y sus equivalentes EN (`/en/routes/...`, `/en/sights/...`).
 
-Los artículos no están en los seeds: para probar el blog en local, crea 3 artículos `[DEMO]` publicados (con autor y enlaces internos) y una landing de ámbito `articulos` desde el panel o la extensión.
+Con el lote real: `/es/cervera-de-pisuerga`, `/es/cervera-de-pisuerga/restaurantes`, `/es/cervera-de-pisuerga/casas-rurales/con-ninos`, `/es/aguilar-de-campoo/hoteles`, `/es/turismo-activo`, `/es/rutas/con-ninos`, `/es/rutas/senda-de-la-tejeda-de-tosande`, `/es/que-ver`, `/es/blog/que-ver-en-aguilar-de-campoo` y sus equivalentes EN. Los fixtures `[DEMO]` incluyen también 3 artículos y la landing del blog.
 
 **El import de seeds no puede invalidar la caché de Next** (corre fuera de Next). En local, tras importar, reinicia `pnpm dev` borrando `.next`.
 
@@ -135,6 +135,13 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 - **Cabecera**: *Directorio* (desplegable `<details>`) + *Blog*; enlaces comunes en `components/layout/nav.ts`. **Home**: hero con accesos rápidos, rejilla del directorio con recuentos, últimos artículos, municipios, rutas y qué ver.
 - Verificado en local con artículos `[DEMO]`: ES/EN, hreflang, enlaces resueltos y a borrador como texto, índice, tarjetas, enlaces de vuelta, sitemap y `llms.txt`, auditoría por API y extensión de extremo a extremo; móvil sin scroll horizontal. **Sin verificar**: el desplegable de escritorio a ojo (la ventana del navegador de pruebas no pasaba de 500 px) y el panel de revisión SEO dentro del admin (el endpoint sí).
 
+### 4.8 Primer lote de contenido real (sesión 5)
+
+- **`seed/*.json`**: 7 municipios (Cervera de Pisuerga, Aguilar de Campoo, Guardo y La Pernía con página; Brañosera y Pomar de Valdivia con intro corta; Dehesa de Montejo solo como contenedor) con 40 núcleos, 4 categorías (`restaurantes`, `hoteles`, `casas-rurales`/`holiday-cottages`, `turismo-activo`), 5 tipos de recurso, 19 negocios (uno en borrador), 6 recursos, 5 rutas con cifras de los folletos oficiales, 13 landings y 3 artículos. Autor: Pablo Aguado (solo nombre).
+- Datos investigados en la web con `fuente_url` por registro; las notas de fuentes por colección están en `seed/notas/`. **Textos redactados por Claude por encargo expreso de Enol** (excepción a la regla 1): hay que revisarlos antes de `seed:prod`. Lista de comprobación y dudas en `seed/REVISION.md`.
+- **El import admite artículos** (`seed/articulos.json`, cuerpo en Markdown con `interno:` y `::ficha[]`, mismo conversor que la extensión) y landings de ámbito `articulos`. Valida que cada enlace interno exista en el lote o en la BD.
+- En local, la BD se reinició y tiene solo el lote real (copia de la anterior, solo `[DEMO]` y sin usuarios, en el scratchpad de la sesión). Hay que crear un usuario en `/admin`.
+
 ---
 
 ## 5. Decisiones y desviaciones (ya reflejadas en CLAUDE.md)
@@ -162,6 +169,8 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 10. **`migrate:create` pregunta en modo interactivo** ("created or renamed?") cuando desaparece una tabla o columna, y sin TTY muere con código 13. Ejecútalo con `expect` respondiendo Intro (crear) o desde una terminal. Revisa el SQL generado: tras un `DROP TABLE … CASCADE` emitió un `DROP CONSTRAINT` de una FK ya borrada (se corrigió con `IF EXISTS` antes de commitear).
 11. **El `next dev` en marcha no recarga la configuración de Payload** (colecciones, endpoints) y puede **reescribir `importMap.js` con la configuración vieja**. Tras cambiar la configuración, reinicia `pnpm dev` y comprueba el import map antes de commitear.
 12. **Subidas no transaccionales**: los ficheros (GPX, imágenes) no se deshacen con un rollback; `--dry-run` no los sube.
+13. **El dataloader de un `req` cachea consultas**: en un proceso largo con un solo `req` (el import), la validación de relaciones puede dar por inexistente un documento creado después de una consulta que no lo encontró. El import renueva `req.payloadDataLoader` antes de cada escritura.
+14. **`pnpm build` en local con `.env.production.local` presente** lee Neon de producción (trampa 9). Para los checks, exporta vacías las variables de ese fichero y carga `.env` en el mismo comando.
 
 ---
 
@@ -170,7 +179,7 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 1. **Pablo**: activar su API key en `/admin` de producción, mandarle `cms-mcp/nortepalentino-cms.mcpb` y probarlo con él en Claude Desktop.
 2. **Revalidación remota**: ruta protegida (p. ej. `/api/revalidar` con `REVALIDATE_SECRET`) que el import llame al terminar con `--remote`. Sin ella, un lote cargado en producción no se ve hasta el siguiente despliegue. Solo afecta al import por seeds: lo que entra por la extensión o el panel ya revalida.
 3. **Versiones `.md`** de cada página indexable (`{url}.md`, rewrite en `next.config` a un route handler), `<link rel="alternate" type="text/markdown">`, y que `llms.txt` apunte a ellas (CLAUDE.md §8).
-4. **Primeros artículos** (Pablo, con la extensión 0.2.0): elegir las búsquedas objetivo, escribir y crear la landing `articulos` del índice. Validar `BlogPosting` en el Rich Results Test con el primero real. Antes, **desplegar** la sesión 4 (la migración borra las tablas de planes, vacías en producción).
+4. **Lote real a producción**: revisar `seed/REVISION.md` y los textos, **desplegar** la sesión 4 (la migración borra las tablas de planes, vacías en producción), `pnpm seed:prod --dry-run` y `pnpm seed:prod` (lo lanza una persona), y validar `BlogPosting`, `Hotel`/`Restaurant`, `TouristTrip` y `Church` en el Rich Results Test.
 5. **Autores** (`/autores/{slug}`, `ProfilePage` + `Person`) y enlazar `AuthorByline`.
 6. **Búsqueda** (`/buscar?q=`, `noindex`, full-text con `unaccent`; migración con la extensión) y `SearchAction` en `WebSite`.
 7. **Sobre nosotros y legales**: plantillas listas para textos que redacta una persona (no inventar contenido).
@@ -198,6 +207,10 @@ Rediseño de la UI hacia "producto outdoor" (§4.5): tokens, tipografía, cabece
 ### Sesión 4 · 2026-10-17
 
 Reorganización en Directorio + Blog + Home (§4.7): colección `articulos` con enlaces internos y bloque de ficha, plantillas de artículo e índice, enlaces de vuelta desde fichas y municipios, cabecera y home nuevas, revisión SEO (panel, API y extensión) y extensión 0.2.0. Commits `5bd64e4` → docs.
+
+### Sesión 5 · 2026-10-17
+
+Primer lote de contenido real (§4.8): investigación en la web con fuentes, textos ES/EN, import de artículos en los seeds y corrección del dataloader en el import. Cargado y verificado en local (todas las plantillas en ES/EN, enlaces de los artículos resueltos, idempotencia con y sin `--update`). Sin cargar en producción.
 
 ### Sesión 3 · 2026-10-17
 

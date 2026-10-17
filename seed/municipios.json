@@ -1,0 +1,574 @@
+[
+  {
+    "slug": "cervera-de-pisuerga",
+    "nombre": "Cervera de Pisuerga",
+    "comarca_zona": {
+      "es": "Parque Natural Montaña Palentina",
+      "en": "Montaña Palentina Natural Park"
+    },
+    "lat": 42.8658,
+    "lng": -4.49921,
+    "altitud_m": 1011,
+    "distancias_km": {
+      "palencia": 116
+    },
+    "intro": {
+      "es": "Cervera de Pisuerga es la cabeza de partido de la Montaña Palentina y una buena base para moverte por el Parque Natural Montaña Palentina: en la villa está la Casa del Parque, con una exposición permanente dedicada al oso pardo. Su término es el más extenso de la provincia de Palencia, unos 325 km², y suma 23 pedanías además de la villa, que queda a algo más de 1.000 m de altitud.\n\nEmpieza por el casco, declarado conjunto histórico en 2010: la plaza porticada, con postes de piedra de los siglos XVI y XVII, y las casonas con escudo. Arriba del todo está la iglesia de Santa María del Castillo, gótica del siglo XVI, que guarda en la capilla de Santa Ana la Adoración de los Reyes Magos de Juan de Flandes, de 1495. A las afueras, junto al Pisuerga, tienes la ermita rupestre de San Vicente, rodeada de tumbas excavadas en la roca. Y a pocos minutos en coche, los embalses de Ruesga y Requejada y la senda de la Tejeda de Tosande.",
+      "en": "Cervera de Pisuerga is the main town of the Montaña Palentina and a handy base for exploring the Montaña Palentina Natural Park: the park's visitor centre is here, with a permanent exhibition on the brown bear. The municipality is the largest in the province of Palencia, at around 325 km², and takes in 23 villages besides the town itself, which sits just over 1,000 m above sea level.\n\nStart in the old town, listed as a historic site in 2010: an arcaded square with 16th- and 17th-century stone pillars, and manor houses carved with coats of arms. At the top stands the church of Santa María del Castillo, 16th-century Gothic, whose Santa Ana chapel holds Juan de Flandes's Adoration of the Magi, painted in 1495. On the edge of town, by the Pisuerga, is the rock-cut hermitage of San Vicente, surrounded by graves hewn into the stone. A short drive away you'll find the Ruesga and Requejada reservoirs and the walking route to the Tosande yew wood."
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Cómo llegar a Cervera de Pisuerga?",
+          "en": "How do I get to Cervera de Pisuerga?"
+        },
+        "respuesta": {
+          "es": "Cervera de Pisuerga está a 116 km de Palencia. Por carretera queda a unos 25 km de Aguilar de Campoo y a unos 35 km de Guardo. La estación de Renfe más cercana es la de Aguilar de Campoo, con trenes a Madrid, Palencia, Valladolid y Santander; además, en Vado, a las puertas de Cervera, paran los trenes de vía estrecha entre León y Bilbao. También hay autobuses a Palencia y a Aguilar y Burgos, y líneas a la demanda hacia los pueblos de la zona: confirma horarios con las empresas antes de viajar.",
+          "en": "Cervera de Pisuerga is 116 km from Palencia, about 25 km from Aguilar de Campoo and about 35 km from Guardo by road. The nearest mainline Renfe station is Aguilar de Campoo, with trains to Madrid, Palencia, Valladolid and Santander, while the narrow-gauge León–Bilbao trains stop at Vado, just outside Cervera. There are also buses to Palencia and to Aguilar and Burgos, plus on-demand services to the surrounding villages; check timetables with the operators before you travel."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Qué ver en Cervera de Pisuerga en un día?",
+          "en": "What can I see in Cervera de Pisuerga in a day?"
+        },
+        "respuesta": {
+          "es": "En un día en Cervera de Pisuerga puedes recorrer el casco histórico y su plaza porticada, subir a la iglesia de Santa María del Castillo para ver la tabla de Juan de Flandes (1495) y acercarte a la ermita rupestre de San Vicente, junto al Pisuerga. Completa la visita con la Casa del Parque Natural Montaña Palentina, en la calle Plantío, y con los museos de la villa: el Museo Etnográfico Piedad Isla, en la casa de los Gutiérrez de Mier, y la Casa Cantarranas, dedicada a la arquitectura y la etnografía rural. Por la tarde, da un paseo por el embalse de Ruesga.",
+          "en": "A day in Cervera de Pisuerga is enough to wander the old town and its arcaded square, climb to the church of Santa María del Castillo to see Juan de Flandes's 1495 panel painting, and walk out to the rock-cut hermitage of San Vicente by the Pisuerga. Add the Montaña Palentina Natural Park visitor centre on Calle Plantío and the town's museums: the Piedad Isla Ethnographic Museum, in the Gutiérrez de Mier house, and Casa Cantarranas, devoted to rural architecture and ethnography. In the afternoon, head out to the Ruesga reservoir."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Hay osos en Cervera de Pisuerga?",
+          "en": "Are there bears around Cervera de Pisuerga?"
+        },
+        "respuesta": {
+          "es": "Sí. En el territorio de Cervera de Pisuerga vive el oso pardo cantábrico, junto con el lobo ibérico, el águila real, el rebeco o el ciervo, cuya berrea se oye en otoño. Es una especie protegida y verlo en libertad nunca está garantizado. Si quieres conocerlo de cerca, la Casa del Parque Natural Montaña Palentina, en Cervera, dedica su exposición permanente «Zona Oso» a esta especie, con «Pintojo», un oso pardo naturalizado que murió en la Montaña Palentina.",
+          "en": "Yes. The Cantabrian brown bear lives in the Cervera de Pisuerga area, alongside Iberian wolves, golden eagles, chamois and red deer, whose rutting calls echo through the woods in autumn. Bears are a protected species and a sighting in the wild is never guaranteed. For a closer look, the Montaña Palentina Natural Park visitor centre in Cervera has a permanent exhibition, 'Zona Oso', centred on Pintojo, a mounted brown bear that died in the Montaña Palentina."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Qué tiempo hace en Cervera de Pisuerga y cuándo ir?",
+          "en": "What's the weather like in Cervera de Pisuerga, and when should I go?"
+        },
+        "respuesta": {
+          "es": "Cervera de Pisuerga tiene clima oceánico de montaña: según la serie 1961-2003, la media de enero es de 1,5 °C y la de julio de 17,3 °C, y caen unos 1.000 mm de lluvia al año. Julio y agosto son los meses más secos (unos 35 mm cada uno), así que son los más fiables para caminar; de octubre a enero es cuando más llueve. En otoño, además, es época de berrea del ciervo.",
+          "en": "Cervera de Pisuerga has a mountain oceanic climate: in the 1961–2003 records, January averages 1.5 °C and July 17.3 °C, with around 1,000 mm of rain a year. July and August are the driest months (about 35 mm each), so they're the most reliable for walking; October to January is the wettest stretch. Autumn is also when the red deer rut."
+        }
+      }
+    ],
+    "nucleos": [
+      {
+        "slug": "cervera-de-pisuerga",
+        "nombre": "Cervera de Pisuerga",
+        "lat": 42.8658,
+        "lng": -4.49921
+      },
+      {
+        "slug": "estalaya",
+        "nombre": "Estalaya",
+        "lat": 42.92798,
+        "lng": -4.47491
+      },
+      {
+        "slug": "ruesga",
+        "nombre": "Ruesga",
+        "lat": 42.86475,
+        "lng": -4.52346
+      },
+      {
+        "slug": "san-martin-de-los-herreros",
+        "nombre": "San Martín de los Herreros",
+        "lat": 42.89117,
+        "lng": -4.59335
+      },
+      {
+        "slug": "vanes",
+        "nombre": "Vañes",
+        "lat": 42.91598,
+        "lng": -4.48978
+      },
+      {
+        "slug": "verdena",
+        "nombre": "Verdeña",
+        "lat": 42.9429264,
+        "lng": -4.4623518
+      },
+      {
+        "slug": "santibanez-de-resoba",
+        "nombre": "Santibáñez de Resoba",
+        "lat": 42.9090404,
+        "lng": -4.6078831
+      },
+      {
+        "slug": "ventanilla",
+        "nombre": "Ventanilla",
+        "lat": 42.8792219,
+        "lng": -4.5596513
+      },
+      {
+        "slug": "rabanal-de-los-caballeros",
+        "nombre": "Rabanal de los Caballeros",
+        "lat": 42.8964545,
+        "lng": -4.4755133
+      },
+      {
+        "slug": "san-felices-de-castilleria",
+        "nombre": "San Felices de Castillería",
+        "lat": 42.9249453,
+        "lng": -4.4458777
+      },
+      {
+        "slug": "herreruela-de-castilleria",
+        "nombre": "Herreruela de Castillería",
+        "lat": 42.9273652,
+        "lng": -4.4121994
+      }
+    ],
+    "autor": "pablo-aguado"
+  },
+  {
+    "slug": "aguilar-de-campoo",
+    "nombre": "Aguilar de Campoo",
+    "comarca_zona": {
+      "es": "Montaña Palentina · Geoparque Las Loras",
+      "en": "Montaña Palentina · Las Loras UNESCO Global Geopark"
+    },
+    "lat": 42.79265,
+    "lng": -4.25994,
+    "altitud_m": 897,
+    "distancias_km": {
+      "palencia": 99,
+      "santander": 102
+    },
+    "intro": {
+      "es": "Aguilar de Campoo es la cabecera de una comarca de 31 pueblos en el norte de Palencia y un punto de partida natural para el románico de la Montaña Palentina: en su monasterio de Santa María la Real tienen su sede la fundación del mismo nombre y el Centro de Estudios del Románico. Está a orillas del Pisuerga, a 99 km de Palencia y 102 de Santander, con autovía y tren.\n\nEl casco es conjunto histórico-artístico desde 1966. Sube al castillo, que domina la villa desde la peña; baja a la Plaza Mayor, con la colegiata de San Miguel y sus palacios, y busca las puertas de la muralla: se conservan seis de las siete originales. No te pierdas la iglesia de Santa Cecilia ni los puentes medievales sobre el río. Si te sobra tiempo, el embalse de Aguilar, de unas 1.650 hectáreas, permite deportes náuticos. Es, además, tierra de galletas: en los años sesenta la villa tenía cinco fábricas galleteras y hoy siguen funcionando las de Gullón. Su término forma parte del Geoparque Mundial de la UNESCO Las Loras.",
+      "en": "Aguilar de Campoo is the hub of a district of 31 villages in northern Palencia and a natural starting point for the Romanesque churches of the Montaña Palentina: its monastery of Santa María la Real houses the foundation of the same name and the Romanesque Studies Centre. It sits on the Pisuerga, 99 km from Palencia and 102 km from Santander, with a motorway and a railway station.\n\nThe old town has been a listed historic site since 1966. Climb to the castle, which watches over the town from its rocky outcrop; head down to the Plaza Mayor, with the collegiate church of San Miguel and its palaces; and look out for the town gates, six of the original seven still standing. Don't miss the church of Santa Cecilia, or the medieval bridges over the river. With time to spare, the Aguilar reservoir, around 1,650 hectares, is used for water sports. It's biscuit country, too: in the 1960s the town had five biscuit factories, and Gullón's are still running today. The municipality is part of the Las Loras UNESCO Global Geopark."
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Cómo llegar a Aguilar de Campoo?",
+          "en": "How do I get to Aguilar de Campoo?"
+        },
+        "respuesta": {
+          "es": "Aguilar de Campoo está junto a la autovía A-67, que une Palencia con Santander: son 99 km desde Palencia y 102 km desde Santander. En tren, la estación de Aguilar de Campoo, situada en Camesa de Valdivia, tiene servicios de larga distancia Alvia de Renfe. La estación de autobuses está en la avenida de Ronda, con línea a Palencia.",
+          "en": "Aguilar de Campoo lies on the A-67 motorway between Palencia and Santander: 99 km from Palencia and 102 km from Santander. By rail, Aguilar de Campoo station, which is actually in the village of Camesa de Valdivia, is served by Renfe's long-distance Alvia trains. The bus station is on Avenida de Ronda, with services to Palencia."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Qué ver en Aguilar de Campoo en un día?",
+          "en": "What can I see in Aguilar de Campoo in a day?"
+        },
+        "respuesta": {
+          "es": "En un día en Aguilar de Campoo puedes visitar el monasterio de Santa María la Real, antiguo cenobio premonstratense con museo dedicado al románico; subir al castillo; recorrer la Plaza Mayor con la colegiata de San Miguel; ver la iglesia de Santa Cecilia y buscar las seis puertas que quedan de la muralla, entre ellas la de Reinosa, con una lápida hebrea. Para cerrar el día, pasea por el Puente Mayor y la orilla del Pisuerga o acércate al embalse de Aguilar.",
+          "en": "A day in Aguilar de Campoo lets you visit the monastery of Santa María la Real, a former Premonstratensian house with a museum devoted to Romanesque art; climb to the castle; stroll round the Plaza Mayor and the collegiate church of San Miguel; see the church of Santa Cecilia; and track down the six surviving town gates, including the Reinosa gate with its Hebrew inscription. Round off the day on the Puente Mayor and along the Pisuerga, or out at the Aguilar reservoir."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Por qué Aguilar de Campoo es famosa por las galletas?",
+          "en": "Why is Aguilar de Campoo known for biscuits?"
+        },
+        "respuesta": {
+          "es": "Aguilar de Campoo llegó a tener cinco fábricas de galletas en los años sesenta (Gullón, Fontaneda, Ruvil, Tefe y Fontibre), hasta el punto de que de allí salían nueve de cada diez galletas que se consumían en España. Hoy la villa mantiene las plantas de Galletas Gullón y una fábrica del Grupo Siro, así que la industria galletera sigue siendo su gran motor económico.",
+          "en": "In the 1960s Aguilar de Campoo had five biscuit factories (Gullón, Fontaneda, Ruvil, Tefe and Fontibre), and nine out of ten biscuits eaten in Spain came from the town. Today Aguilar is still home to Galletas Gullón's plants and a Grupo Siro factory, so biscuit-making remains the backbone of the local economy."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Aguilar de Campoo está dentro del Parque Natural Montaña Palentina?",
+          "en": "Is Aguilar de Campoo inside the Montaña Palentina Natural Park?"
+        },
+        "respuesta": {
+          "es": "Solo en parte. Aguilar de Campoo es uno de los diez municipios del Parque Natural Montaña Palentina, pero el parque únicamente abarca los montes del norte de su término; la villa queda fuera. Además, desde 2017 el municipio forma parte del Geoparque Mundial de la UNESCO Las Loras, el primero de Castilla y León.",
+          "en": "Only partly. Aguilar de Campoo is one of the ten municipalities in the Montaña Palentina Natural Park, but the park covers just the hills in the north of the municipality; the town itself lies outside. Since 2017 the municipality has also been part of the Las Loras UNESCO Global Geopark, the first in Castilla y León."
+        }
+      }
+    ],
+    "nucleos": [
+      {
+        "slug": "aguilar-de-campoo",
+        "nombre": "Aguilar de Campoo",
+        "lat": 42.79265,
+        "lng": -4.25994
+      },
+      {
+        "slug": "barrio-de-santa-maria",
+        "nombre": "Barrio de Santa María",
+        "lat": 42.81291,
+        "lng": -4.3797
+      },
+      {
+        "slug": "mave",
+        "nombre": "Mave",
+        "lat": 42.73673,
+        "lng": -4.27395
+      },
+      {
+        "slug": "olleros-de-pisuerga",
+        "nombre": "Olleros de Pisuerga",
+        "lat": 42.74428,
+        "lng": -4.28791
+      },
+      {
+        "slug": "villanueva-de-henares",
+        "nombre": "Villanueva de Henares",
+        "lat": 42.84836,
+        "lng": -4.16087
+      },
+      {
+        "slug": "villavega-de-aguilar",
+        "nombre": "Villavega de Aguilar",
+        "lat": 42.8532676,
+        "lng": -4.2578258
+      }
+    ],
+    "autor": "pablo-aguado"
+  },
+  {
+    "slug": "guardo",
+    "nombre": "Guardo",
+    "comarca_zona": {
+      "es": "Alto Carrión",
+      "en": "Upper Carrión valley"
+    },
+    "lat": 42.78894,
+    "lng": -4.84151,
+    "altitud_m": 1123,
+    "distancias_km": {
+      "palencia": 91
+    },
+    "intro": {
+      "es": "Guardo es la capital comarcal del Alto Carrión, en el extremo oeste de la provincia de Palencia, junto a León. Es una villa de origen minero, a 1.123 m de altitud, y una base práctica si vas a recorrer el valle del Carrión: su término linda con el de Velilla del Río Carrión, ya dentro del Parque Natural Montaña Palentina.\n\nSu historia reciente se explica con la antracita y con el ferrocarril de La Robla, el «Hullero», que llevaba el carbón hacia Bilbao. Ese tren de vía estrecha, hoy servicio de viajeros entre León y Bilbao, sigue parando en su estación. En la villa, sube al Otero para ver la iglesia de San Juan Bautista, gótica del siglo XIV, con una enigmática pila bautismal románica; pásate por la fachada barroca del palacio del Arzobispo Bullón, declarada BIC y restaurada en 2022, y busca los murales de arte urbano: uno de ellos, de David Esteban, fue elegido mejor mural del mundo de 2022 por la plataforma Street Art Cities. Si vas en viernes, coincidirás con el mercado semanal, el mayor mercado callejero de la provincia.",
+      "en": "Guardo is the main town of the Upper Carrión valley, on the far western edge of the province of Palencia, right by the border with León. It's a former mining town at 1,123 m, and a practical base for the Carrión valley: it borders Velilla del Río Carrión, which lies inside the Montaña Palentina Natural Park.\n\nIts recent history is all about anthracite and the La Robla railway, nicknamed 'El Hullero', which carried coal to Bilbao. The narrow-gauge line now runs passenger trains between León and Bilbao, and they still stop at Guardo. In town, climb the Otero to the church of San Juan Bautista, 14th-century Gothic, with a puzzling Romanesque font; take in the Baroque façade of the Archbishop Bullón palace, a listed monument restored in 2022; and seek out the street-art murals, one of which, by David Esteban, was voted the world's best mural of 2022 by Street Art Cities. Come on a Friday and you'll catch the weekly market, the biggest street market in the province."
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Cómo llegar a Guardo?",
+          "en": "How do I get to Guardo?"
+        },
+        "respuesta": {
+          "es": "Guardo está a 91 km de Palencia, a 85 km de León y a 32 km de Cervera de Pisuerga. Además de por carretera, puedes llegar en tren: la estación de Guardo está en la línea de vía estrecha de La Robla, con servicios regionales de Renfe entre León y Bilbao y trenes de cercanías hacia León.",
+          "en": "Guardo is 91 km from Palencia, 85 km from León and 32 km from Cervera de Pisuerga. As well as by road, you can arrive by train: Guardo station is on the narrow-gauge La Robla line, with Renfe regional services between León and Bilbao and commuter trains towards León."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Qué ver en Guardo?",
+          "en": "What is there to see in Guardo?"
+        },
+        "respuesta": {
+          "es": "En Guardo merece la pena subir al Otero, donde está la iglesia de San Juan Bautista, gótica del siglo XIV y con una pila bautismal románica que algunos historiadores fechan en el siglo XIII; ver la fachada barroca del palacio del Arzobispo Bullón, del siglo XVIII, y recorrer los murales de arte urbano de la villa, entre ellos el de David Esteban, elegido mejor mural del mundo de 2022 por Street Art Cities.",
+          "en": "In Guardo, it's worth climbing the Otero to the church of San Juan Bautista, 14th-century Gothic with a Romanesque font that some historians date to the 13th century; seeing the 18th-century Baroque façade of the Archbishop Bullón palace; and walking round the town's street-art murals, including David Esteban's, voted the world's best mural of 2022 by Street Art Cities."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Guardo está dentro del Parque Natural Montaña Palentina?",
+          "en": "Is Guardo inside the Montaña Palentina Natural Park?"
+        },
+        "respuesta": {
+          "es": "No. Guardo no es uno de los diez municipios del Parque Natural Montaña Palentina, pero el límite del parque sigue durante un tramo la raya entre Guardo y Velilla del Río Carrión. Por eso Guardo es una buena base para entrar al parque por el valle del Carrión.",
+          "en": "No. Guardo isn't one of the ten municipalities in the Montaña Palentina Natural Park, but the park boundary runs for a stretch along the line between Guardo and Velilla del Río Carrión. That makes Guardo a handy base for heading into the park up the Carrión valley."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Qué día hay mercado y cuándo son las fiestas de Guardo?",
+          "en": "When is Guardo's market, and when are its fiestas?"
+        },
+        "respuesta": {
+          "es": "Guardo celebra mercado todos los viernes del año, el mercado callejero más grande de la provincia de Palencia. Las fiestas patronales son la semana del 13 de junio, por San Antonio de Padua; el 16 de julio hay romería de la Virgen del Carmen y el 4 de diciembre se celebra Santa Bárbara, patrona de los mineros.",
+          "en": "Guardo holds its market every Friday of the year, the largest street market in the province of Palencia. The main fiestas fall in the week of 13 June, for St Anthony of Padua; there's a pilgrimage for Our Lady of Mount Carmel on 16 July, and St Barbara, patron saint of miners, is celebrated on 4 December."
+        }
+      }
+    ],
+    "nucleos": [
+      {
+        "slug": "guardo",
+        "nombre": "Guardo",
+        "lat": 42.78894,
+        "lng": -4.84151
+      },
+      {
+        "slug": "muneca",
+        "nombre": "Muñeca",
+        "lat": 42.7923,
+        "lng": -4.80147
+      },
+      {
+        "slug": "intorcisa",
+        "nombre": "Intorcisa",
+        "lat": 42.78271,
+        "lng": -4.79922
+      },
+      {
+        "slug": "san-pedro-de-cansoles",
+        "nombre": "San Pedro de Cansoles",
+        "lat": 42.75425,
+        "lng": -4.91617
+      }
+    ],
+    "autor": "pablo-aguado"
+  },
+  {
+    "slug": "la-pernia",
+    "nombre": "La Pernía",
+    "comarca_zona": {
+      "es": "Parque Natural Montaña Palentina",
+      "en": "Montaña Palentina Natural Park"
+    },
+    "lat": 42.96667,
+    "lng": -4.49559,
+    "altitud_m": 1108,
+    "distancias_km": {
+      "palencia": 130
+    },
+    "intro": {
+      "es": "La Pernía es el municipio más septentrional de la provincia de Palencia, pegado a Cantabria, y uno de los diez que forman el Parque Natural Montaña Palentina. No busques un pueblo llamado así: La Pernía es un valle y antigua comarca con doce núcleos, y su capital es San Salvador de Cantamuda. Lo cruza la CL-627, la carretera de Cervera de Pisuerga a Potes, que sube hasta el puerto de Piedrasluengas, a 1.355 m, con mirador hacia Liébana y los Picos de Europa.\n\nLa parada obligada es la colegiata de San Salvador de Cantamuda, románica de finales del siglo XII, con una espadaña de tres cuerpos que se ve desde la carretera; es Bien de Interés Cultural desde 1993. En la misma localidad tienes un rollo de justicia del siglo XVI. Muy cerca está la abadía de Lebanza, reconstruida en 1780 con una iglesia neoclásica en cruz griega. Y desde Santa María de Redondo sale el camino a Fuente Cobre, la cueva que durante siglos se tuvo por el nacimiento del Pisuerga.",
+      "en": "La Pernía is the northernmost municipality in the province of Palencia, right up against Cantabria, and one of the ten that make up the Montaña Palentina Natural Park. Don't go looking for a village of that name: La Pernía is a valley and historic district with twelve villages, and its capital is San Salvador de Cantamuda. The CL-627, the road from Cervera de Pisuerga to Potes, runs through it and climbs to the Piedrasluengas pass at 1,355 m, with a viewpoint over Liébana and the Picos de Europa.\n\nThe one stop you shouldn't skip is the collegiate church of San Salvador de Cantamuda, late 12th-century Romanesque, with a three-tier bell gable you can spot from the road; it has been a protected monument since 1993. The same village has a 16th-century stone justice pillar. Close by is the abbey of Lebanza, rebuilt in 1780 around a Neoclassical Greek-cross church. And from Santa María de Redondo a path leads to Fuente Cobre, the cave long believed to be the source of the Pisuerga."
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Existe un pueblo llamado La Pernía?",
+          "en": "Is there a village called La Pernía?"
+        },
+        "respuesta": {
+          "es": "No. La Pernía es el nombre del municipio y de la antigua comarca, formada en 1976 al unirse los municipios de San Salvador de Cantamuda, Lores y Redondo-Areños. Su capital y sede del ayuntamiento es San Salvador de Cantamuda, y el término reúne doce núcleos, entre ellos Areños, Camasobres, Lebanza, Lores, Piedrasluengas y Santa María de Redondo.",
+          "en": "No. La Pernía is the name of the municipality and of the old district, formed in 1976 when San Salvador de Cantamuda, Lores and Redondo-Areños merged. Its capital and town hall are in San Salvador de Cantamuda, and the municipality takes in twelve villages, including Areños, Camasobres, Lebanza, Lores, Piedrasluengas and Santa María de Redondo."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Cómo llegar a La Pernía?",
+          "en": "How do I get to La Pernía?"
+        },
+        "respuesta": {
+          "es": "La Pernía está a 130 km de Palencia. Se llega desde Cervera de Pisuerga por la CL-627, la carretera hacia Potes, que pasa junto a San Salvador de Cantamuda y sigue hasta el puerto de Piedrasluengas, en el límite con Cantabria. Desde la misma carretera, un desvío sube a Tremaya, San Juan de Redondo y Santa María de Redondo, a 22 km de Cervera. En transporte público hay líneas a la demanda desde Cervera hasta pueblos como Piedrasluengas, que se reservan por teléfono.",
+          "en": "La Pernía is 130 km from Palencia. From Cervera de Pisuerga, take the CL-627 towards Potes, which passes San Salvador de Cantamuda and carries on up to the Piedrasluengas pass on the Cantabrian border. A turning off the same road climbs to Tremaya, San Juan de Redondo and Santa María de Redondo, 22 km from Cervera. On public transport, there are bookable on-demand services from Cervera to villages such as Piedrasluengas."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Qué ver en La Pernía en un día?",
+          "en": "What can I see in La Pernía in a day?"
+        },
+        "respuesta": {
+          "es": "En un día por La Pernía puedes ver la colegiata románica de San Salvador de Cantamuda y su rollo de justicia, acercarte a la abadía de Lebanza, recorrer la arquitectura tradicional de Lebanza y Lores, y subir al puerto de Piedrasluengas (1.355 m) por las vistas hacia Liébana y los Picos de Europa. Si te apetece caminar, la excursión a Fuente Cobre sale de Santa María de Redondo.",
+          "en": "A day in La Pernía is enough to see the Romanesque collegiate church of San Salvador de Cantamuda and its justice pillar, visit the abbey of Lebanza, take in the traditional houses of Lebanza and Lores, and drive up to the Piedrasluengas pass (1,355 m) for the views over Liébana and the Picos de Europa. If you fancy a walk, the outing to Fuente Cobre starts from Santa María de Redondo."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿El Pisuerga nace en Fuente Cobre?",
+          "en": "Does the Pisuerga rise at Fuente Cobre?"
+        },
+        "respuesta": {
+          "es": "No exactamente. Fuente Cobre, la cueva del Cobre de La Pernía, se consideró durante mucho tiempo el nacimiento del río Pisuerga, pero los estudios espeleológicos demostraron que el río nace más arriba, en el circo glaciar de Covarrés, al pie del Valdecebollas; se sume en la roca y reaparece unos tres kilómetros más abajo en Fuente Cobre. Al lugar se llega a pie desde Santa María de Redondo, entre praderas y bosque.",
+          "en": "Not quite. Fuente Cobre, the Cueva del Cobre in La Pernía, was long thought to be the source of the Pisuerga, but caving surveys showed that the river rises higher up, in the glacial cirque of Covarrés below Valdecebollas; it sinks into the rock and re-emerges about three kilometres further down at Fuente Cobre. You reach it on foot from Santa María de Redondo, through meadows and woodland."
+        }
+      }
+    ],
+    "nucleos": [
+      {
+        "slug": "san-salvador-de-cantamuda",
+        "nombre": "San Salvador de Cantamuda",
+        "lat": 42.96667,
+        "lng": -4.49559
+      },
+      {
+        "slug": "santa-maria-de-redondo",
+        "nombre": "Santa María de Redondo",
+        "lat": 42.99048,
+        "lng": -4.43435
+      },
+      {
+        "slug": "piedrasluengas",
+        "nombre": "Piedrasluengas",
+        "lat": 43.03711,
+        "lng": -4.4578
+      },
+      {
+        "slug": "lebanza",
+        "nombre": "Lebanza",
+        "lat": 42.96875,
+        "lng": -4.5274
+      },
+      {
+        "slug": "arenos",
+        "nombre": "Areños",
+        "lat": 42.99239,
+        "lng": -4.48892
+      },
+      {
+        "slug": "camasobres",
+        "nombre": "Camasobres",
+        "lat": 43.01524,
+        "lng": -4.48802
+      },
+      {
+        "slug": "lores",
+        "nombre": "Lores",
+        "lat": 42.99657,
+        "lng": -4.53158
+      },
+      {
+        "slug": "san-juan-de-redondo",
+        "nombre": "San Juan de Redondo",
+        "lat": 42.9886021,
+        "lng": -4.4512072
+      }
+    ],
+    "autor": "pablo-aguado"
+  },
+  {
+    "slug": "dehesa-de-montejo",
+    "nombre": "Dehesa de Montejo",
+    "comarca_zona": {
+      "es": "Parque Natural Montaña Palentina",
+      "en": "Montaña Palentina Natural Park"
+    },
+    "lat": 42.81904,
+    "lng": -4.50935,
+    "altitud_m": 1090,
+    "distancias_km": {
+      "palencia": 110
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Dónde empieza la senda de la Tejeda de Tosande?",
+          "en": "Where does the Tosande yew wood walk start?"
+        },
+        "respuesta": {
+          "es": "La senda de la Tejeda de Tosande sale de un aparcamiento junto a la carretera CL-626, en el término de Dehesa de Montejo, a unos 6 km de Cervera de Pisuerga en dirección a Guardo. El aparcamiento es de tierra y está pensado para uso diurno.",
+          "en": "The Tosande yew wood walk starts from a car park beside the CL-626 road, within Dehesa de Montejo, about 6 km from Cervera de Pisuerga in the direction of Guardo. It's an unsurfaced car park intended for daytime use."
+        }
+      }
+    ],
+    "nucleos": [
+      {
+        "slug": "dehesa-de-montejo",
+        "nombre": "Dehesa de Montejo",
+        "lat": 42.81904,
+        "lng": -4.50935
+      },
+      {
+        "slug": "colmenares-de-ojeda",
+        "nombre": "Colmenares de Ojeda",
+        "lat": 42.79535,
+        "lng": -4.52238
+      },
+      {
+        "slug": "vado",
+        "nombre": "Vado",
+        "lat": 42.85408,
+        "lng": -4.48216
+      }
+    ]
+  },
+  {
+    "slug": "branosera",
+    "nombre": "Brañosera",
+    "comarca_zona": {
+      "es": "Parque Natural Montaña Palentina",
+      "en": "Montaña Palentina Natural Park"
+    },
+    "lat": 42.93519,
+    "lng": -4.30785,
+    "altitud_m": 1211,
+    "intro": {
+      "es": "Brañosera presume de ser el primer ayuntamiento de España: en el año 824 el conde Munio Núñez le otorgó la primera carta puebla conocida, y cada 13 de octubre lo celebra con el Día del Fuero. El pueblo está a 1.211 m, en la vertiente sur de la sierra de Híjar, dentro del Parque Natural Montaña Palentina y a la sombra del macizo de Valdecebollas, donde nace el río Rubagón.\n\nSu antiguo nombre, Brannia Ossaria, se traduce como «tierra de brañas y de osos», y el oso pardo sigue presente en estos montes, igual que el urogallo, entre hayedos, robledales, acebos y tejos. En el pueblo, la iglesia de Santa Eulalia conserva el muro sur y la espadaña románicos, y la pequeña iglesia de San Miguel, en el cementerio, guarda una lápida de consagración de 1118. En Valberzoso verás un puente romano y la iglesia de Santa María la Real, con muros románicos de sillería. Por encima del pueblo, la carretera de El Golobar es la que más alto llega de Castilla y León.",
+      "en": "Brañosera claims to be Spain's first town council: in 824 Count Munio Núñez granted it the earliest known settlement charter, and every 13 October the village celebrates the Día del Fuero. It sits at 1,211 m on the southern slopes of the Sierra de Híjar, inside the Montaña Palentina Natural Park and below the Valdecebollas massif, where the River Rubagón rises.\n\nIts old name, Brannia Ossaria, means 'land of mountain pastures and bears', and brown bears still roam these hills, as do capercaillie, among beech, oak, holly and yew woods. In the village, the church of Santa Eulalia keeps its Romanesque south wall and bell gable, and the little church of San Miguel, in the cemetery, has a consecration stone dated 1118. In Valberzoso you'll find a Roman bridge and the church of Santa María la Real, with Romanesque ashlar walls. Above the village, the road to El Golobar climbs higher than any other road in Castilla y León."
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Por qué se dice que Brañosera es el primer ayuntamiento de España?",
+          "en": "Why is Brañosera called Spain's first town council?"
+        },
+        "respuesta": {
+          "es": "Porque Brañosera recibió el 13 de octubre de 824 la primera carta puebla conocida, concedida por el conde Munio Núñez y su mujer Argilo para repoblar la zona. Ese fuero organizó a los vecinos en concejo, y por eso Brañosera se considera el primer ayuntamiento de España. Cada 13 de octubre se celebra el Día del Fuero.",
+          "en": "Because on 13 October 824 Brañosera received the earliest known settlement charter, granted by Count Munio Núñez and his wife Argilo to repopulate the area. The charter organised the villagers into a council, which is why Brañosera is regarded as Spain's first town council. The Día del Fuero is celebrated every 13 October."
+        }
+      }
+    ],
+    "nucleos": [
+      {
+        "slug": "branosera",
+        "nombre": "Brañosera",
+        "lat": 42.93519,
+        "lng": -4.30785
+      },
+      {
+        "slug": "valberzoso",
+        "nombre": "Valberzoso",
+        "lat": 42.91285,
+        "lng": -4.24255
+      },
+      {
+        "slug": "salcedillo",
+        "nombre": "Salcedillo",
+        "lat": 42.94101,
+        "lng": -4.27362
+      },
+      {
+        "slug": "orbo",
+        "nombre": "Orbó",
+        "lat": 42.87972,
+        "lng": -4.25483
+      },
+      {
+        "slug": "vallejo-de-orbo",
+        "nombre": "Vallejo de Orbó",
+        "lat": 42.88494,
+        "lng": -4.26241
+      }
+    ],
+    "autor": "pablo-aguado"
+  },
+  {
+    "slug": "pomar-de-valdivia",
+    "nombre": "Pomar de Valdivia",
+    "comarca_zona": {
+      "es": "La Valdivia · Geoparque Las Loras",
+      "en": "La Valdivia · Las Loras UNESCO Global Geopark"
+    },
+    "lat": 42.77458,
+    "lng": -4.16749,
+    "altitud_m": 944,
+    "distancias_km": {
+      "palencia": 107
+    },
+    "intro": {
+      "es": "Pomar de Valdivia es un municipio de la comarca de La Valdivia, en el norte de Palencia, y uno de los municipios del Geoparque Mundial de la UNESCO Las Loras, el primero de Castilla y León, declarado en 2017. Si te interesan los páramos calizos, las cuevas y los paisajes kársticos, es una buena escapada desde Aguilar de Campoo.\n\nEl municipio agrupa catorce localidades, y dos de ellas, Cezura y Lastrilla, son enclaves palentinos dentro del municipio cántabro de Valderredible. En Revilla de Pomar está la cueva de los Franceses, acondicionada para la visita con un recorrido de unos 500 metros y un centro de recepción de la Diputación de Palencia inaugurado en 2009. Su nombre recuerda a los soldados franceses que acabaron allí durante la Guerra de la Independencia. Desde la cueva sale una ruta señalizada hasta el menhir de Canto Hito, y a 1,5 km está el mirador de Valcabado, asomado al valle de Valderredible. Dato práctico: la estación de tren de Aguilar de Campoo está en Camesa de Valdivia, dentro de este municipio.",
+      "en": "Pomar de Valdivia is a municipality in the La Valdivia district of northern Palencia, and one of the municipalities in the Las Loras UNESCO Global Geopark, the first in Castilla y León, designated in 2017. If limestone uplands, caves and karst scenery are your thing, it makes an easy outing from Aguilar de Campoo.\n\nThe municipality takes in fourteen villages, and two of them, Cezura and Lastrilla, are Palencia enclaves inside the Cantabrian municipality of Valderredible. In Revilla de Pomar is the Cueva de los Franceses, set up for visitors with a route of about 500 metres and a visitor centre opened by the Diputación de Palencia in 2009. Its name recalls the French soldiers left there during the Peninsular War. A waymarked path runs from the cave to the Canto Hito standing stone, and 1.5 km away the Valcabado viewpoint looks out over the Valderredible valley. Handy to know: Aguilar de Campoo railway station is actually in Camesa de Valdivia, within this municipality."
+    },
+    "nucleos": [
+      {
+        "slug": "pomar-de-valdivia",
+        "nombre": "Pomar de Valdivia",
+        "lat": 42.77458,
+        "lng": -4.16749
+      },
+      {
+        "slug": "revilla-de-pomar",
+        "nombre": "Revilla de Pomar",
+        "lat": 42.77111,
+        "lng": -4.15188
+      },
+      {
+        "slug": "villaescusa-de-las-torres",
+        "nombre": "Villaescusa de las Torres",
+        "lat": 42.75905,
+        "lng": -4.2529
+      }
+    ],
+    "autor": "pablo-aguado"
+  }
+]

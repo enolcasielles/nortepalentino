@@ -1,0 +1,87 @@
+[
+  {
+    "slug": {
+      "es": "iglesias-romanicas",
+      "en": "romanesque-churches"
+    },
+    "nombre": {
+      "es": "Iglesia románica",
+      "en": "Romanesque church"
+    },
+    "nombre_plural": {
+      "es": "Iglesias románicas",
+      "en": "Romanesque churches"
+    },
+    "tipo_schema": "Church",
+    "color_token": "romanico",
+    "icono": "iglesia"
+  },
+  {
+    "slug": {
+      "es": "museos",
+      "en": "museums"
+    },
+    "nombre": {
+      "es": "Museo",
+      "en": "Museum"
+    },
+    "nombre_plural": {
+      "es": "Museos",
+      "en": "Museums"
+    },
+    "tipo_schema": "Museum",
+    "color_token": "museo",
+    "icono": "museo"
+  },
+  {
+    "slug": {
+      "es": "miradores",
+      "en": "viewpoints"
+    },
+    "nombre": {
+      "es": "Mirador",
+      "en": "Viewpoint"
+    },
+    "nombre_plural": {
+      "es": "Miradores",
+      "en": "Viewpoints"
+    },
+    "tipo_schema": "TouristAttraction",
+    "color_token": "naturaleza",
+    "icono": "mirador"
+  },
+  {
+    "slug": {
+      "es": "cascadas",
+      "en": "waterfalls"
+    },
+    "nombre": {
+      "es": "Cascada",
+      "en": "Waterfall"
+    },
+    "nombre_plural": {
+      "es": "Cascadas",
+      "en": "Waterfalls"
+    },
+    "tipo_schema": "Waterfall",
+    "color_token": "naturaleza",
+    "icono": "cascada"
+  },
+  {
+    "slug": {
+      "es": "castillos",
+      "en": "castles"
+    },
+    "nombre": {
+      "es": "Castillo",
+      "en": "Castle"
+    },
+    "nombre_plural": {
+      "es": "Castillos",
+      "en": "Castles"
+    },
+    "tipo_schema": "LandmarksOrHistoricalBuildings",
+    "color_token": "romanico",
+    "icono": "castillo"
+  }
+]

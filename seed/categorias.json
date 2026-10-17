@@ -1,0 +1,70 @@
+[
+  {
+    "slug": {
+      "es": "restaurantes",
+      "en": "restaurants"
+    },
+    "nombre": {
+      "es": "Restaurante",
+      "en": "Restaurant"
+    },
+    "nombre_plural": {
+      "es": "Restaurantes",
+      "en": "Restaurants"
+    },
+    "tipo_schema": "Restaurant",
+    "color_token": "comer",
+    "icono": "restaurante"
+  },
+  {
+    "slug": {
+      "es": "hoteles",
+      "en": "hotels"
+    },
+    "nombre": {
+      "es": "Hotel",
+      "en": "Hotel"
+    },
+    "nombre_plural": {
+      "es": "Hoteles",
+      "en": "Hotels"
+    },
+    "tipo_schema": "Hotel",
+    "color_token": "dormir",
+    "icono": "hotel"
+  },
+  {
+    "slug": {
+      "es": "casas-rurales",
+      "en": "holiday-cottages"
+    },
+    "nombre": {
+      "es": "Casa rural",
+      "en": "Holiday cottage"
+    },
+    "nombre_plural": {
+      "es": "Casas rurales",
+      "en": "Holiday cottages"
+    },
+    "tipo_schema": "LodgingBusiness",
+    "color_token": "dormir",
+    "icono": "casa-rural"
+  },
+  {
+    "slug": {
+      "es": "turismo-activo",
+      "en": "outdoor-activities"
+    },
+    "nombre": {
+      "es": "Turismo activo",
+      "en": "Outdoor activity"
+    },
+    "nombre_plural": {
+      "es": "Turismo activo",
+      "en": "Outdoor activities"
+    },
+    "tipo_schema": "SportsActivityLocation",
+    "color_token": "activo",
+    "icono": "turismo-activo"
+  }
+]

@@ -1,0 +1,461 @@
+[
+  {
+    "slug": "restaurante-penalabra-cervera",
+    "nombre": "Restaurante Peñalabra",
+    "categoria": "restaurantes",
+    "nucleo": "cervera-de-pisuerga",
+    "direccion": "Calle Labradores 72, 34840 Cervera de Pisuerga (Palencia)",
+    "lat": 42.868326,
+    "lng": -4.4982944,
+    "telefono": "+34 979 87 00 37",
+    "web": "https://xn--hotelruralpealabra-y0b.es/restaurante/",
+    "horario_texto": {
+      "es": "Lunes cerrado por descanso. Cenas solo viernes y sábado.",
+      "en": "Closed on Mondays. Dinner on Fridays and Saturdays only."
+    },
+    "descripcion": {
+      "es": "El Peñalabra es el restaurante del hotel rural del mismo nombre, en pleno Cervera, y lo lleva la misma familia desde 1932: hoy está al frente de la cocina Santos César, que recogió el testigo de su madre, Ángeles Bascones. Su plato insignia son los caracoles, y en la carta también verás potaje de garbanzos con calamares y almejas, menestra palentina, sopas avahadas con senderuelas, carne de Cervera o caracola de trucha rellena. Tienen menú del día y carta, y nunca menos de diez postres caseros. Son dos comedores, uno de ellos con salida a la terraza.",
+      "en": "Peñalabra is the restaurant of the rural hotel of the same name in the centre of Cervera, run by the same family since 1932. Santos César now heads the kitchen, taking over from his mother, Ángeles Bascones. The house speciality is snails, and the menu also features chickpea stew with squid and clams, Palencia-style vegetable menestra, garlic soup with fairy ring mushrooms, local Cervera beef and stuffed trout. There's a set lunch menu as well as à la carte, and never fewer than ten homemade desserts. It has two dining rooms, one opening onto the terrace."
+    },
+    "atributos_familia": [],
+    "fuente_url": "https://xn--hotelruralpealabra-y0b.es/restaurante/",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "restaurante-taxus-cervera",
+    "nombre": "Restaurante Taxus",
+    "categoria": "restaurantes",
+    "nucleo": "cervera-de-pisuerga",
+    "direccion": "Calle Antonio Villanueva s/n (Camping Fuentes Carrionas), 34840 Cervera de Pisuerga (Palencia)",
+    "lat": 42.8730582,
+    "lng": -4.5057714,
+    "telefono": "+34 979 87 04 24",
+    "email": "info@campingfuentescarrionas.com",
+    "web": "https://restaurantetaxus.wixsite.com/taxus",
+    "horario_texto": {
+      "es": "Comidas de jueves a lunes, de 14:00 a 15:30. Cenas viernes y sábado, de 20:30 a 21:30. Martes y miércoles cerrado.",
+      "en": "Lunch Thursday to Monday, 2pm–3:30pm. Dinner Friday and Saturday, 8:30pm–9:30pm. Closed Tuesdays and Wednesdays."
+    },
+    "precio_rango": "€€",
+    "descripcion": {
+      "es": "Taxus es el restaurante del camping Fuentes Carrionas, en Cervera, y cocina con producto fresco, local y de temporada. Tiene comedor interior y una terraza cubierta y climatizada que funciona todo el año. La brasa manda en la carta: chuletón de lomo alto, chuletillas y brocheta de lechazo, tataki de ternera o costilla de cerdo Duroc. Hay guiños a la zona, como el milhojas de morcilla de Cervera o el carpaccio de trucha del Pisuerga ahumada, y arroces por encargo para dos o más. Los viernes y sábados por la noche sirven una carta más corta para compartir.",
+      "en": "Taxus is the restaurant at the Fuentes Carrionas campsite in Cervera, cooking with fresh, local, seasonal produce. There's an indoor dining room and a covered, heated terrace you can use all year round. The grill takes centre stage: rib steak, lamb chops and skewers, beef tataki and Duroc pork ribs. Local touches include a Cervera black pudding millefeuille and smoked Pisuerga trout carpaccio, and rice dishes can be ordered in advance for two or more. On Friday and Saturday evenings there's a shorter sharing menu."
+    },
+    "atributos_familia": [],
+    "fuente_url": "https://restaurantetaxus.wixsite.com/taxus",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "restaurante-del-parador-de-cervera",
+    "nombre": "Restaurante del Parador de Cervera de Pisuerga",
+    "categoria": "restaurantes",
+    "nucleo": "ventanilla",
+    "direccion": "Ctra. de Resoba, km 2,5, 34840 Cervera de Pisuerga (Palencia)",
+    "lat": 42.8717212,
+    "lng": -4.5214643,
+    "telefono": "+34 979 87 00 75",
+    "email": "cervera@parador.es",
+    "web": "https://paradores.es/es/restaurante-del-parador-de-cervera-de-pisuerga",
+    "horario_texto": {
+      "es": "Desayuno de 8:00 a 11:00. Almuerzo de 13:30 a 16:00. Cena de 20:30 a 23:00. Cafetería de 11:00 a 24:00.",
+      "en": "Breakfast 8am–11am. Lunch 1:30pm–4pm. Dinner 8:30pm–11pm. Café 11am–midnight."
+    },
+    "descripcion": {
+      "es": "El comedor del Parador de Cervera mira al embalse de Ruesga y a las cumbres de la Montaña Palentina, a unos 2 km del pueblo. Hacen cocina tradicional castellana, sencilla y con producto fresco y local, y en temporada de setas apuestan por la micología. En la carta hay chuleta y solomillo de ternera, bacalao, torreznos, gallo de corral, embutidos de caza y pulpo, junto a clásicos palentinos como el lechazo churro asado, la menestra o la sopa castellana. De postre, tarta casera de manzana reineta y trufas de Camporredondo.",
+      "en": "The Parador de Cervera's dining room looks out over the Ruesga reservoir and the peaks of the Palencia Mountains, about 2 km from the village. The cooking is traditional Castilian, simple and based on fresh local produce, with wild mushrooms taking the lead in season. The menu includes veal chop and sirloin, cod, crispy pork belly, free-range rooster, game charcuterie and octopus, alongside Palencia classics such as roast milk-fed lamb, vegetable menestra and Castilian garlic soup. For pudding, there's homemade reineta apple tart and Camporredondo truffles."
+    },
+    "atributos_familia": [
+      "parking"
+    ],
+    "fuente_url": "https://paradores.es/es/restaurante-del-parador-de-cervera-de-pisuerga",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "nune-restaurante-aguilar",
+    "nombre": "Nune Restaurante",
+    "categoria": "restaurantes",
+    "nucleo": "aguilar-de-campoo",
+    "direccion": "Plaza España 7, 1ª planta, 34800 Aguilar de Campoo (Palencia)",
+    "lat": 42.792688,
+    "lng": -4.2609634,
+    "telefono": "+34 979 06 90 35",
+    "email": "nunerestaurante@gmail.com",
+    "web": "https://nunerestaurante.com/",
+    "horario_texto": {
+      "es": "Comidas todos los días de 13:30 a 16:00, salvo lunes (cerrado). Cenas: consultar.",
+      "en": "Lunch daily 1:30pm–4pm except Mondays (closed). Dinner: ask when booking."
+    },
+    "descripcion": {
+      "es": "Nune está en la primera planta de un edificio de la Plaza España de Aguilar, en pleno centro. Su cocina parte de recetas tradicionales y producto local y de temporada, y las reinterpreta con técnicas actuales; la carta va cambiando a lo largo del año. El local sigue la misma idea: un espacio sencillo, sin adornos de más. Si sigues una dieta vegana, el equipo te propone opciones si lo pides, y tienen una bodega amplia con vinos de Rioja, Ribera del Duero y Castilla y León, entre otros. Abren a mediodía y conviene reservar.",
+      "en": "Nune is on the first floor of a building on Plaza España, right in the centre of Aguilar. The kitchen starts from traditional recipes and local, seasonal produce and gives them a contemporary twist, with a menu that changes through the year. The dining room follows the same pared-back idea. If you're vegan, the team can suggest options on request, and there's a broad wine list covering Rioja, Ribera del Duero and Castilla y León, among others. It opens for lunch, and booking ahead is a good idea."
+    },
+    "atributos_familia": [],
+    "fuente_url": "https://nunerestaurante.com/",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "meson-anejo-aguilar",
+    "nombre": "Mesón Añejo",
+    "categoria": "restaurantes",
+    "nucleo": "aguilar-de-campoo",
+    "direccion": "Calle Comercio 10, 34800 Aguilar de Campoo (Palencia)",
+    "lat": 42.7936436,
+    "lng": -4.2640315,
+    "telefono": "+34 979 12 29 71",
+    "web": "https://mesonanejo.wixsite.com/anejo",
+    "horario_texto": {
+      "es": "Comidas de jueves a martes (miércoles cerrado). Cenas viernes y sábado; su página de contacto añade también el domingo noche, así que confírmalo al reservar.",
+      "en": "Lunch Thursday to Tuesday (closed Wednesdays). Dinner on Fridays and Saturdays; their contact page also lists Sunday evenings, so check when you book."
+    },
+    "descripcion": {
+      "es": "El Mesón Añejo está en la calle Comercio, en el centro de Aguilar, y hace cocina tradicional y casera con algún toque actual. Sus especialidades son el chuletón de novillo a la piedra, con carne madurada entre 25 y 30 días, y el lechazo churro IGP de Castilla y León al horno. La carne y la morcilla vienen de la Montaña Palentina, las patatas son ecológicas del Geoparque Las Loras y las verduras y los tomates salen de su propia huerta en temporada. Tiene dos comedores, terraza de verano y vinoteca.",
+      "en": "Mesón Añejo sits on Calle Comercio in the centre of Aguilar and serves traditional home cooking with the odd modern touch. The specialities are stone-grilled beef rib steak, aged for 25 to 30 days, and oven-roasted milk-fed churra lamb with Castilla y León PGI status. The beef and black pudding come from the Palencia Mountains, the potatoes are organic from the Las Loras Geopark, and in season the vegetables and tomatoes come from their own kitchen garden. There are two dining rooms, a summer terrace and a wine bar."
+    },
+    "atributos_familia": [],
+    "fuente_url": "https://mesonanejo.wixsite.com/anejo",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "hostal-restaurante-los-olmos-aguilar",
+    "nombre": "Hostal Restaurante Los Olmos",
+    "categoria": "restaurantes",
+    "nucleo": "aguilar-de-campoo",
+    "direccion": "Polígono Industrial de Aguilar de Campoo, s/n, 34800 Aguilar de Campoo (Palencia)",
+    "lat": 42.7841076,
+    "lng": -4.2517621,
+    "telefono": "+34 979 12 55 05",
+    "email": "info@hotellosolmos.es",
+    "web": "https://hotellosolmos.es/",
+    "descripcion": {
+      "es": "Los Olmos es un hostal restaurante familiar que abrió en 1995 en el polígono industrial de Aguilar. La familia tiene ganadería propia de vacuno Angus, criado con pastos de la Montaña Palentina, y esa carne es la base de su brasa. También recomiendan el lechazo IGP asado en horno de leña y los postres caseros. De lunes a viernes hay menú del día, con al menos cuatro primeros y cuatro segundos, pan, vino y agua incluidos, y además carta. Tiene cafetería, dos comedores, terraza con columpios para los pequeños y aparcamiento fácil.",
+      "en": "Los Olmos is a family-run guesthouse and restaurant that opened in 1995 on Aguilar's industrial estate. The family raises its own Angus cattle on Palencia Mountains pasture, and that beef is the heart of the grill. They also recommend the PGI milk-fed lamb roasted in a wood-fired oven and the homemade desserts. Monday to Friday there's a set lunch menu with at least four starters and four mains, bread, wine and water included, plus à la carte. There's a café, two dining rooms, a terrace with swings for little ones and easy parking."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "parking"
+    ],
+    "fuente_url": "https://hotellosolmos.es/",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "posada-santa-maria-la-real",
+    "nombre": "Posada Santa María la Real",
+    "categoria": "hoteles",
+    "nucleo": "aguilar-de-campoo",
+    "direccion": "Avenida de Cervera s/n (Monasterio de Santa María la Real), 34800 Aguilar de Campoo (Palencia)",
+    "lat": 42.7962676,
+    "lng": -4.2729493,
+    "telefono": "+34 689 73 79 92",
+    "email": "info@posadasantamarialareal.com",
+    "web": "https://www.posadasantamarialareal.com/",
+    "descripcion": {
+      "es": "La Posada Santa María la Real ocupa un edificio de finales del siglo XVIII en el conjunto del monasterio de Santa María la Real, a la salida de Aguilar hacia Cervera. En la rehabilitación mantuvieron la piedra, la madera de roble, el ladrillo y el adobe, y conserva elementos románicos originales. Tiene 22 habitaciones dobles con Smart TV y minibar, cafetería, restaurante propio, jardín y terraza, y aparcamiento gratuito. La propia posada la recomienda para familias que vienen a conocer la zona, y la ficha oficial de turismo indica que admite perros.",
+      "en": "Posada Santa María la Real occupies a late 18th-century building within the Santa María la Real monastery complex, on the road out of Aguilar towards Cervera. The restoration kept the stone, oak, brick and adobe, along with original Romanesque features. There are 22 double rooms with smart TV and minibar, a café, its own restaurant, a garden and terrace, and free parking. The posada itself pitches it at families exploring the area, and the official tourism listing notes that dogs are welcome."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "admite-mascotas",
+      "parking"
+    ],
+    "fuente_url": "https://www.posadasantamarialareal.com/",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "hotel-valentin-aguilar",
+    "nombre": "Hotel Restaurante Valentín",
+    "categoria": "hoteles",
+    "nucleo": "aguilar-de-campoo",
+    "direccion": "Avenida Ronda 21, 34800 Aguilar de Campoo (Palencia)",
+    "lat": 42.794445,
+    "lng": -4.2651787,
+    "telefono": "+34 979 12 21 25",
+    "email": "reservas@hotelvalentin.com",
+    "web": "https://hotelvalentin.com/",
+    "descripcion": {
+      "es": "El Valentín es un hotel de Aguilar con más de 60 años de oficio en la cocina y las habitaciones renovadas por completo. Tiene 50 habitaciones, casi todas dobles, con baño completo, calefacción y teléfono. Su restaurante es conocido por el lechazo asado de Castilla y por una carta de vinos con bodegas de prestigio, y los salones se usan para bodas y celebraciones. La cafetería abre desde las 7:30 y los viernes y sábados sirve cenas informales: hamburguesas, sándwiches, sartenes y raciones. Dispone de garaje o aparcamiento.",
+      "en": "Hotel Valentín in Aguilar has more than 60 years behind its kitchen and fully renovated rooms. There are 50 rooms, nearly all doubles, with full bathroom, heating and telephone. The restaurant is known for its roast Castilian milk-fed lamb and a wine list drawn from well-regarded wineries, and its function rooms host weddings and celebrations. The café opens from 7:30am and serves casual suppers on Friday and Saturday nights: burgers, sandwiches, egg-and-potato pans and sharing plates. Garage parking is available."
+    },
+    "atributos_familia": [
+      "parking"
+    ],
+    "fuente_url": "https://hotelvalentin.com/",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "hotel-marques-de-aguilar",
+    "nombre": "Hotel Marqués de Aguilar",
+    "categoria": "hoteles",
+    "nucleo": "aguilar-de-campoo",
+    "direccion": "Calle Marqués de Aguilar 1, 34800 Aguilar de Campoo (Palencia)",
+    "lat": 42.7914184,
+    "lng": -4.2587542,
+    "telefono": "+34 979 03 02 76",
+    "email": "reservas@hotelmarquesdeaguilar.com",
+    "web": "https://www.hotelmarquesdeaguilar.com/",
+    "descripcion": {
+      "es": "El Marqués de Aguilar es un hotel de tres estrellas abierto en 2022 en el edificio que en Aguilar todos conocen como Las Italianas, una antigua casa de una congregación religiosa. Está a unos 200 m de la colegiata de San Miguel y de la Plaza España. Tiene 35 habitaciones dobles, twin, triples y cuádruples (hasta cuatro personas), pensadas también para familias, con cuna gratis bajo petición. Hay bar-cafetería, terraza, jardines y aparcamiento privado. No admite mascotas, salvo perros de asistencia.",
+      "en": "Hotel Marqués de Aguilar is a three-star hotel that opened in 2022 in the building locals know as Las Italianas, a former religious house. It's about 200 m from the collegiate church of San Miguel and Plaza España. There are 35 rooms in double, twin, triple and quadruple layouts (sleeping up to four), set up with families in mind, and a cot is free on request. You'll find a bar-café, terrace, gardens and private parking. Pets aren't allowed, except assistance dogs."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "cuna",
+      "parking"
+    ],
+    "fuente_url": "https://www.hotelmarquesdeaguilar.com/servicios",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "parador-de-cervera-de-pisuerga",
+    "nombre": "Parador de Cervera de Pisuerga",
+    "categoria": "hoteles",
+    "nucleo": "ventanilla",
+    "direccion": "Ctra. de Resoba, km 2,5, 34840 Cervera de Pisuerga (Palencia)",
+    "lat": 42.8717212,
+    "lng": -4.5214643,
+    "telefono": "+34 979 87 00 75",
+    "email": "cervera@parador.es",
+    "web": "https://paradores.es/es/parador-de-cervera-de-pisuerga",
+    "descripcion": {
+      "es": "El Parador de Cervera está a unos 2 km del pueblo, en la carretera de Resoba, con vistas al embalse de Ruesga y a los picos más altos de la Montaña Palentina. Tiene 80 habitaciones dobles: las hay con terraza y vista a la montaña o al pantano, y otras abuhardilladas. Si vas con niños, cuenta con parque infantil, sala de juegos y campo de fútbol. Admite mascotas, tiene aparcamiento exterior gratuito y garaje de pago, y su restaurante hace cocina tradicional castellana. Es buena base para las rutas de la Tejeda de Tosande o el Roblón de Estalava.",
+      "en": "The Parador de Cervera sits about 2 km outside the village on the Resoba road, looking over the Ruesga reservoir and the highest peaks of the Palencia Mountains. It has 80 double rooms, some with a terrace facing the mountains or the reservoir, others in the eaves. Travelling with children? There's a playground, a games room and a football pitch. Pets are welcome, outdoor parking is free (with a paid garage too), and the restaurant serves traditional Castilian food. It's a handy base for the Tejeda de Tosande and Roblón de Estalava walks."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "admite-mascotas",
+      "parking"
+    ],
+    "fuente_url": "https://paradores.es/es/parador-de-cervera-de-pisuerga",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "pnta-promocion-natural-y-turismo-activo",
+    "nombre": "PNTA – Promoción Natural y Turismo Activo",
+    "categoria": "turismo-activo",
+    "nucleo": "ventanilla",
+    "direccion": "C/ Iglesia, 15, Ventanilla, 34844 Cervera de Pisuerga (Palencia)",
+    "lat": 42.87965,
+    "lng": -4.56129,
+    "telefono": "+34 618 76 12 04",
+    "email": "info@pnta.es",
+    "web": "https://pnta.es",
+    "horario_texto": {
+      "es": "Todo el año, con reserva previa. Salidas hacia las 8:00 y hacia las 18:00. Berrea: de mediados de septiembre a mediados de octubre.",
+      "en": "All year round, booking essential. Departures at around 8am and around 6pm. Deer rut (berrea): mid-September to mid-October."
+    },
+    "descripcion": {
+      "es": "PNTA es una empresa de turismo activo con base en Ventanilla, a pocos kilómetros de Cervera de Pisuerga, inscrita en la Junta como centro de turismo activo. Lo suyo son las salidas en 4x4 por las pistas del Parque Natural Montaña Palentina: zona del Curavacas, valle de Pineda, Espigüete o nacimiento del Carrión, con guía, telescopio y prismáticos para buscar ciervos, jabalíes o rebecos. De mediados de septiembre a mediados de octubre organizan salidas para ver y escuchar la berrea. También proponen rutas de senderismo. Las excursiones en 4x4 duran unas 2,5–3 horas y funcionan siempre con reserva previa, con salida de mañana o de tarde.",
+      "en": "PNTA is an outdoor activity company based in Ventanilla, a few kilometres from Cervera de Pisuerga, and registered with the regional government as an active tourism centre. Its speciality is guided 4x4 trips along the tracks of the Montaña Palentina Natural Park – the Curavacas area, the Pineda valley, Espigüete and the source of the Carrión – with a guide, telescope and binoculars to look for red deer, wild boar and chamois. From mid-September to mid-October it runs outings to watch and hear the deer rut. It also offers guided walks. The 4x4 trips last about 2.5–3 hours and always need booking, with morning and evening departures."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "admite-mascotas"
+    ],
+    "fuente_url": "https://www.turismocastillayleon.com/en/nature/active-tourism/companies/promocion-natural-turismo-activo",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "el-velero-de-aguilar",
+    "nombre": "El Velero de Aguilar",
+    "categoria": "turismo-activo",
+    "nucleo": "aguilar-de-campoo",
+    "direccion": "Fondeadero de La Virgen del Llano, embalse de Aguilar, 34800 Aguilar de Campoo (Palencia)",
+    "lat": 42.78918,
+    "lng": -4.30252,
+    "telefono": "+34 602 41 53 83",
+    "web": "https://elvelerodeaguilar.com",
+    "horario_texto": {
+      "es": "De finales de abril a mediados de septiembre, según el nivel del embalse. Salidas a las 11:00 y a las 16:30; otros horarios, a consultar.",
+      "en": "Late April to mid-September, depending on the reservoir level. Departures at 11am and 4.30pm; other times on request."
+    },
+    "descripcion": {
+      "es": "El Velero de Aguilar organiza paseos en un velero de 18 pies por el embalse de Aguilar de Campoo, con Julio como patrón y guía. Se navega aprovechando el viento y las corrientes, y la ruta se adapta a lo que quieras ver: restos de pueblos sumergidos, calas para darte un baño, islas donde se refugian las ciervas, aves acuáticas como garzas o somormujos y el románico de la orilla. La salida básica dura 2 horas y se puede alargar; caben como máximo 4 personas. Se sale del fondeadero de La Virgen del Llano. Para niños tienen «Historias del Olimpo», una travesía con relatos de mitología griega adaptados a su edad.",
+      "en": "El Velero de Aguilar runs sailing trips on the Aguilar de Campoo reservoir aboard an 18-foot sailing boat, with Julio as skipper and guide. You sail using only the wind and currents, and the route depends on what you fancy: the remains of drowned villages, small coves for a swim, islands where hinds take refuge, water birds such as herons and grebes, and Romanesque churches along the shore. The basic trip lasts 2 hours and can be extended; there is room for up to 4 people. Boats leave from the La Virgen del Llano mooring. For children there is 'Stories of Olympus', a trip with Greek myths told to suit their age."
+    },
+    "atributos_familia": [
+      "admite-ninos"
+    ],
+    "fuente_url": "https://elvelerodeaguilar.com/actividades/",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "dosaves",
+    "nombre": "DOSAVES – Turismo de Observación de la Naturaleza",
+    "categoria": "turismo-activo",
+    "nucleo": "villavega-de-aguilar",
+    "direccion": "C/ Real, s/n, Villavega de Aguilar, 34810 Aguilar de Campoo (Palencia)",
+    "lat": 42.852362,
+    "lng": -4.258168,
+    "telefono": "+34 675 24 45 77",
+    "email": "tino.dosaves@gmail.com",
+    "horario_texto": {
+      "es": "Observación del lobo: todo el año salvo mayo, junio y julio, con reserva. Jornada completa (9 h) o media jornada (5 h).",
+      "en": "Wolf watching: all year except May, June and July, booking required. Full day (9 hrs) or half day (5 hrs)."
+    },
+    "descripcion": {
+      "es": "DOSAVES es una empresa de turismo de observación de la naturaleza con base en Villavega de Aguilar, en el municipio de Aguilar de Campoo, que colabora con el Geoparque Las Loras y el Parque Natural Montaña Palentina. Organiza salidas guiadas de botánica, aves, paisaje, baños de bosque y grandes carnívoros. La más buscada es la observación del lobo ibérico: vas en 4x4 hasta puntos con mucha vista, esperas unas dos horas con material óptico y los guías te enseñan a leer rastros. Hay jornada completa o media jornada, para grupos de 4 a 12 personas. Es apta para niños desde 11 años y hay guías en inglés y alemán.",
+      "en": "DOSAVES is a wildlife-watching company based in Villavega de Aguilar, in the municipality of Aguilar de Campoo, working with the Las Loras Geopark and the Montaña Palentina Natural Park. It runs guided outings on plants, birds, landscape, forest bathing and large carnivores. The best known is Iberian wolf watching: you travel by 4x4 to high vantage points, wait for around two hours with telescopes and binoculars, and the guides show you how to read tracks and signs. There are full-day and half-day options for groups of 4 to 12. It is suitable for children aged 11 and over, and guiding is available in English and German."
+    },
+    "atributos_familia": [
+      "admite-ninos"
+    ],
+    "fuente_url": "https://soyecoturista.com/en/actividad/observacion-del-lobo/experiencias-en-las-loras",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "alfonso-palazuelos-guia-de-naturaleza",
+    "nombre": "Alfonso Palazuelos, guía de naturaleza",
+    "categoria": "turismo-activo",
+    "nucleo": "rabanal-de-los-caballeros",
+    "direccion": "Barrio Rabanal de los Caballeros, 34846 Cervera de Pisuerga (Palencia)",
+    "lat": 42.8964545,
+    "lng": -4.4755133,
+    "telefono": "+34 646 60 53 63",
+    "descripcion": {
+      "es": "Alfonso Palazuelos es ambientólogo y guía de naturaleza, inscrito en el registro de turismo de la Junta con base en Rabanal de los Caballeros (Cervera de Pisuerga). Organiza salidas ecoturísticas para observar fauna en la Montaña Palentina y la vecina Liébana, para adultos y niños. El método es sencillo: subes en todoterreno hasta un punto alto con buena vista sobre las laderas y, desde ahí, toca esperar con telescopio y prismáticos al paso del oso, el lobo o los ciervos. Los mejores momentos son el amanecer y el atardecer. Respeta la política del parque natural y no difunde la ubicación de los puntos de observación. También guía viajes de naturaleza por la comarca para Naturetrek.",
+      "en": "Alfonso Palazuelos is an environmental scientist and nature guide, listed in the regional tourism register and based in Rabanal de los Caballeros (Cervera de Pisuerga). He leads wildlife-watching outings in the Montaña Palentina and neighbouring Liébana, for adults and children alike. The approach is simple: you drive by 4x4 up to a high spot overlooking the slopes, then wait with telescope and binoculars for bears, wolves or deer to show themselves. Dawn and dusk are the best times. In line with the natural park's policy, he keeps the exact viewing spots to himself. He also guides wildlife holidays in the area for Naturetrek."
+    },
+    "atributos_familia": [
+      "admite-ninos"
+    ],
+    "fuente_url": "https://www.turismocastillayleon.com/en/services/get-know/tourist-activities/alfonso-palazuelos-cobo",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "borrador"
+  },
+  {
+    "slug": "casa-las-vacas",
+    "nombre": "Casa Las Vacas",
+    "categoria": "casas-rurales",
+    "nucleo": "cervera-de-pisuerga",
+    "direccion": "C/ Primer Camino, s/n, 34840 Cervera de Pisuerga (Palencia)",
+    "lat": 42.860324,
+    "lng": -4.502741,
+    "telefono": "+34 629 62 47 55",
+    "email": "alojamientocasalasvacas@gmail.com",
+    "web": "https://www.casalasvacas.com",
+    "descripcion": {
+      "es": "Casa Las Vacas es una casa rural de alquiler íntegro en Cervera de Pisuerga, en una zona tranquila de la villa, para 13 personas más 4 camas supletorias. Tiene 6 habitaciones, todas con baño, salón con chimenea, un salón acristalado y cocina equipada. Lo que la distingue es el exterior: 1.500 m² con horno de leña, barbacoa y columpios, y un edificio con piscina cubierta climatizada, jacuzzi y sala de juegos con ping-pong y futbolín, de uso solo para los huéspedes. Hay cuna gratuita y aparcamiento privado. La llevan los mismos propietarios que las casas rurales de San Felices y Herreruela de Castillería.",
+      "en": "Casa Las Vacas is a whole-house rental in a quiet part of Cervera de Pisuerga, sleeping 13 plus 4 extra beds. It has 6 bedrooms, all en suite, a sitting room with a fireplace, a glazed lounge and a fully equipped kitchen. The big draw is outside: 1,500 m² of grounds with a wood-fired oven, barbecue and swings, plus a separate building with a heated indoor pool, jacuzzi and games room with table tennis and table football, reserved for guests. A cot is available free of charge and there is private parking. It is run by the same owners as the holiday cottages in San Felices and Herreruela de Castillería."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "cuna",
+      "chimenea",
+      "parking"
+    ],
+    "fuente_url": "https://www.casalasvacas.com/es/room/11593/casa-las-vacas",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "casa-rural-san-felices",
+    "nombre": "Casa Rural San Felices",
+    "categoria": "casas-rurales",
+    "nucleo": "san-felices-de-castilleria",
+    "direccion": "San Felices de Castillería, 34846 Cervera de Pisuerga (Palencia)",
+    "lat": 42.9249453,
+    "lng": -4.4458777,
+    "telefono": "+34 629 62 47 55",
+    "email": "alojamientocasalasvacas@gmail.com",
+    "web": "https://www.casalasvacas.com/es/room/11595/casa-rural-san-felices",
+    "descripcion": {
+      "es": "Casa Rural San Felices está en San Felices de Castillería, a unos 12 km de Cervera de Pisuerga, y se alquila entera para hasta 10 personas, con opción de camas supletorias. Tiene 4 habitaciones con baño propio (2 dobles y 2 triples), salón con chimenea y estufa de pellets, cocina equipada, galería-comedor y una buhardilla con billar, juegos de mesa y biblioteca. Fuera hay un jardín amplio con porche y barbacoa. Desde el pueblo salen rutas a pie como la del Roblón de Estalaya o la del Bosque Fósil. Hay cunas bajo petición. La gestionan los mismos propietarios que Casa Las Vacas.",
+      "en": "Casa Rural San Felices is in San Felices de Castillería, about 12 km from Cervera de Pisuerga, and is let as a whole house for up to 10 people, with extra beds available. It has 4 bedrooms, each with its own bathroom (2 doubles and 2 triples), a sitting room with a fireplace and pellet stove, a fully equipped kitchen, a glazed dining gallery and an attic room with a pool table, board games and books. Outside there is a large garden with a porch and barbecue. Walking routes such as the Roblón de Estalaya and Fossil Forest trails start from the village. Cots are available on request. It shares owners with Casa Las Vacas."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "cuna",
+      "chimenea",
+      "parking"
+    ],
+    "fuente_url": "https://www.casalasvacas.com/es/room/11595/casa-rural-san-felices",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "casa-rural-herreruela-de-castilleria",
+    "nombre": "Casa Rural Herreruela de Castillería",
+    "categoria": "casas-rurales",
+    "nucleo": "herreruela-de-castilleria",
+    "direccion": "Herreruela de Castillería, 34846 Cervera de Pisuerga (Palencia)",
+    "lat": 42.9273652,
+    "lng": -4.4121994,
+    "telefono": "+34 629 62 47 55",
+    "email": "alojamientocasalasvacas@gmail.com",
+    "web": "https://www.casalasvacas.com/es/room/11594/casa-rural-herreruela-de-castilleria",
+    "descripcion": {
+      "es": "Casa Rural Herreruela de Castillería es una casa de 1760, reformada por completo, en el pueblo de Herreruela de Castillería, a 15 km de Cervera de Pisuerga. Se alquila entera para 8 personas, con camas supletorias a consultar, y tiene 4 habitaciones, 3 baños, salón con chimenea, cocina equipada con lavavajillas, terraza, jardín y barbacoa. Es una opción pensada para grupos pequeños o familias que buscan calma en plena montaña. La reserva se gestiona desde la web de Casa Las Vacas, que comparte propietarios con esta casa y con la de San Felices.",
+      "en": "Casa Rural Herreruela de Castillería is a house built in 1760 and fully renovated, in the village of Herreruela de Castillería, 15 km from Cervera de Pisuerga. It is let as a whole house for 8 people, with extra beds on request, and has 4 bedrooms, 3 bathrooms, a sitting room with a fireplace, a kitchen with dishwasher, a terrace, a garden and a barbecue. It suits small groups or families after a quiet base in the mountains. Bookings go through the Casa Las Vacas website, as it shares owners with that house and with the one in San Felices."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "chimenea",
+      "parking"
+    ],
+    "fuente_url": "https://www.casalasvacas.com/es/room/11594/casa-rural-herreruela-de-castilleria",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "cumbres-de-lores",
+    "nombre": "Cumbres de Lores",
+    "categoria": "casas-rurales",
+    "nucleo": "lores",
+    "direccion": "C/ Real, 34, 34848 Lores, La Pernía (Palencia)",
+    "lat": 42.995114,
+    "lng": -4.529182,
+    "telefono": "+34 616 09 08 49",
+    "email": "hola@cumbresdelores.com",
+    "web": "https://cumbresdelores.com",
+    "descripcion": {
+      "es": "Cumbres de Lores es una casa rural de 4 estrellas en Lores (La Pernía), acondicionada como alojamiento en 2026, que se alquila entera para hasta 10 personas. Se levantó con la piedra de una antigua cuadra del pueblo y vigas de roble recuperado. Tiene 5 dormitorios, 3 baños, dos plantas de estar con una chimenea en cada una (la del salón, central de 360º), billar, cocina equipada y un patio cerrado por un muro de piedra, con barbacoa. La leña va incluida. Admite hasta dos perros avisando antes y tiene cuna. La estancia mínima es de 2 noches.",
+      "en": "Cumbres de Lores is a 4-star holiday cottage in Lores (La Pernía), opened to guests in 2026 and let as a whole house for up to 10 people. It was built with stone from an old village byre and reclaimed oak beams. It has 5 bedrooms, 3 bathrooms, two living floors each with a fireplace (the sitting room has a central 360º one), a pool table, a fully equipped kitchen and a patio enclosed by a stone wall, with a barbecue. Firewood is included. Up to two dogs are welcome if you let the owners know in advance, and a cot is available. Minimum stay is 2 nights."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "cuna",
+      "chimenea",
+      "jardin-cerrado",
+      "admite-mascotas"
+    ],
+    "fuente_url": "https://cumbresdelores.com/",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  },
+  {
+    "slug": "casa-del-diezmo",
+    "nombre": "Casa del Diezmo",
+    "categoria": "casas-rurales",
+    "nucleo": "san-juan-de-redondo",
+    "direccion": "C/ Real, 7, 34849 San Juan de Redondo, La Pernía (Palencia)",
+    "lat": 42.9886021,
+    "lng": -4.4512072,
+    "telefono": "+34 647 30 40 50",
+    "email": "info@casadeldiezmo.es",
+    "web": "https://www.casadeldiezmo.es",
+    "descripcion": {
+      "es": "Casa del Diezmo es una casa del siglo XVI en San Juan de Redondo (La Pernía), a 1.200 m de altitud, que la familia propietaria reformó a partir de 2016 después de haber sido vivienda, pajar y cuadra. Tiene 4 habitaciones dobles con baño privado, salón-comedor con chimenea de leña, una segunda chimenea en la cocina y una sala de lectura con libros y juegos de mesa en el antiguo pajar. Fuera hay un jardín con barbacoa, tumbonas y hamaca. Calefacción en toda la casa, wifi y aparcamiento exterior. Desde la puerta salen rutas a pie, como la de la Cueva del Cobre, donde nace el Pisuerga.",
+      "en": "Casa del Diezmo is a 16th-century house in San Juan de Redondo (La Pernía), 1,200 m above sea level, which the owning family restored from 2016 after its years as a home, hayloft and cowshed. It has 4 double bedrooms with private bathrooms, a sitting and dining room with a wood fire, a second fireplace in the kitchen and a reading room with books and board games in the old hayloft. Outside there is a garden with a barbecue, sun loungers and a hammock. There is central heating throughout, wifi and outdoor parking. Walking routes start from the door, including the one to the Cueva del Cobre, the source of the Pisuerga."
+    },
+    "atributos_familia": [
+      "admite-ninos",
+      "chimenea",
+      "parking"
+    ],
+    "fuente_url": "https://www.casadeldiezmo.es/la-casa/",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado"
+  }
+]

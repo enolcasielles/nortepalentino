@@ -1,0 +1,358 @@
+[
+  {
+    "slug": {
+      "es": "senda-del-roblon-de-estalaya",
+      "en": "roblon-de-estalaya-oak-trail"
+    },
+    "nombre": {
+      "es": "Senda del Roblón de Estalaya",
+      "en": "Roblón de Estalaya Oak Trail"
+    },
+    "inicio_nucleo": "estalaya",
+    "inicio_lat": 42.924446,
+    "inicio_lng": -4.471898,
+    "distancia_km": 4.6,
+    "desnivel_m": 125,
+    "duracion_h": 1.5,
+    "dificultad": "facil",
+    "circular": true,
+    "apta_ninos": true,
+    "temporada": [
+      "primavera",
+      "verano",
+      "otono",
+      "invierno"
+    ],
+    "resumen": {
+      "es": "La Senda del Roblón de Estalaya es un paseo circular de 4,6 km y 125 m de desnivel que lleva hasta un roble albar de más de 500 años, junto al embalse de La Requejada, cerca de Cervera de Pisuerga. Se hace en hora y media, está señalizada y la Junta la recomienda para familias.",
+      "en": "The Roblón de Estalaya Oak Trail is a 4.6 km circular walk with 125 m of climbing that takes you to a sessile oak more than 500 years old, beside La Requejada reservoir near Cervera de Pisuerga. It takes about an hour and a half, is waymarked and is recommended for families by the regional tourist board."
+    },
+    "premio_final": {
+      "es": "El Roblón, un roble albar de 17 m de altura y 10,6 m de perímetro en la base, protegido por una valla y catalogado como árbol notable de Castilla y León.",
+      "en": "The Roblón itself: a sessile oak 17 m tall and 10.6 m round at the base, fenced off for protection and listed as a notable tree of Castilla y León."
+    },
+    "descripcion": {
+      "es": "Para llegar, sal de Cervera de Pisuerga por la carretera de Potes. Pasado el puente sobre el embalse de La Requejada y dejando atrás Vañes, toma la carretera de la derecha: a unos dos kilómetros está el aparcamiento donde empieza la senda.\n\nEl camino está claro y bien señalizado. Cruzas la cola del embalse por un puente y, en la primera bifurcación, sigues el ramal de la izquierda, que sube por un vallejo. Tras una cancela metálica entras en un bosque mixto de hayas y robles, y un desvío corto te deja frente al Roblón. Se le calculan más de 500 años; hay quien habla de 800. Sobrevivió a un rayo, que le dejó marca, y al hacha: lo marcaron para talarlo hace décadas, pero nunca llegaron a cortarlo.\n\nLa vuelta sigue por el bosque, con robles albares, rebollos, hayas, acebos, mostajos y serbales, y baja por otro vallejo hasta el embalse. Desde allí enlazas con el tramo del principio y vuelves al coche por el mismo puente. Por el camino tienes vistas al pueblo de Estalaya y a la sierra de Peña Labra. Es una ruta de pista y senda, y la Junta la recomienda para cualquier época del año.",
+      "en": "To get there, leave Cervera de Pisuerga on the Potes road. Once you have crossed the bridge over La Requejada reservoir and passed Vañes, turn right: the car park where the trail begins is about two kilometres along.\n\nThe path is clear and well waymarked. You cross the tail of the reservoir on a footbridge and, at the first fork, take the left-hand branch up a small valley. Through a metal gate you enter mixed beech and oak woodland, and a short detour brings you face to face with the Roblón. It is reckoned to be over 500 years old, and some put it at 800. It has survived a lightning strike, which left its mark, and the axe: it was marked for felling decades ago, but never cut down.\n\nThe way back continues through woodland of sessile and Pyrenean oak, beech, holly, whitebeam and rowan, then drops down another little valley to the reservoir. From there you rejoin the opening stretch and cross the same bridge back to the car. Along the way there are views of Estalaya village and the Peña Labra range. It is a mix of track and footpath, and the park recommends it all year round."
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Dónde se aparca para la Senda del Roblón de Estalaya?",
+          "en": "Where do you park for the Roblón de Estalaya Oak Trail?"
+        },
+        "respuesta": {
+          "es": "La Senda del Roblón de Estalaya sale de un aparcamiento señalizado. Desde Cervera de Pisuerga, toma la carretera de Potes, cruza el embalse de La Requejada, pasa Vañes y gira a la derecha: el aparcamiento está a unos dos kilómetros.",
+          "en": "The Roblón de Estalaya Oak Trail starts from a signposted car park. From Cervera de Pisuerga, take the Potes road, cross La Requejada reservoir, pass Vañes and turn right: the car park is about two kilometres along."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Es la Senda del Roblón de Estalaya apta para ir con niños?",
+          "en": "Is the Roblón de Estalaya Oak Trail suitable for children?"
+        },
+        "respuesta": {
+          "es": "Sí. La Junta de Castilla y León presenta la Senda del Roblón de Estalaya como recorrido apto para familias: son 4,6 km circulares, 125 m de desnivel y dificultad baja, en torno a hora y media según la ficha del parque natural.",
+          "en": "Yes. The regional government describes the Roblón de Estalaya Oak Trail as suitable for families: it is a 4.6 km circuit with 125 m of climbing and a low difficulty rating, taking around an hour and a half according to the nature park's leaflet."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Cuál es la mejor época para hacer la Senda del Roblón de Estalaya?",
+          "en": "When is the best time to walk the Roblón de Estalaya Oak Trail?"
+        },
+        "respuesta": {
+          "es": "La ficha oficial del Parque Natural Montaña Palentina recomienda la Senda del Roblón de Estalaya durante todo el año. Como en cualquier ruta de montaña, consulta la previsión antes de salir.",
+          "en": "The official Montaña Palentina Nature Park leaflet recommends the Roblón de Estalaya Oak Trail all year round. As with any mountain walk, check the forecast before you set off."
+        }
+      }
+    ],
+    "fuente_url": "https://patrimonionatural.org/ficheros/El_Roblon.pdf",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado",
+    "autor": "pablo-aguado"
+  },
+  {
+    "slug": {
+      "es": "senda-del-bosque-fosil",
+      "en": "fossil-forest-trail"
+    },
+    "nombre": {
+      "es": "Senda del Bosque Fósil",
+      "en": "Fossil Forest Trail"
+    },
+    "inicio_nucleo": "verdena",
+    "inicio_lat": 42.941469,
+    "inicio_lng": -4.461132,
+    "distancia_km": 3,
+    "desnivel_m": 120,
+    "duracion_h": 1,
+    "dificultad": "facil",
+    "circular": true,
+    "apta_ninos": true,
+    "apta_carrito": false,
+    "temporada": [
+      "primavera",
+      "verano",
+      "otono",
+      "invierno"
+    ],
+    "resumen": {
+      "es": "La Senda del Bosque Fósil es un paseo circular de 3 km y 120 m de desnivel que sale de Verdeña (Cervera de Pisuerga) y lleva a una pared de roca con las huellas de un bosque de hace 300 millones de años. Se hace en una hora y la Junta la recomienda para familias.",
+      "en": "The Fossil Forest Trail is a 3 km circular walk with 120 m of climbing from Verdeña, near Cervera de Pisuerga, to a rock face printed with the remains of a forest that grew 300 million years ago. It takes about an hour and the regional tourist board recommends it for families."
+    },
+    "premio_final": {
+      "es": "Una pared de arenisca, vista desde un mirador protegido, con las marcas de tocones y raíces de un bosque costero fosilizado hace más de 300 millones de años.",
+      "en": "A sandstone wall, seen from a fenced viewing platform, bearing the imprints of stumps and roots from a coastal forest fossilised more than 300 million years ago."
+    },
+    "descripcion": {
+      "es": "La senda empieza en el aparcamiento de la entrada de Verdeña, pueblo al que se llega por la carretera que sube al puerto de Piedrasluengas. Cruzas una plaza junto a un antiguo lavadero, bajas unas escaleras y un pasadizo, y sales del pueblo entre huertos cercados con muros de piedra. Poco después, a la derecha, arranca la pista hacia el bosque fósil.\n\nEl camino se mete en un robledal y pasa por el mirador de Peña Celada antes de llegar a la pared. El yacimiento apareció al abrir una mina de carbón a cielo abierto, y hoy se ve desde un mirador con paneles. En la roca se distinguen estructuras estrelladas: son las marcas de tocones cortados de golpe por una avenida de agua marina, junto con restos de troncos. La Junta lo considera uno de los yacimientos más importantes de su tipo en España.\n\nDespués sigues hasta el mirador de La Pernía, con vistas sobre ese valle y San Salvador de Cantamuda, y pasado el collado vuelves a Verdeña entre árboles y prados. La ficha del parque recomienda la ruta todo el año. En Verdeña está también la Casa del Oso.",
+      "en": "The walk starts at the car park on the edge of Verdeña, a village reached from the road that climbs to the Piedrasluengas pass. You cross a little square by an old washhouse, go down some steps and through a passageway, and leave the village between vegetable plots walled in stone. Shortly afterwards, on your right, a track heads off towards the fossil forest.\n\nThe path climbs into oak woodland and passes the Peña Celada viewpoint before reaching the rock face. The site came to light when an opencast coal mine was dug, and today you look at it from a platform with information panels. In the rock you can pick out star-shaped patterns: the marks of tree stumps cut off suddenly by a surge of seawater, alongside the remains of trunks. The regional government ranks it among the most important sites of its kind in Spain.\n\nYou then carry on to the La Pernía viewpoint, looking over that valley and San Salvador de Cantamuda, and after the pass you head back to Verdeña through trees and meadows. The park leaflet recommends it all year round. Verdeña is also home to the Casa del Oso, the bear centre."
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Qué se ve en la Senda del Bosque Fósil de Verdeña?",
+          "en": "What can you see on the Fossil Forest Trail at Verdeña?"
+        },
+        "respuesta": {
+          "es": "La Senda del Bosque Fósil de Verdeña lleva a una pared de arenisca con las huellas de un bosque costero de hace más de 300 millones de años, descubierta al abrir una mina de carbón a cielo abierto. Además pasa por tres miradores: Peña Celada, el del Bosque y el de La Pernía.",
+          "en": "The Fossil Forest Trail at Verdeña leads to a sandstone wall bearing the imprints of a coastal forest more than 300 million years old, uncovered when an opencast coal mine was dug. It also takes in three viewpoints: Peña Celada, the Fossil Forest platform and La Pernía."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Se puede hacer la Senda del Bosque Fósil con carrito de bebé?",
+          "en": "Can you do the Fossil Forest Trail with a pushchair?"
+        },
+        "respuesta": {
+          "es": "No es lo ideal. La Senda del Bosque Fósil combina pista y senda, y al salir de Verdeña baja por unas escaleras y un pasadizo, según la descripción oficial del parque natural. Para niños pequeños es mejor una mochila portabebés.",
+          "en": "Not really. The Fossil Forest Trail mixes track and footpath, and the official park description has you going down steps and through a narrow passage as you leave Verdeña. A baby carrier is a better bet for small children."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Dónde empieza la Senda del Bosque Fósil?",
+          "en": "Where does the Fossil Forest Trail start?"
+        },
+        "respuesta": {
+          "es": "La Senda del Bosque Fósil empieza y acaba en el aparcamiento que hay junto al pueblo de Verdeña, en el municipio de Cervera de Pisuerga. Se llega por la carretera que sube al puerto de Piedrasluengas.",
+          "en": "The Fossil Forest Trail starts and finishes at the car park beside the village of Verdeña, in the municipality of Cervera de Pisuerga. You reach it from the road up to the Piedrasluengas pass."
+        }
+      }
+    ],
+    "fuente_url": "https://patrimonionatural.org/senderos/senda-del-bosque-fosil",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado",
+    "autor": "pablo-aguado"
+  },
+  {
+    "slug": {
+      "es": "senda-del-gigante-del-valle-estrecho",
+      "en": "giant-of-valle-estrecho-trail"
+    },
+    "nombre": {
+      "es": "Senda del Gigante del Valle Estrecho",
+      "en": "Giant of Valle Estrecho Trail"
+    },
+    "inicio_nucleo": "santibanez-de-resoba",
+    "inicio_lat": 42.905555,
+    "inicio_lng": -4.627777,
+    "distancia_km": 4.4,
+    "desnivel_m": 113,
+    "duracion_h": 1.1,
+    "dificultad": "facil",
+    "circular": false,
+    "apta_ninos": true,
+    "temporada": [
+      "primavera",
+      "verano",
+      "otono",
+      "invierno"
+    ],
+    "resumen": {
+      "es": "La Senda del Gigante del Valle Estrecho es un paseo de ida y vuelta de 4,4 km y 113 m de desnivel por la sierra de Peñalbilla, junto a Santibáñez de Resoba (Cervera de Pisuerga). Dura algo más de una hora, va por prados a unos 1.400 m y el folleto del parque la plantea para iniciar a los niños en la montaña con una leyenda local.",
+      "en": "The Giant of Valle Estrecho Trail is a 4.4 km there-and-back walk with 113 m of climbing along the Peñalbilla ridge, near Santibáñez de Resoba in the Cervera de Pisuerga area. It takes just over an hour across upland meadows at around 1,400 m, and the park pitches it as a way to get children into the mountains through a local legend."
+    },
+    "premio_final": {
+      "es": "El mirador de Caldacio, con plataforma y mesa interpretativa: desde Peña Labra hasta Peña Redonda, donde, según la leyenda, duerme el gigante.",
+      "en": "The Caldacio viewpoint, with a platform and panorama table taking in everything from Peña Labra to Peña Redonda, where, legend has it, the giant lies sleeping."
+    },
+    "descripcion": {
+      "es": "La senda sale de un aparcamiento señalizado a la izquierda de la carretera de los pantanos, en el kilómetro 15,5, pasado Santibáñez de Resoba viniendo desde Cervera de Pisuerga. En los primeros veinte minutos alcanzas el punto más alto. El resto es un paseo llano por praderas de montaña, con ganado según la época.\n\nLa primera parada es el mirador de Peñalbilla, sobre la divisoria entre las cuencas del Carrión y del Pisuerga. El camino, ancho y bien señalizado, deja a un lado el valle por el que has llegado y al otro el Valle Estrecho, regado por el río Rivera. Una subida corta te acerca a Peña Negra (1.445 m), que se rodea por la derecha. Al norte asoman Peña Labra, Tres Mares y Cuchillón, en el límite con Cantabria.\n\nAl final está el mirador de Caldacio. La leyenda cuenta que la hija del gigante lo durmió con un brebaje para escapar, y que él acabó tumbándose a esperarla en Peña Redonda. Sus lágrimas, dicen, son la Fuente Deshondonada. La vuelta es por el mismo camino, con el Espigüete (2.450 m) de frente. La ficha oficial la recomienda todo el año.",
+      "en": "The trail starts from a signposted car park on the left of the reservoirs road, at kilometre 15.5, just past Santibáñez de Resoba if you are coming from Cervera de Pisuerga. You reach the highest point within the first twenty minutes, and the rest is an easy stroll across upland pasture, with cattle grazing at certain times of year.\n\nThe first stop is the Peñalbilla viewpoint, on the watershed between the Carrión and Pisuerga basins. The path is wide and well waymarked, with the valley you drove up on one side and the narrow Valle Estrecho, watered by the Rivera river, on the other. A short climb brings you close to Peña Negra (1,445 m), which you skirt on the right. To the north you can make out Peña Labra, Tres Mares and Cuchillón on the border with Cantabria.\n\nThe walk ends at the Caldacio viewpoint. Legend says the giant's daughter put him to sleep with a potion so she could escape, and that he eventually lay down on Peña Redonda to wait for her return. His tears, they say, still feed the Fuente Deshondonada spring. You come back the same way, facing Espigüete (2,450 m). The official leaflet recommends it all year round."
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Cuánto se tarda en hacer la Senda del Gigante del Valle Estrecho?",
+          "en": "How long does the Giant of Valle Estrecho Trail take?"
+        },
+        "respuesta": {
+          "es": "El folleto oficial del parque da 1 hora y 6 minutos para la Senda del Gigante del Valle Estrecho: 4,4 km de ida y vuelta por el mismo camino, con 113 m de subida y otros tantos de bajada.",
+          "en": "The official park leaflet gives 1 hour 6 minutes for the Giant of Valle Estrecho Trail: 4.4 km there and back on the same path, with 113 m of ascent and the same in descent."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Dónde se aparca para la Senda del Gigante del Valle Estrecho?",
+          "en": "Where do you park for the Giant of Valle Estrecho Trail?"
+        },
+        "respuesta": {
+          "es": "La Senda del Gigante del Valle Estrecho sale de un aparcamiento señalizado en el kilómetro 15,5 de la carretera de los pantanos, a la izquierda, pasado Santibáñez de Resoba si vienes desde Cervera de Pisuerga.",
+          "en": "The Giant of Valle Estrecho Trail starts from a signposted car park at kilometre 15.5 of the reservoirs road, on the left, just past Santibáñez de Resoba if you are coming from Cervera de Pisuerga."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Es la Senda del Gigante del Valle Estrecho buena para niños?",
+          "en": "Is the Giant of Valle Estrecho Trail good for children?"
+        },
+        "respuesta": {
+          "es": "Sí. El folleto del Parque Natural Montaña Palentina presenta la Senda del Gigante del Valle Estrecho como una buena forma de iniciar a los más jóvenes en la montaña, apoyándose en la leyenda del gigante. Es de dificultad baja y el tramo de subida se hace en unos veinte minutos.",
+          "en": "Yes. The Montaña Palentina Nature Park leaflet presents the Giant of Valle Estrecho Trail as a good way to introduce youngsters to the mountains, using the legend of the giant. It is rated easy, and the uphill section takes about twenty minutes."
+        }
+      }
+    ],
+    "fuente_url": "https://patrimonionatural.org/ficheros/5e7112e99cc33_Folleto-Senda-del-Gigante-del-Valle-Estrecho.pdf",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado",
+    "autor": "pablo-aguado"
+  },
+  {
+    "slug": {
+      "es": "senda-de-la-tejeda-de-tosande",
+      "en": "tosande-yew-forest-trail"
+    },
+    "nombre": {
+      "es": "Senda de la Tejeda de Tosande",
+      "en": "Tosande Yew Forest Trail"
+    },
+    "inicio_nucleo": "dehesa-de-montejo",
+    "inicio_lat": 42.825387,
+    "inicio_lng": -4.516822,
+    "distancia_km": 10.5,
+    "desnivel_m": 200,
+    "duracion_h": 3.5,
+    "dificultad": "moderada",
+    "circular": true,
+    "temporada": [
+      "primavera",
+      "verano"
+    ],
+    "resumen": {
+      "es": "La Senda de la Tejeda de Tosande es una ruta circular de 10,5 km, 3 h 30 min y dificultad media que sale de Dehesa de Montejo y sube por el valle de Tosande hasta una de las mayores concentraciones de tejos de Europa occidental. El recorrido completo solo está abierto en primavera y verano; en otoño e invierno se va y se vuelve por el mismo camino, y cierra los días de batida de caza.",
+      "en": "The Tosande Yew Forest Trail is a 10.5 km circular route of moderate difficulty, taking about 3 hours 30 minutes, that climbs from Dehesa de Montejo up the Tosande valley to one of the largest stands of yew in western Europe. The full loop is only open in spring and summer; in autumn and winter you go up and back the same way, and the trail closes on days when a hunt is scheduled."
+    },
+    "premio_final": {
+      "es": "La Tejeda: tejos centenarios dentro de un hayedo, algunos con más de 145 cm de diámetro y más de 15 m de altura, y un mirador a más de 1.400 m, el punto más alto de la ruta.",
+      "en": "The yew wood itself: centuries-old yews growing inside a beech forest, some over 145 cm across and more than 15 m tall, plus a viewpoint above 1,400 m, the highest point of the walk."
+    },
+    "descripcion": {
+      "es": "La ruta sale del aparcamiento junto a la carretera C-626, a la altura de Dehesa de Montejo, al lado del Jardín de la Tejeda, un espacio interpretativo que conviene ver antes de empezar. Bajas por la pista, pasas bajo el ferrocarril de La Robla y remontas el cauce, casi siempre seco, del arroyo de Tosande, junto a las escombreras de una mina abandonada y por una angostura caliza.\n\nLa pista se adentra en el valle y la vegetación cambia rápido: encinar, robledal y luego hayedo. En las praderas del valle se reconocen túmulos megalíticos de hace unos 4.000 años. Antes de una cabaña, la senda gira a la izquierda y entra en el hayedo de la ladera de Peña Oracada (1.818 m), donde está la Tejeda. Es un tramo de subida con escalones naturales y bancos para descansar. Dentro de la Tejeda no se puede salir de la senda.\n\nEn primavera y verano la ruta es circular: subes a la Tejeda, sales al mirador y bajas por otra vaguada con un acebal. Esa bajada se cierra de mediados de otoño a primavera, y entonces se vuelve por el mismo camino. Los días de batida la senda cierra entera; las fechas se consultan en la Casa del Parque de Cervera.",
+      "en": "The route starts from the car park on the C-626 road by Dehesa de Montejo, next to the Jardín de la Tejeda, an interpretation garden worth a look before you set off. You head down the track, pass under the old La Robla railway and follow the bed of the Tosande stream, usually dry, past the spoil heaps of a disused mine and through a narrow limestone gorge.\n\nAs the track works up the valley the woodland changes quickly: holm oak, then oak, then beech. In the meadows you can spot megalithic burial mounds around 4,000 years old. Before you reach a hut, the path turns left into the beech forest on the slopes of Peña Oracada (1,818 m), where the yews grow. It is a climb with natural steps and benches for a breather. Inside the yew wood you must stay on the path.\n\nIn spring and summer it is a loop: up to the yews, out to the viewpoint and down another hollow through a holly wood. That descent is closed from mid-autumn until spring, when you return the way you came. On days when a hunt is scheduled the whole trail is closed; the Casa del Parque visitor centre in Cervera has the dates."
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Está abierta todo el año la Senda de la Tejeda de Tosande?",
+          "en": "Is the Tosande Yew Forest Trail open all year?"
+        },
+        "respuesta": {
+          "es": "No del todo. Según el folleto oficial de la Junta de Castilla y León, la Senda de la Tejeda de Tosande está abierta completa en primavera y verano. En otoño e invierno, en temporada de caza, solo se puede ir del aparcamiento al mirador y volver por el mismo camino. Los días de batida cierra entera; las fechas se consultan en la Casa del Parque de Cervera de Pisuerga (979 87 06 88).",
+          "en": "Not entirely. According to the official regional government leaflet, the full Tosande Yew Forest Trail is open in spring and summer. In autumn and winter, during the hunting season, you can only walk from the car park to the viewpoint and back the same way. It closes completely on hunt days; check the dates with the Casa del Parque visitor centre in Cervera de Pisuerga (+34 979 87 06 88)."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Dónde empieza la Senda de la Tejeda de Tosande?",
+          "en": "Where does the Tosande Yew Forest Trail start?"
+        },
+        "respuesta": {
+          "es": "La Senda de la Tejeda de Tosande empieza en el aparcamiento junto a la carretera C-626, a la altura de Dehesa de Montejo, al lado del Jardín de la Tejeda, el espacio interpretativo sobre la tejeda y el valle.",
+          "en": "The Tosande Yew Forest Trail starts at the car park beside the C-626 road at Dehesa de Montejo, next to the Jardín de la Tejeda, an interpretation garden about the yew wood and the valley."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Qué desnivel tiene la Senda de la Tejeda de Tosande?",
+          "en": "How much climbing is there on the Tosande Yew Forest Trail?"
+        },
+        "respuesta": {
+          "es": "La Junta de Castilla y León da para la Senda de la Tejeda de Tosande 200 m de desnivel en 10,5 km, con dificultad media y unas 3 h 30 min. El punto más alto supera los 1.400 m, en el mirador por encima de la Tejeda.",
+          "en": "The regional government gives the Tosande Yew Forest Trail 200 m of ascent over 10.5 km, rated moderate, taking about 3 hours 30 minutes. The highest point is above 1,400 m, at the viewpoint over the yew wood."
+        }
+      }
+    ],
+    "fuente_url": "https://patrimonionatural.org/ficheros/folletosendatosandepdf240512_091402.pdf",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado",
+    "autor": "pablo-aguado"
+  },
+  {
+    "slug": {
+      "es": "senda-de-fuente-cobre-nacimiento-del-pisuerga",
+      "en": "fuente-cobre-source-of-the-pisuerga-trail"
+    },
+    "nombre": {
+      "es": "Senda de Fuente Cobre (nacimiento del Pisuerga)",
+      "en": "Fuente Cobre Trail (Source of the Pisuerga)"
+    },
+    "inicio_nucleo": "santa-maria-de-redondo",
+    "inicio_lat": 42.991648,
+    "inicio_lng": -4.428119,
+    "distancia_km": 13,
+    "desnivel_m": 400,
+    "duracion_h": 4.5,
+    "dificultad": "moderada",
+    "circular": true,
+    "resumen": {
+      "es": "La Senda de Fuente Cobre es una ruta circular de 13 km, 400 m de desnivel y unas 4 h 30 min que sale de Santa María de Redondo (La Pernía) y sube por el valle de Redondos hasta la Cueva del Cobre, considerada tradicionalmente el nacimiento del río Pisuerga. Es una de las rutas más frecuentadas de la Montaña Palentina y su dificultad es media.",
+      "en": "The Fuente Cobre Trail is a 13 km circular route with 400 m of climbing, taking about 4 hours 30 minutes, from Santa María de Redondo in La Pernía up the Redondos valley to the Cueva del Cobre, traditionally held to be the source of the River Pisuerga. It is one of the most popular walks in the Montaña Palentina and is rated moderate."
+    },
+    "premio_final": {
+      "es": "La boca de la Cueva del Cobre, en la vertiente sur de la sierra de Peñalabra, por donde nace el Pisuerga. Solo la cavidad inicial es visitable.",
+      "en": "The mouth of the Cueva del Cobre cave on the southern flank of the Peñalabra range, where the Pisuerga rises. Only the entrance chamber can be visited."
+    },
+    "descripcion": {
+      "es": "La ruta sale del aparcamiento de las afueras de Santa María de Redondo. Sigue la pista de tierra principal, que se mete en el valle de Redondos junto al Pisuerga, y no hagas caso de los ramales mineros abandonados ni de las entradas a fincas. Pasas un paso canadiense y avanzas entre prados pequeños y laderas de robles y hayas.\n\nTras cruzar el arroyo Peñalba por una pasarela, en el primer cruce tomas la pista de la izquierda, entre escobas y piornos altos, y entras en un robledal por un antiguo camino carretero. Hay tramos bajo acebos y otra pasarela antes de llegar a un claro, junto a un antiguo chozo de pastores. Desde ahí, una senda señalizada lleva a la Fuente o Cueva del Cobre. Dentro no se puede pasar de la zona iluminada sin conocimientos y equipo de espeleología.\n\nPara volver, deshaces el sendero hasta el chozo y sigues un tramo casi llano de 1,5 km por el bosque, donde aparecen piedras de molino que se labraron en el monte durante siglos. Sales a una media ladera con vistas, cruzas otra pasarela y llegas a la campa de Colla Cobre, desde donde, en días claros, se ven los Picos de Europa. Una pista por el robledal te devuelve al camino de subida y al aparcamiento.",
+      "en": "The walk starts from the car park on the edge of Santa María de Redondo. Follow the main dirt track into the Redondos valley alongside the young Pisuerga, ignoring the old mining spurs and the field entrances. You cross a cattle grid and carry on between small meadows hemmed in by oak and beech slopes.\n\nAfter crossing the Peñalba stream on a footbridge, take the left-hand track at the first junction, through tall broom, and into oak woodland along an old cart road. There are stretches under holly and another footbridge before you reach a clearing by an old shepherds' hut. From there, a signposted path leads to the Fuente or Cueva del Cobre. Inside, don't go beyond the daylight zone unless you have caving experience and equipment.\n\nOn the way back, retrace your steps to the hut and follow an almost level 1.5 km stretch through the forest, where you will spot millstones that were carved on the hillside for centuries. You come out onto an open slope with views, cross another footbridge and reach the Colla Cobre meadow, where on a clear day you can see the Picos de Europa. A track down through the oak wood takes you back to the outward path and the car park."
+    },
+    "faqs": [
+      {
+        "pregunta": {
+          "es": "¿Se puede entrar en la Cueva del Cobre?",
+          "en": "Can you go inside the Cueva del Cobre?"
+        },
+        "respuesta": {
+          "es": "Solo en la cavidad inicial. La Junta de Castilla y León advierte que la Cueva del Cobre, donde nace el Pisuerga, no está preparada para la visita, y que pasar de donde llega la luz del sol sin conocimientos ni equipo de espeleología es peligroso.",
+          "en": "Only the entrance chamber. The regional government warns that the Cueva del Cobre, where the Pisuerga rises, is not set up for visitors, and that going beyond the daylight zone without caving skills and equipment is dangerous."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Dónde empieza la Senda de Fuente Cobre?",
+          "en": "Where does the Fuente Cobre Trail start?"
+        },
+        "respuesta": {
+          "es": "La Senda de Fuente Cobre empieza en el aparcamiento situado a las afueras de Santa María de Redondo, en el municipio de La Pernía. Desde allí se sigue la pista principal que entra en el valle de Redondos.",
+          "en": "The Fuente Cobre Trail starts at the car park on the edge of Santa María de Redondo, in the municipality of La Pernía. From there you follow the main track into the Redondos valley."
+        }
+      },
+      {
+        "pregunta": {
+          "es": "¿Se puede llevar perro en la Senda de Fuente Cobre?",
+          "en": "Can you take a dog on the Fuente Cobre Trail?"
+        },
+        "respuesta": {
+          "es": "Sí, pero bajo control. La normativa del Parque Natural Montaña Palentina, recogida en el folleto oficial de la Senda de Fuente Cobre, pide llevar a los animales de compañía controlados y respetar la fauna silvestre.",
+          "en": "Yes, but keep it under control. The Montaña Palentina Nature Park rules, set out in the official Fuente Cobre Trail leaflet, ask you to keep pets under control and to respect wildlife."
+        }
+      }
+    ],
+    "fuente_url": "https://www.turismocastillayleon.com/es/naturaleza/p2-senda-fuente-cobre-nacimiento-rio-pisuerga",
+    "fecha_verificacion": "2026-10-17",
+    "estado": "publicado",
+    "autor": "pablo-aguado"
+  }
+]

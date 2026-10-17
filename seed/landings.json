@@ -1,0 +1,146 @@
+[
+  {
+    "ambito": "negocios",
+    "categoria": "restaurantes",
+    "titulo": { "es": "Dónde comer en la Montaña Palentina", "en": "Where to eat in the Palencia Mountains" },
+    "intro": {
+      "es": "Restaurantes de Cervera de Pisuerga y Aguilar de Campoo con datos comprobados en su propia web: dirección, teléfono y lo que ellos mismos destacan de su cocina. En la carta de la zona manda la brasa y el producto de aquí: lechazo, chuletón de vacuno criado en la montaña y, en otoño, setas. Antes de ir, llama: los horarios pueden cambiar fuera de temporada.",
+      "en": "Restaurants in Cervera de Pisuerga and Aguilar de Campoo, with details checked against their own websites: address, phone and what they say they do best. Local menus lean on the grill and on local produce: roast milk-fed lamb, mountain-reared beef and, in autumn, wild mushrooms. Ring ahead, as hours can change out of season."
+    },
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "negocios",
+    "municipio": "cervera-de-pisuerga",
+    "categoria": "restaurantes",
+    "intro": {
+      "es": "Dónde comer en Cervera de Pisuerga, la puerta del Parque Natural Montaña Palentina. Tienes cocina de familia en el centro del pueblo, brasa en el camping Fuentes Carrionas y el comedor del Parador, a unos 2 km, con vistas al embalse de Ruesga. Si vas después de una ruta, llama antes para confirmar horario.",
+      "en": "Where to eat in Cervera de Pisuerga, the gateway to the Montaña Palentina Natural Park. There's family-run cooking in the village centre, a grill restaurant at the Fuentes Carrionas campsite and the Parador's dining room, about 2 km out, overlooking the Ruesga reservoir. If you're coming off a walk, ring ahead to check opening times."
+    },
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "negocios",
+    "municipio": "aguilar-de-campoo",
+    "categoria": "restaurantes",
+    "intro": {
+      "es": "Dónde comer en Aguilar de Campoo: tres restaurantes con cocina de la zona, desde la Plaza España hasta la entrada del pueblo. El lechazo asado y la carne a la brasa son lo que más se repite, y hay quien trabaja con ganado propio. Encaja bien con una mañana de románico en el monasterio de Santa María la Real.",
+      "en": "Where to eat in Aguilar de Campoo: three restaurants serving local food, from the Plaza España to the edge of town. Roast lamb and grilled beef turn up on every menu, and one of them raises its own cattle. It fits nicely after a morning of Romanesque at the Santa María la Real monastery."
+    },
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "negocios",
+    "categoria": "hoteles",
+    "titulo": { "es": "Hoteles en la Montaña Palentina", "en": "Hotels in the Palencia Mountains" },
+    "intro": {
+      "es": "Hoteles de Aguilar de Campoo y Cervera de Pisuerga, las dos bases más cómodas para moverte por la Montaña Palentina. Aguilar te deja a pie del románico y del embalse; Cervera, a la entrada del parque natural y de sus sendas. Las fichas recogen habitaciones, servicios y si admiten mascotas o tienen cuna, según lo que publica cada hotel.",
+      "en": "Hotels in Aguilar de Campoo and Cervera de Pisuerga, the two easiest bases for exploring the Palencia Mountains. Aguilar puts you within walking distance of its Romanesque and the reservoir; Cervera sits at the entrance to the natural park and its walking routes. Each listing covers rooms, facilities and whether pets or cots are available, as published by the hotel."
+    },
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "negocios",
+    "municipio": "aguilar-de-campoo",
+    "categoria": "hoteles",
+    "intro": {
+      "es": "Dónde dormir en Aguilar de Campoo: una posada en el propio conjunto del monasterio de Santa María la Real, un hotel de toda la vida con restaurante y otro de 2022 a dos pasos de la Plaza España. Desde cualquiera de los tres vas andando al casco histórico.",
+      "en": "Where to stay in Aguilar de Campoo: an inn within the Santa María la Real monastery complex, a long-established hotel with its own restaurant and a newer one, opened in 2022, a short walk from the Plaza España. All three are within walking distance of the old town."
+    },
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "negocios",
+    "categoria": "casas-rurales",
+    "titulo": { "es": "Casas rurales en la Montaña Palentina", "en": "Holiday cottages in the Palencia Mountains" },
+    "intro": {
+      "es": "Casas rurales de alquiler completo en Cervera de Pisuerga y La Pernía, pensadas para grupos y familias. Casi todas tienen chimenea y varias ofrecen cuna; en las fichas verás capacidad, habitaciones y lo que incluye cada una, tal como lo publican sus propietarios. Los pueblos son pequeños: lleva la compra hecha si llegas tarde.",
+      "en": "Whole-house holiday cottages in Cervera de Pisuerga and La Pernía, built for groups and families. Most have a wood fire and several offer cots; each listing shows capacity, bedrooms and what's included, as published by the owners. The villages are small, so bring your shopping if you're arriving late."
+    },
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "negocios",
+    "municipio": "cervera-de-pisuerga",
+    "categoria": "casas-rurales",
+    "intro": {
+      "es": "Casas rurales en Cervera de Pisuerga y sus pueblos: una en la propia villa y dos en el valle de Castillería, a 12–15 km. Se alquilan enteras, para entre 8 y 13 personas, y las tres tienen chimenea y parking. Son buena base para las sendas del Roblón, el Bosque Fósil o la Tejeda de Tosande.",
+      "en": "Holiday cottages in and around Cervera de Pisuerga: one in the village itself and two in the Castillería valley, 12–15 km away. All three are let as a whole house for 8 to 13 people, with a wood fire and parking. They make a good base for the Roblón, Fossil Forest or Tosande yew forest walks."
+    },
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "negocios",
+    "municipio": "cervera-de-pisuerga",
+    "categoria": "casas-rurales",
+    "filtro": "con-ninos",
+    "titulo": { "es": "Casas rurales para ir con niños en Cervera de Pisuerga", "en": "Family-friendly holiday cottages in Cervera de Pisuerga" },
+    "intro": {
+      "es": "Casas rurales de Cervera de Pisuerga que aceptan familias con niños, según lo que publica cada una. Comprueba en la ficha si tienen cuna y pregunta por la trona al reservar. Las tres sendas fáciles del parque natural para ir con peques salen de pueblos del propio municipio.",
+      "en": "Holiday cottages in Cervera de Pisuerga that welcome families with children, as stated by each owner. Check the listing for cots and ask about high chairs when you book. The natural park's three easy family walks all start from villages within the municipality."
+    },
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "negocios",
+    "categoria": "turismo-activo",
+    "titulo": { "es": "Turismo activo en la Montaña Palentina", "en": "Outdoor activities in the Palencia Mountains" },
+    "intro": {
+      "es": "Empresas registradas de turismo activo y naturaleza en la Montaña Palentina: rutas en 4x4 por el parque natural, salidas para ver la berrea o el lobo con guía y paseos en velero por el embalse de Aguilar. Para la fauna, ve con alguien que conozca el terreno: aumentan las opciones de ver algo y no molestas a los animales.",
+      "en": "Registered outdoor and wildlife businesses in the Palencia Mountains: 4x4 tours through the natural park, guided trips to watch the red deer rut or wolves, and sailing on the Aguilar reservoir. For wildlife, go with a local guide: you'll have a better chance of seeing something and won't disturb the animals."
+    },
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "rutas",
+    "intro": {
+      "es": "Rutas de senderismo de la Montaña Palentina con las cifras oficiales del parque natural: distancia, desnivel, duración y dificultad. Hay paseos de una hora para ir con niños y rutas de media jornada como la Tejeda de Tosande o el nacimiento del Pisuerga en Fuente Cobre. Filtra por dificultad, distancia o si son aptas para niños.",
+      "en": "Walking routes in the Palencia Mountains with the natural park's official figures: distance, ascent, time and difficulty. There are hour-long family strolls and half-day walks such as the Tosande yew forest or Fuente Cobre, the source of the River Pisuerga. Filter by difficulty, distance or whether they suit children."
+    },
+    "faqs": [
+      {
+        "pregunta": { "es": "¿Hay que pagar o reservar para hacer las rutas de la Montaña Palentina?", "en": "Do you need to pay or book to walk the routes in the Palencia Mountains?" },
+        "respuesta": {
+          "es": "No. Las sendas señalizadas del Parque Natural Montaña Palentina son de acceso libre. La Senda de la Tejeda de Tosande cierra los días de batida de caza; las fechas se consultan en la Casa del Parque de Cervera de Pisuerga (979 87 06 88).",
+          "en": "No. The waymarked routes of the Montaña Palentina Natural Park are free to walk. The Tosande yew forest trail closes on days when a hunt is scheduled; check dates with the park visitor centre in Cervera de Pisuerga (+34 979 87 06 88)."
+        }
+      }
+    ],
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "rutas",
+    "filtro": "con-ninos",
+    "titulo": { "es": "Rutas con niños en la Montaña Palentina", "en": "Family-friendly walks in the Palencia Mountains" },
+    "intro": {
+      "es": "Rutas fáciles para hacer con niños en la Montaña Palentina, todas cerca de Cervera de Pisuerga: entre 3 y 4,6 km, poco más de 100 m de desnivel y una hora u hora y media de paseo. Cada una tiene un premio al final que engancha a los peques: un roble de más de 500 años, un bosque fósil o el mirador de un gigante dormido.",
+      "en": "Easy family walks in the Palencia Mountains, all near Cervera de Pisuerga: 3 to 4.6 km, a little over 100 m of ascent and an hour or an hour and a half on foot. Each ends with something to keep children going: an oak more than 500 years old, a fossil forest or the viewpoint of a sleeping giant."
+    },
+    "faqs": [
+      {
+        "pregunta": { "es": "¿Qué ruta de la Montaña Palentina es más fácil para ir con niños pequeños?", "en": "Which walk in the Palencia Mountains is easiest with small children?" },
+        "respuesta": {
+          "es": "La Senda del Bosque Fósil de Verdeña es la más corta: 3 km circulares, 120 m de desnivel y una hora según el parque natural. Tiene escaleras al salir del pueblo, así que lleva mochila portabebés en lugar de carrito.",
+          "en": "The Fossil Forest Trail from Verdeña is the shortest: a 3 km loop with 120 m of ascent that the natural park times at one hour. There are steps on the way out of the village, so bring a baby carrier rather than a pushchair."
+        }
+      }
+    ],
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "recursos",
+    "intro": {
+      "es": "Qué ver en la Montaña Palentina: iglesias románicas como la colegiata de San Salvador de Cantamuda o la ermita de Santa Eulalia, el centro ROM en el monasterio de Santa María la Real, el mirador de Piedrasluengas y la cascada de Covalagua. Muchas iglesias abren solo en temporada o con visita concertada: confirma el horario antes de ir.",
+      "en": "What to see in the Palencia Mountains: Romanesque churches such as the collegiate church of San Salvador de Cantamuda and the Santa Eulalia chapel, the ROM centre in the Santa María la Real monastery, the Piedrasluengas viewpoint and the Covalagua waterfall. Many churches only open in season or by appointment, so check times before you go."
+    },
+    "autor": "pablo-aguado"
+  },
+  {
+    "ambito": "articulos",
+    "intro": {
+      "es": "Guías prácticas para planificar tu escapada a la Montaña Palentina: qué ver, qué rutas hacer y dónde comer y dormir, con datos comprobados y enlaces a cada sitio del directorio.",
+      "en": "Practical guides to planning a trip to the Palencia Mountains: what to see, which walks to do and where to eat and stay, with checked details and links to every place in our directory."
+    },
+    "autor": "pablo-aguado"
+  }
+]

@@ -38,7 +38,8 @@ Todos son opcionales; se importan en este orden.
 | `negocios.json` | Dónde dormir, comer, actividades, tiendas | `slug` |
 | `recursos.json` | Lugares que se visitan (iglesias, miradores, museos…) | `slug.es` |
 | `rutas.json` | Rutas con datos técnicos; `gpx` es una ruta a un `.gpx` dentro de la carpeta de seeds | `slug.es` |
-| `landings.json` | Intro y FAQs de listados (`ambito`: `negocios`, `rutas` o `recursos`) | combinación |
+| `landings.json` | Intro y FAQs de listados (`ambito`: `negocios`, `rutas`, `recursos` o `articulos`) | combinación |
+| `articulos.json` | Artículos del blog: `titulo`, `resumen`, `cuerpo` en Markdown, `faqs`, campos SEO, `autor` | `slug.es` |
 
 Valores cerrados (definidos en `src/lib/taxonomies.ts` y `src/lib/icons.ts`):
 
@@ -47,7 +48,13 @@ Valores cerrados (definidos en `src/lib/taxonomies.ts` y `src/lib/icons.ts`):
 - `precio_rango`: `€` a `€€€€` · `color_token`: `dormir`, `comer`, `activo`, `rutas`, `romanico`, `naturaleza`, `museo`
 - `horario_texto` en negocios admite texto plano (se guarda solo en ES) o `{ "es", "en" }`.
 
-Las fotos y los artículos del blog no se importan: se gestionan en el panel (`/admin`).
+El `cuerpo` de los artículos se escribe en Markdown, como en la extensión de Claude Desktop: `##` y `###`, listas, **negrita**, *cursiva*, enlaces externos y, para el directorio, `[texto](interno:coleccion/slug)` (`negocios`, `rutas`, `recursos`, `municipios`, `articulos`) y una línea sola con `::ficha[coleccion/slug]` (`negocios`, `rutas`, `recursos`). En los slugs traducidos se usa el ES en los dos idiomas. Un artículo puede enlazar a otro del mismo lote solo si va antes en el fichero. Publicar exige `autor`; `fecha_publicacion` se fija sola.
+
+Las fotos no se importan: se gestionan en el panel (`/admin`) o con la extensión.
+
+## Lote real
+
+Los ficheros de esta carpeta son el primer lote de contenido real. Antes de llevarlos a producción, una persona tiene que revisar los textos y los puntos pendientes de [`REVISION.md`](REVISION.md).
 
 ## Contra producción
 

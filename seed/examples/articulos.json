@@ -1,0 +1,44 @@
+[
+  {
+    "slug": { "es": "demo-articulo-ejemplo", "en": "demo-sample-article" },
+    "titulo": { "es": "[DEMO] Artículo de ejemplo", "en": "[DEMO] Sample article" },
+    "resumen": { "es": "[DEMO] Resumen answer-first.", "en": "[DEMO] Answer-first summary." },
+    "cuerpo": {
+      "es": "## [DEMO] Primera sección\n\n[DEMO] Párrafo con un [enlace a una ruta](interno:rutas/demo-senda-ejemplo) y otro a un [restaurante](interno:negocios/demo-restaurante-ejemplo).\n\n::ficha[rutas/demo-senda-ejemplo]\n\n## [DEMO] Segunda sección\n\n- [DEMO] Punto con una [iglesia](interno:recursos/demo-iglesia-ejemplo)\n- [DEMO] Punto en [la villa](interno:municipios/demo-villa)",
+      "en": "## [DEMO] First section\n\n[DEMO] Paragraph linking a [trail](interno:rutas/demo-senda-ejemplo).\n\n::ficha[rutas/demo-senda-ejemplo]"
+    },
+    "faqs": [
+      {
+        "pregunta": { "es": "[DEMO] ¿Pregunta?", "en": "[DEMO] Question?" },
+        "respuesta": { "es": "[DEMO] Respuesta.", "en": "[DEMO] Answer." }
+      }
+    ],
+    "busqueda_objetivo": { "es": "[DEMO] búsqueda de ejemplo", "en": "[DEMO] sample search" },
+    "busquedas_secundarias": { "es": ["[DEMO] variante"], "en": ["[DEMO] variant"] },
+    "seo_titulo": { "es": "[DEMO] Título SEO", "en": "[DEMO] SEO title" },
+    "seo_descripcion": { "es": "[DEMO] Descripción SEO.", "en": "[DEMO] SEO description." },
+    "autor": "demo-autora",
+    "estado": "publicado"
+  },
+  {
+    "slug": { "es": "demo-articulo-dos", "en": "demo-article-two" },
+    "titulo": { "es": "[DEMO] Artículo dos", "en": "[DEMO] Article two" },
+    "resumen": { "es": "[DEMO] Resumen.", "en": "[DEMO] Summary." },
+    "cuerpo": {
+      "es": "## [DEMO] Sección\n\n[DEMO] Enlaza al [artículo anterior](interno:articulos/demo-articulo-ejemplo).\n\n::ficha[negocios/demo-restaurante-dos]",
+      "en": "## [DEMO] Section\n\n[DEMO] Links the [previous article](interno:articulos/demo-articulo-ejemplo)."
+    },
+    "autor": "demo-autora",
+    "estado": "publicado"
+  },
+  {
+    "slug": { "es": "demo-articulo-tres", "en": "demo-article-three" },
+    "titulo": { "es": "[DEMO] Artículo tres", "en": "[DEMO] Article three" },
+    "cuerpo": {
+      "es": "## [DEMO] Sección\n\n[DEMO] Texto con una [iglesia](interno:recursos/demo-iglesia-dos).",
+      "en": "## [DEMO] Section\n\n[DEMO] Text with a [church](interno:recursos/demo-iglesia-dos)."
+    },
+    "autor": "demo-autora",
+    "estado": "publicado"
+  }
+]

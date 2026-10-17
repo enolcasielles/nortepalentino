@@ -63,5 +63,12 @@
       "es": "[DEMO] Intro de qué ver.",
       "en": "[DEMO] Sights listing intro."
     }
+  },
+  {
+    "ambito": "articulos",
+    "intro": {
+      "es": "[DEMO] Intro del blog.",
+      "en": "[DEMO] Blog intro."
+    }
   }
 ]

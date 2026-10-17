@@ -7,6 +7,9 @@
  *   pnpm seed --dir seed/examples  lee otro directorio
  *   pnpm seed --remote             necesario si DATABASE_URL no es local
  *
+ * Los artículos llevan el cuerpo en Markdown con enlaces internos
+ * (cms-mcp/src/lexical.mjs) y se convierten a Lexical al escribir.
+ *
  * Idempotente por slug (ES en los slugs traducidos). Nunca borra nada. Valida
  * todo antes de escribir y escribe en una única transacción: o entra el lote
  * entero o no entra nada.
@@ -14,10 +17,13 @@
 import config from '@payload-config'
 import fs from 'node:fs'
 import path from 'node:path'
-import { createLocalReq, getPayload, type CollectionSlug, type Where } from 'payload'
+import { createLocalReq, getDataLoader, getPayload, type CollectionSlug, type Where } from 'payload'
 import type { z } from 'zod'
 
 import { processGpx } from '@/lib/geo/gpx'
+import { embeddableCollections, linkableCollections } from '@/lib/richtext/lexical'
+
+import { internalRefs, markdownToLexical } from '../cms-mcp/src/lexical.mjs'
 
 import {
   seedFiles,
@@ -109,7 +115,7 @@ checkDuplicates('autores.json', seeds.autores.map((a) => a.slug))
 checkDuplicates('municipios.json', seeds.municipios.map((m) => m.slug))
 checkDuplicates('municipios.json (núcleos)', seeds.municipios.flatMap((m) => m.nucleos ?? []).map((n) => n.slug))
 checkDuplicates('negocios.json', seeds.negocios.map((n) => n.slug))
-for (const key of ['categorias', 'tipos_recurso', 'recursos', 'rutas'] as const) {
+for (const key of ['categorias', 'tipos_recurso', 'recursos', 'rutas', 'articulos'] as const) {
   for (const locale of ['es', 'en'] as const) {
     checkDuplicates(`${seedFiles[key].file} (${locale})`, seeds[key].map((r) => r.slug[locale]))
   }
@@ -195,6 +201,32 @@ for (const l of seeds.landings) {
   ref('landings.json', label, 'autor', l.autor, known.autores, 'el autor')
 }
 
+// Enlaces internos y fichas del cuerpo de los artículos. Un artículo puede
+// enlazar a otro del lote solo si va antes en el fichero (se escriben en orden).
+const linkable = new Set<string>(linkableCollections)
+const embeddable = new Set<string>(embeddableCollections)
+const linkTargets: Record<string, Set<string>> = {
+  negocios: new Set([...(await dbSlugs('negocios')).keys(), ...seeds.negocios.map((n) => n.slug)]),
+  rutas: new Set([...(await dbSlugs('rutas')).keys(), ...seeds.rutas.map((r) => r.slug.es)]),
+  recursos: new Set([...(await dbSlugs('recursos')).keys(), ...seeds.recursos.map((r) => r.slug.es)]),
+  municipios: known.municipios,
+  articulos: new Set((await dbSlugs('articulos')).keys()),
+}
+for (const a of seeds.articulos) {
+  ref('articulos.json', a.slug.es, 'autor', a.autor, known.autores, 'el autor')
+  for (const locale of ['es', 'en'] as const) {
+    for (const r of internalRefs(a.cuerpo?.[locale] ?? '')) {
+      const field = `cuerpo.${locale}`
+      if (!linkable.has(r.collection) || (r.kind === 'ficha' && !embeddable.has(r.collection))) {
+        errors.push(`articulos.json "${a.slug.es}" ${field}: no se puede ${r.kind === 'ficha' ? 'incrustar' : 'enlazar'} "${r.collection}"`)
+      } else if (!linkTargets[r.collection].has(r.ref)) {
+        errors.push(`articulos.json "${a.slug.es}" ${field}: no existe ${r.collection}/${r.ref} (o va después en el fichero)`)
+      }
+    }
+  }
+  linkTargets.articulos.add(a.slug.es)
+}
+
 if (errors.length) fail(errors)
 
 // ------------------------------------------------- 3. escritura
@@ -235,6 +267,10 @@ async function upsert(collection: CollectionSlug, where: Where, docs: Docs): Pro
 }
 
 async function write(collection: CollectionSlug, where: Where, docs: Docs): Promise<number> {
+  // El dataloader del req cachea las consultas de validación de relaciones
+  // durante todo el lote: sin renovarlo, un documento creado después de una
+  // consulta que no lo encontró (p. ej. un artículo enlazado) parecería no existir
+  req.payloadDataLoader = getDataLoader(req)
   const found = await payload.find({ collection, where, limit: 1, depth: 0, locale: 'es', req })
   const existing = found.docs[0] as { id: number } | undefined
   if (existing && !update) {
@@ -434,6 +470,28 @@ async function run() {
     put(es, en, 'titulo', l.titulo)
     put(es, en, 'intro', l.intro)
     await upsert('landings', where, { es, en, faqs: l.faqs })
+  }
+
+  for (const a of seeds.articulos) {
+    // Se consulta en cada artículo para que pueda enlazar a los anteriores del lote
+    const ids = new Map<string, number>()
+    for (const collection of linkableCollections) {
+      for (const [slug, id] of await dbSlugs(collection)) ids.set(`${collection}/${slug}`, id)
+    }
+    const es: Data = {}
+    const en: Data = {}
+    put(es, en, 'slug', a.slug)
+    put(es, en, 'titulo', a.titulo)
+    for (const key of ['resumen', 'busqueda_objetivo', 'seo_titulo', 'seo_descripcion'] as const) put(es, en, key, a[key])
+    for (const locale of ['es', 'en'] as const) {
+      const target = locale === 'es' ? es : en
+      const markdown = a.cuerpo?.[locale]
+      if (markdown) target.cuerpo = markdownToLexical(markdown, ids)
+      set(target, 'busquedas_secundarias', a.busquedas_secundarias?.[locale])
+    }
+    set(es, 'autor', idOf(autores, a.autor))
+    set(es, 'estado', a.estado)
+    await upsert('articulos', { slug: { equals: a.slug.es } }, { es, en, faqs: a.faqs })
   }
 }
 

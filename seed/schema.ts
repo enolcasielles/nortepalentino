@@ -220,7 +220,7 @@ const filtros = Object.values(filterSlugs).map((f) => f.es) as [string, ...strin
 
 export const landingSchema = z
   .object({
-    ambito: z.enum(['negocios', 'rutas', 'recursos']),
+    ambito: z.enum(['negocios', 'rutas', 'recursos', 'articulos']),
     municipio: slug.optional(),
     categoria: slug.optional(),
     filtro: z.enum(filtros).optional(),
@@ -235,8 +235,29 @@ export const landingSchema = z
     if (l.ambito === 'negocios' && !l.categoria) issue('categoria', 'un listado de negocios necesita categoría')
     if (l.ambito === 'negocios' && l.filtro && !l.municipio) issue('filtro', 'los filtros de negocios van dentro de un municipio')
     if (l.ambito !== 'negocios' && (l.municipio || l.categoria)) issue('ambito', 'municipio y categoría solo valen para negocios')
-    if (l.ambito === 'recursos' && l.filtro) issue('filtro', 'los listados de qué ver no tienen filtros')
+    if ((l.ambito === 'recursos' || l.ambito === 'articulos') && l.filtro) issue('filtro', 'este listado no tiene filtros')
   })
+
+// Cuerpo en Markdown, como en la extensión (cms-mcp/src/lexical.mjs): enlaces
+// internos [texto](interno:coleccion/slug) y tarjetas ::ficha[coleccion/slug],
+// con el slug ES en los slugs traducidos
+export const articuloSchema = z
+  .object({
+    slug: localizedSlug,
+    titulo: localizedRequired,
+    resumen: localized.optional(),
+    cuerpo: localized.optional(),
+    faqs: faqs.optional(),
+    busqueda_objetivo: localized.optional(),
+    busquedas_secundarias: z.object({ es: z.array(text).optional(), en: z.array(text).optional() }).strict().optional(),
+    seo_titulo: localized.optional(),
+    seo_descripcion: localized.optional(),
+    autor: slug.optional(),
+    estado: z.enum(estados).optional(),
+  })
+  .strict()
+  .superRefine(requirePublished(['autor']))
+  .superRefine(requireEnWhenTranslated(['titulo']))
 
 export type AutorSeed = z.infer<typeof autorSchema>
 export type CategoriaSeed = z.infer<typeof categoriaSchema>
@@ -245,6 +266,7 @@ export type NegocioSeed = z.infer<typeof negocioSchema>
 export type RecursoSeed = z.infer<typeof recursoSchema>
 export type RutaSeed = z.infer<typeof rutaSchema>
 export type LandingSeed = z.infer<typeof landingSchema>
+export type ArticuloSeed = z.infer<typeof articuloSchema>
 export type LocalizedSeed = z.infer<typeof localized> | z.infer<typeof localizedRequired>
 export type FaqsSeed = z.infer<typeof faqs>
 
@@ -258,6 +280,7 @@ export const seedFiles = {
   recursos: { file: 'recursos.json', schema: recursoSchema },
   rutas: { file: 'rutas.json', schema: rutaSchema },
   landings: { file: 'landings.json', schema: landingSchema },
+  articulos: { file: 'articulos.json', schema: articuloSchema },
 } as const
 
 export type SeedKey = keyof typeof seedFiles

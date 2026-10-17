@@ -74,6 +74,11 @@ export const Articulos: CollectionConfig = {
       label: 'SEO',
       fields: [
         {
+          name: 'revision_seo',
+          type: 'ui',
+          admin: { components: { Field: '/components/admin/ArticleAudit#ArticleAudit' } },
+        },
+        {
           name: 'busqueda_objetivo',
           label: 'Búsqueda objetivo',
           type: 'text',

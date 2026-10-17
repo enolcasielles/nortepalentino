@@ -22,6 +22,7 @@ import { Redirects } from './collections/Redirects'
 import { Rutas } from './collections/Rutas'
 import { TiposRecurso } from './collections/TiposRecurso'
 import { Users } from './collections/Users'
+import { articleAuditEndpoint } from './endpoints/articleAudit'
 import { schemaEndpoint } from './endpoints/schema'
 import { defaultLocale, locales } from './lib/i18n/config'
 
@@ -64,7 +65,7 @@ export default buildConfig({
     Redirects,
     Users,
   ],
-  endpoints: [schemaEndpoint],
+  endpoints: [schemaEndpoint, articleAuditEndpoint],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

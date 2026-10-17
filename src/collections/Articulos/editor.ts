@@ -31,10 +31,7 @@ const REMOVED = new Set(['link', 'relationship', 'checklist', 'inlineCode', 'sup
 export const articleEditor = lexicalEditor({
   features: ({ defaultFeatures }) => [
     ...defaultFeatures.filter((feature) => !REMOVED.has(feature.key)),
-    LinkFeature({
-      enabledCollections: [...linkableCollections],
-      maxDepth: 0,
-    }),
+    LinkFeature({ enabledCollections: [...linkableCollections] }),
     BlocksFeature({ blocks: [FichaBlock] }),
   ],
 })

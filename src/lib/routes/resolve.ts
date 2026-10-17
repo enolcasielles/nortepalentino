@@ -6,7 +6,7 @@ import { withLocale } from '@/lib/payload/withLocale'
 
 import { paths } from './index'
 
-export type RoutableCollection = 'municipios' | 'negocios' | 'rutas' | 'recursos' | 'planes' | 'autores'
+export type RoutableCollection = 'municipios' | 'negocios' | 'rutas' | 'recursos' | 'articulos' | 'autores'
 
 type DocLike = Record<string, unknown>
 
@@ -30,8 +30,8 @@ export async function resolveDocPath(
       return paths.ruta(locale, slug)
     case 'recursos':
       return paths.recurso(locale, slug)
-    case 'planes':
-      return paths.plan(locale, slug)
+    case 'articulos':
+      return paths.articulo(locale, slug)
     case 'autores':
       return paths.autor(locale, slug)
     case 'negocios': {

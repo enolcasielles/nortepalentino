@@ -22,6 +22,7 @@ const filterOptions = Object.values(filterSlugs).map((f) => ({ value: f.es, labe
 //   negocios: categoría [+ municipio [+ filtro]]
 //   rutas:    [filtro]          → /rutas, /rutas/con-ninos
 //   recursos: (nada)            → /que-ver
+//   articulos: (nada)           → /blog
 const normalizeAndValidate: CollectionBeforeValidateHook = async ({ data, originalDoc, req, collection }) => {
   if (!data) return data
   const merged = { ...originalDoc, ...data }
@@ -33,7 +34,7 @@ const normalizeAndValidate: CollectionBeforeValidateHook = async ({ data, origin
     data.municipio = null
     data.categoria = null
   }
-  if (merged.ambito === 'recursos') data.filtro = null
+  if (merged.ambito === 'recursos' || merged.ambito === 'articulos') data.filtro = null
 
   const municipio = relId(data.municipio ?? merged.municipio)
   const categoria = relId(data.categoria ?? merged.categoria)
@@ -102,6 +103,7 @@ export const Landings: CollectionConfig = {
         { value: 'negocios', label: 'Negocios' },
         { value: 'rutas', label: 'Rutas' },
         { value: 'recursos', label: 'Qué ver' },
+        { value: 'articulos', label: 'Blog' },
       ],
     },
     {
@@ -131,7 +133,7 @@ export const Landings: CollectionConfig = {
           label: 'Filtro',
           type: 'select',
           options: filterOptions,
-          admin: { condition: (data) => data?.ambito !== 'recursos' },
+          admin: { condition: (data) => data?.ambito === 'negocios' || data?.ambito === 'rutas' },
         },
       ],
     },

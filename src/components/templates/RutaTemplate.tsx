@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 
 import { AnswerSummary } from '@/components/content/AnswerSummary'
 import { AuthorByline } from '@/components/content/AuthorByline'
+import { BlogMentions } from '@/components/content/BlogMentions'
 import { DifficultyMark } from '@/components/content/DifficultyMark'
 import { ExperienceBlock } from '@/components/content/ExperienceBlock'
 import { FaqList } from '@/components/content/FaqList'
@@ -164,6 +165,7 @@ export async function RutaTemplate({ match, site, path, alternates }: TemplatePr
           </div>
         </div>
         {start && <NearbyList origin={start} site={site} dict={dict} exclude={{ collection: 'rutas', id: r.id }} groups={['comer', 'dormir', 'queVer']} />}
+        <BlogMentions relationTo="rutas" id={r.id} site={site} dict={dict} />
         <FaqList faqs={r.faqs} dict={dict} />
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <AuthorByline autor={r.autor} updatedAt={r.updatedAt} site={site} dict={dict} />

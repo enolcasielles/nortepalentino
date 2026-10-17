@@ -6,6 +6,7 @@ import { cacheTags } from '@/lib/cache/tags'
 import type { Locale } from '@/lib/i18n'
 import type {
   ArchivosGpx,
+  Articulo,
   Autore,
   CategoriasNegocio,
   Landing,
@@ -32,12 +33,13 @@ type CollectionData = {
   landings: Landing
   autores: Autore
   media: Media
+  articulos: Articulo
 }
 
 export type LoadableCollection = keyof CollectionData
 
 // Colecciones con `estado`: al frontend solo llega lo publicado (CLAUDE.md §1.3)
-const withEstado: LoadableCollection[] = ['negocios', 'recursos', 'rutas']
+const withEstado: LoadableCollection[] = ['negocios', 'recursos', 'rutas', 'articulos']
 
 // Toda la colección en un idioma, cacheada con el tag de la colección. El
 // volumen del sitio (cientos de fichas) hace esto más simple y rápido que una

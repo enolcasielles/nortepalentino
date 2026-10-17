@@ -1,5 +1,6 @@
 import { AnswerSummary } from '@/components/content/AnswerSummary'
 import { KeyFacts, type KeyRow } from '@/components/content/KeyFacts'
+import { BlogMentions } from '@/components/content/BlogMentions'
 import { NearbyList } from '@/components/content/NearbyList'
 import { Prose } from '@/components/content/Prose'
 import { VerifiedNote } from '@/components/content/VerifiedNote'
@@ -86,6 +87,7 @@ export async function RecursoTemplate({ match, site, path, alternates }: Templat
           </div>
         </div>
         <NearbyList origin={r.coordenadas} site={site} dict={dict} exclude={{ collection: 'recursos', id: r.id }} groups={['queVer', 'comer', 'rutas']} />
+        <BlogMentions relationTo="recursos" id={r.id} site={site} dict={dict} />
       </div>
     </PageLayout>
   )

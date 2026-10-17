@@ -14,6 +14,10 @@ type BuildMetadataInput = {
   paths: Partial<Record<Locale, string>>
   // Para páginas noindex por naturaleza (búsqueda, filtros por query param)
   noindex?: boolean
+  // Título SEO escrito a mano: se respeta tal cual, sin la marca
+  exactTitle?: boolean
+  // Open Graph de tipo artículo (blog)
+  article?: { publishedTime?: string | null; modifiedTime?: string | null; author?: string | null }
 }
 
 // Toda página obtiene sus metadatos de aquí (CLAUDE.md §7.1)
@@ -24,8 +28,16 @@ function toDescription(text: string, max = 160): string {
   return `${clean.slice(0, max - 1).replace(/\s+\S*$/, '')}…`
 }
 
-export function buildMetadata({ locale, title: rawTitle, description: rawDescription, paths, noindex }: BuildMetadataInput): Metadata {
-  const title = rawTitle.includes(siteName) ? rawTitle : `${rawTitle} · ${siteName}`
+export function buildMetadata({
+  locale,
+  title: rawTitle,
+  description: rawDescription,
+  paths,
+  noindex,
+  exactTitle,
+  article,
+}: BuildMetadataInput): Metadata {
+  const title = exactTitle || rawTitle.includes(siteName) ? rawTitle : `${rawTitle} · ${siteName}`
   const description = toDescription(rawDescription)
   const canonicalPath = paths[locale]
   if (!canonicalPath) throw new Error(`buildMetadata: falta la ruta para "${locale}"`)
@@ -50,12 +62,19 @@ export function buildMetadata({ locale, title: rawTitle, description: rawDescrip
     // Las páginas no indexables siguen enlaces (noindex,follow)
     robots: { index: indexable, follow: true },
     openGraph: {
-      type: 'website',
       siteName,
       title,
       description,
       url: absoluteUrl(canonicalPath),
       locale: locale === 'es' ? 'es_ES' : 'en_GB',
+      ...(article
+        ? {
+            type: 'article' as const,
+            publishedTime: article.publishedTime ?? undefined,
+            modifiedTime: article.modifiedTime ?? undefined,
+            authors: article.author ? [article.author] : undefined,
+          }
+        : { type: 'website' as const }),
     },
     twitter: {
       card: 'summary_large_image',

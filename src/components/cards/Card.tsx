@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { createElement, type ReactNode } from 'react'
 
 import type { ImageData } from '@/lib/data/media'
-import { categoryIcons, type CategoryIconKey } from '@/lib/icons'
+import { categoryIcons, pageIcons, type CategoryIconKey } from '@/lib/icons'
 import type { ColorToken } from '@/lib/taxonomies'
 import { categoryIconColor, categoryMedia, categoryPlate, contourOffset } from '@/lib/ui/categoryColors'
 
@@ -25,7 +25,9 @@ export type CardProps = {
 }
 
 export function categoryIcon(icon: string | null | undefined) {
-  return icon && icon in categoryIcons ? categoryIcons[icon as CategoryIconKey] : null
+  if (icon && icon in categoryIcons) return categoryIcons[icon as CategoryIconKey]
+  if (icon && icon in pageIcons) return pageIcons[icon as keyof typeof pageIcons]
+  return null
 }
 
 // Icono de categoría o tipo por su clave; nada si la clave no existe

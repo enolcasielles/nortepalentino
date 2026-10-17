@@ -5,7 +5,7 @@ import type { Locale } from './config'
 export const segments = {
   rutas: { es: 'rutas', en: 'routes' },
   queVer: { es: 'que-ver', en: 'sights' },
-  planes: { es: 'planes', en: 'plans' },
+  blog: { es: 'blog', en: 'blog' },
   autores: { es: 'autores', en: 'authors' },
   buscar: { es: 'buscar', en: 'search' },
   sobreNosotros: { es: 'sobre-nosotros', en: 'about' },

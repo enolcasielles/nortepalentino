@@ -75,7 +75,7 @@ export interface Config {
     tipos_recurso: TiposRecurso;
     rutas: Ruta;
     archivos_gpx: ArchivosGpx;
-    planes: Plane;
+    articulos: Articulo;
     landings: Landing;
     autores: Autore;
     media: Media;
@@ -96,7 +96,7 @@ export interface Config {
     tipos_recurso: TiposRecursoSelect<false> | TiposRecursoSelect<true>;
     rutas: RutasSelect<false> | RutasSelect<true>;
     archivos_gpx: ArchivosGpxSelect<false> | ArchivosGpxSelect<true>;
-    planes: PlanesSelect<false> | PlanesSelect<true>;
+    articulos: ArticulosSelect<false> | ArticulosSelect<true>;
     landings: LandingsSelect<false> | LandingsSelect<true>;
     autores: AutoresSelect<false> | AutoresSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -566,9 +566,9 @@ export interface ArchivosGpx {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "planes".
+ * via the `definition` "articulos".
  */
-export interface Plane {
+export interface Articulo {
   id: number;
   titulo: string;
   /**
@@ -576,12 +576,12 @@ export interface Plane {
    */
   slug: string;
   /**
-   * Respuesta de 2–3 frases bajo el título (answer-first).
+   * Respuesta de 2–3 frases bajo el título (answer-first). También es la descripción por defecto.
    */
   resumen?: string | null;
   foto_portada?: (number | null) | Media;
   /**
-   * Sin él, el plan no existe en ese idioma.
+   * Sin él, el artículo no existe en ese idioma. Enlaza el directorio con enlaces internos (no pegues URLs de la web) y usa el bloque "Ficha del directorio" para incrustar una tarjeta.
    */
   cuerpo?: {
     root: {
@@ -598,9 +598,6 @@ export interface Plane {
     };
     [k: string]: unknown;
   } | null;
-  rutas?: (number | Ruta)[] | null;
-  negocios?: (number | Negocio)[] | null;
-  recursos?: (number | Recurso)[] | null;
   faqs?:
     | {
         pregunta?: string | null;
@@ -608,8 +605,55 @@ export interface Plane {
         id?: string | null;
       }[]
     | null;
+  /**
+   * La búsqueda de Google a la que responde el artículo ("rutas con niños en la montaña palentina").
+   */
+  busqueda_objetivo?: string | null;
+  /**
+   * Variantes y preguntas relacionadas que el texto también cubre.
+   */
+  busquedas_secundarias?: string[] | null;
+  /**
+   * Opcional. Máximo unos 60 caracteres; vacío: el título.
+   */
+  seo_titulo?: string | null;
+  /**
+   * Opcional. 120–160 caracteres; vacío: el resumen.
+   */
+  seo_descripcion?: string | null;
   autor?: (number | null) | Autore;
+  /**
+   * Se fija sola al publicar por primera vez.
+   */
+  fecha_publicacion?: string | null;
   estado: 'borrador' | 'publicado';
+  /**
+   * Se calcula del cuerpo al guardar.
+   */
+  enlaces?:
+    | (
+        | {
+            relationTo: 'negocios';
+            value: number | Negocio;
+          }
+        | {
+            relationTo: 'rutas';
+            value: number | Ruta;
+          }
+        | {
+            relationTo: 'recursos';
+            value: number | Recurso;
+          }
+        | {
+            relationTo: 'municipios';
+            value: number | Municipio;
+          }
+        | {
+            relationTo: 'articulos';
+            value: number | Articulo;
+          }
+      )[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -619,7 +663,7 @@ export interface Plane {
  */
 export interface Landing {
   id: number;
-  ambito: 'negocios' | 'rutas' | 'recursos';
+  ambito: 'negocios' | 'rutas' | 'recursos' | 'articulos';
   categoria?: (number | null) | CategoriasNegocio;
   /**
    * Vacío: listado de toda la comarca.
@@ -750,8 +794,8 @@ export interface PayloadLockedDocument {
         value: number | ArchivosGpx;
       } | null)
     | ({
-        relationTo: 'planes';
-        value: number | Plane;
+        relationTo: 'articulos';
+        value: number | Articulo;
       } | null)
     | ({
         relationTo: 'landings';
@@ -1023,17 +1067,14 @@ export interface ArchivosGpxSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "planes_select".
+ * via the `definition` "articulos_select".
  */
-export interface PlanesSelect<T extends boolean = true> {
+export interface ArticulosSelect<T extends boolean = true> {
   titulo?: T;
   slug?: T;
   resumen?: T;
   foto_portada?: T;
   cuerpo?: T;
-  rutas?: T;
-  negocios?: T;
-  recursos?: T;
   faqs?:
     | T
     | {
@@ -1041,8 +1082,14 @@ export interface PlanesSelect<T extends boolean = true> {
         respuesta?: T;
         id?: T;
       };
+  busqueda_objetivo?: T;
+  busquedas_secundarias?: T;
+  seo_titulo?: T;
+  seo_descripcion?: T;
   autor?: T;
+  fecha_publicacion?: T;
   estado?: T;
+  enlaces?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1202,6 +1249,28 @@ export interface CollectionsWidget {
     [k: string]: unknown;
   };
   width: 'full';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FichaBlock".
+ */
+export interface FichaBlock {
+  ficha:
+    | {
+        relationTo: 'negocios';
+        value: number | Negocio;
+      }
+    | {
+        relationTo: 'rutas';
+        value: number | Ruta;
+      }
+    | {
+        relationTo: 'recursos';
+        value: number | Recurso;
+      };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ficha';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

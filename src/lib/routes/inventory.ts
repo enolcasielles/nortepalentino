@@ -67,5 +67,15 @@ export function siteInventory(site: Site): InventoryEntry[] {
   }
   for (const recurso of site.recursos) add(site.url.recurso(recurso), { type: 'recurso', recurso }, recurso.updatedAt)
 
+  const articulosListing = site.articulosListing()
+  if (articulosListing) {
+    add(
+      site.url.articulosListing(),
+      { type: 'articulosListing', listing: articulosListing },
+      latest([articulosListing.landing.updatedAt, ...articulosListing.items.map((i) => i.updatedAt)]),
+    )
+  }
+  for (const articulo of site.articulos) add(site.url.articulo(articulo), { type: 'articulo', articulo }, articulo.updatedAt)
+
   return entries
 }

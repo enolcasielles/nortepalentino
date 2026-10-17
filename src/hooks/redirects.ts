@@ -31,7 +31,7 @@ export async function upsertRedirect(req: PayloadRequest, input: RedirectInput):
 }
 
 type Options = {
-  // El slug se traduce (rutas, recursos, planes) o es igual en ES y EN
+  // El slug se traduce (rutas, recursos, artículos) o es igual en ES y EN
   localizedSlug: boolean
   // Solo las fichas con `estado` publicado tenían URL pública
   hasEstado: boolean

@@ -2,6 +2,7 @@ import { BusinessCard, RouteCard, SightCard } from '@/components/cards'
 import { CardGrid } from '@/components/cards/Card'
 import { AnswerSummary } from '@/components/content/AnswerSummary'
 import { AuthorByline } from '@/components/content/AuthorByline'
+import { BlogMentions } from '@/components/content/BlogMentions'
 import { FaqList } from '@/components/content/FaqList'
 import { KeyFacts, type KeyRow } from '@/components/content/KeyFacts'
 import { Section } from '@/components/content/Section'
@@ -144,6 +145,7 @@ export async function MunicipioTemplate({ match, site, path, alternates }: Templ
           )}
 
           <MapBlock match={match} site={site} path={path} name={m.nombre} dict={dict} />
+          <BlogMentions relationTo="municipios" id={m.id} site={site} dict={dict} />
           <FaqList faqs={m.faqs} dict={dict} />
           <AuthorByline autor={m.autor} updatedAt={m.updatedAt} site={site} dict={dict} />
         </div>

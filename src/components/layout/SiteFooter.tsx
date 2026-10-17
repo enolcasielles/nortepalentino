@@ -4,17 +4,13 @@ import { getSite } from '@/lib/data/site'
 import type { Dictionary, Locale } from '@/lib/i18n'
 import { homePath } from '@/lib/routes'
 
+import { blogLink, directoryLinks } from './nav'
+
 // El aviso de portal independiente aparece en todas las páginas (CLAUDE.md §1.2)
 export async function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const site = await getSite(locale)
-  const explore = [
-    site.rutasListing() && { href: site.url.rutasListing(null), label: dict.nav.rutas },
-    site.recursosListing() && { href: site.url.recursosListing(), label: dict.nav.queVer },
-    ...site.categorias.map((c) => {
-      const listing = site.negociosListing(null, c.id)
-      return listing && { href: site.url.negociosListing(listing), label: c.nombre_plural }
-    }),
-  ].filter((l): l is { href: string; label: string } => Boolean(l))
+  const blog = blogLink(site, dict)
+  const explore = [...directoryLinks(site, dict), ...(blog ? [blog] : [])]
 
   const linkClass = 'inline-flex min-h-11 items-center text-white/90 underline-offset-4 hover:text-white hover:underline'
 

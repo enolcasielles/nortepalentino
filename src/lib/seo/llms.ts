@@ -27,10 +27,14 @@ function entryTitle(site: Site, e: ReturnType<typeof siteInventory>[number]): st
       return m.listing.landing.titulo || dict.titles.recursos
     case 'recurso':
       return m.recurso.nombre
+    case 'articulosListing':
+      return m.listing.landing.titulo || dict.titles.blog
+    case 'articulo':
+      return m.articulo.titulo
   }
 }
 
-const SECTION_ORDER = ['municipio', 'negociosListing', 'rutasListing', 'recursosListing'] as const
+const SECTION_ORDER = ['municipio', 'negociosListing', 'rutasListing', 'recursosListing', 'articulosListing', 'articulo'] as const
 
 export async function llmsTxt(): Promise<string> {
   const sites = await getSites()
@@ -125,6 +129,12 @@ export async function llmsFullTxt(): Promise<string> {
       out.push(`### ${r.nombre}`, `URL: ${url(site.url.recurso(r))}`, facts.join(' · '))
       if (r.resumen) out.push(r.resumen)
       out.push(`${dict.content.verified.replace('{date}', isoDate(r.fecha_verificacion) ?? '')}`, '')
+    }
+
+    for (const a of site.articulos) {
+      out.push(`### ${a.titulo}`, `URL: ${url(site.url.articulo(a))}`)
+      if (a.resumen) out.push(a.resumen)
+      out.push(`${dict.content.updated.replace('{date}', isoDate(a.updatedAt) ?? '')}`, '')
     }
   }
   return out.join('\n')

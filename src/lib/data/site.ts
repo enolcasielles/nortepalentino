@@ -3,8 +3,10 @@ import { cache } from 'react'
 import { filterSlugs, locales, type Locale } from '@/lib/i18n'
 import { relId } from '@/lib/payload/relations'
 import { paths } from '@/lib/routes'
-import { isFichaAvailable, isHiddenDemo, isListingAvailable } from '@/lib/seo/indexability'
+import { hasText, type DocRef, type LexicalValue, type LinkableCollection } from '@/lib/richtext/lexical'
+import { isArticuloAvailable, isFichaAvailable, isHiddenDemo, isListingAvailable } from '@/lib/seo/indexability'
 import type {
+  Articulo,
   Autore,
   CategoriasNegocio,
   Landing,
@@ -38,6 +40,7 @@ export type NegociosListing = {
 }
 export type RutasListing = { kind: 'rutas'; filtro: FilterValue | null; landing: Landing; items: Ruta[] }
 export type RecursosListing = { kind: 'recursos'; landing: Landing; items: Recurso[] }
+export type ArticulosListing = { kind: 'articulos'; landing: Landing; items: Articulo[] }
 
 const byId = <T extends { id: number }>(docs: T[]) => new Map(docs.map((d) => [d.id, d]))
 const collator = new Intl.Collator('es')
@@ -69,6 +72,7 @@ export const getSite = cache(async (locale: Locale) => {
     landingsAll,
     autores,
     media,
+    articulosAll,
   ] = await Promise.all([
     loadCollection('municipios', locale),
     loadCollection('nucleos', locale),
@@ -80,6 +84,7 @@ export const getSite = cache(async (locale: Locale) => {
     loadCollection('landings', locale),
     loadCollection('autores', locale),
     loadCollection('media', locale),
+    loadCollection('articulos', locale),
   ])
 
   const municipioById = byId(municipiosAll.filter((m) => !isHiddenDemo(m.nombre)))
@@ -105,6 +110,25 @@ export const getSite = cache(async (locale: Locale) => {
   const recursos = recursosAll
     .filter((r) => r.slug && isFichaAvailable(r, r.nombre) && tipoById.has(relId(r.tipo) ?? -1))
     .sort((a, b) => collator.compare(a.nombre, b.nombre))
+
+  // Artículos que existen en este idioma, del más reciente al más antiguo
+  const articulos = articulosAll
+    .filter((a) => isArticuloAvailable(a, hasText(a.cuerpo as LexicalValue), a.titulo))
+    .sort((a, b) => (b.fecha_publicacion ?? b.createdAt).localeCompare(a.fecha_publicacion ?? a.createdAt))
+
+  const negocioById = byId(negocios)
+  const rutaById = byId(rutas)
+  const recursoById = byId(recursos)
+  const articuloById = byId(articulos)
+
+  // Enlaces de vuelta: qué artículos enlazan o incrustan cada documento
+  const mentions = new Map<string, Articulo[]>()
+  for (const a of articulos) {
+    for (const e of a.enlaces ?? []) {
+      const key = `${e.relationTo}:${relId(e.value)}`
+      mentions.set(key, [...(mentions.get(key) ?? []), a])
+    }
+  }
 
   // Un municipio tiene página si tiene intro en este idioma
   const municipios = [...municipioById.values()]
@@ -150,6 +174,12 @@ export const getSite = cache(async (locale: Locale) => {
     return { kind: 'recursos', landing, items: recursos }
   }
 
+  function articulosListing(): ArticulosListing | null {
+    const landing = landingByKey.get(landingKey('articulos', null, null, null))
+    if (!landing || !isListingAvailable(articulos.length, landing.intro)) return null
+    return { kind: 'articulos', landing, items: articulos }
+  }
+
   // ---- URLs (solo de lo que existe en este idioma)
 
   const municipioSlug = (n: { municipio?: number | Municipio | null }) =>
@@ -173,7 +203,55 @@ export const getSite = cache(async (locale: Locale) => {
     rutasListing: (filtro: FilterValue | null) =>
       filtro ? `${paths.rutas(locale)}/${filterSlugFor(filtro, locale)}` : paths.rutas(locale),
     recursosListing: () => paths.recursos(locale),
+    articulo: (a: Articulo) => (a.slug ? paths.articulo(locale, a.slug) : null),
+    articulosListing: () => paths.blog(locale),
+    // Destino de un enlace interno del cuerpo de un artículo; null si no existe en este idioma
+    ref: (ref: DocRef): string | null => {
+      const doc = docOf(ref)
+      if (!doc) return null
+      switch (doc.relationTo) {
+        case 'negocios':
+          return url.negocio(doc.value)
+        case 'rutas':
+          return url.ruta(doc.value)
+        case 'recursos':
+          return url.recurso(doc.value)
+        case 'municipios':
+          return url.municipio(doc.value)
+        case 'articulos':
+          return url.articulo(doc.value)
+      }
+    },
   }
+
+  // Documento que existe en este idioma a partir de una referencia
+  function docOf(ref: DocRef): ResolvedDoc | null {
+    switch (ref.relationTo) {
+      case 'negocios': {
+        const value = negocioById.get(ref.id)
+        return value ? { relationTo: 'negocios', value } : null
+      }
+      case 'rutas': {
+        const value = rutaById.get(ref.id)
+        return value ? { relationTo: 'rutas', value } : null
+      }
+      case 'recursos': {
+        const value = recursoById.get(ref.id)
+        return value ? { relationTo: 'recursos', value } : null
+      }
+      case 'municipios': {
+        const value = municipioById.get(ref.id)
+        return value && municipioPageIds.has(value.id) ? { relationTo: 'municipios', value } : null
+      }
+      case 'articulos': {
+        const value = articuloById.get(ref.id)
+        return value ? { relationTo: 'articulos', value } : null
+      }
+    }
+  }
+
+  // Artículos que enlazan un documento (para "Lo contamos en el blog")
+  const articulosAbout = (relationTo: LinkableCollection, id: number) => mentions.get(`${relationTo}:${id}`) ?? []
 
   return {
     locale,
@@ -186,14 +264,26 @@ export const getSite = cache(async (locale: Locale) => {
     negocios,
     rutas,
     recursos,
+    articulos,
+    articuloById,
     autorById,
     mediaById,
     negociosListing,
     rutasListing,
     recursosListing,
+    articulosListing,
     url,
+    docOf,
+    articulosAbout,
   }
 })
+
+export type ResolvedDoc =
+  | { relationTo: 'negocios'; value: Negocio }
+  | { relationTo: 'rutas'; value: Ruta }
+  | { relationTo: 'recursos'; value: Recurso }
+  | { relationTo: 'municipios'; value: Municipio }
+  | { relationTo: 'articulos'; value: Articulo }
 
 export type Site = Awaited<ReturnType<typeof getSite>>
 

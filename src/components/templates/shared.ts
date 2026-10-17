@@ -12,7 +12,14 @@ export type TemplateProps<T extends RouteMatch['type']> = {
   searchParams?: Record<string, string | string[] | undefined>
 }
 
-export type PageMeta = { title: string; description: string; noindex?: boolean }
+export type PageMeta = {
+  title: string
+  description: string
+  noindex?: boolean
+  // Título SEO escrito a mano: sin añadir la marca
+  exactTitle?: boolean
+  article?: { publishedTime?: string | null; modifiedTime?: string | null; author?: string | null }
+}
 
 export function homeCrumb(locale: Locale): Crumb {
   return { name: getDictionary(locale).a11y.home, path: homePath(locale) }

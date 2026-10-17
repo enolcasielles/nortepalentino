@@ -30,6 +30,15 @@ export function isFichaAvailable(doc: Ficha, name: string | null | undefined): b
   )
 }
 
+// Artículo: publicado, con cuerpo en el idioma y firmado (CLAUDE.md §7.4)
+export function isArticuloAvailable(
+  doc: { estado?: string | null; slug?: string | null; autor?: unknown },
+  bodyHasText: boolean,
+  name: string | null | undefined,
+): boolean {
+  return doc.estado === 'publicado' && Boolean(doc.slug) && Boolean(doc.autor) && bodyHasText && !isHiddenDemo(name)
+}
+
 // Listado: al menos MIN_ITEMS_LISTING fichas y una landing con intro propia en el idioma
 export function isListingAvailable(itemCount: number, landingIntro: string | null | undefined): boolean {
   return itemCount >= MIN_ITEMS_LISTING && Boolean(landingIntro?.trim())

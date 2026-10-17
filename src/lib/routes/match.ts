@@ -1,7 +1,7 @@
-import type { NegociosListing, RecursosListing, RutasListing, Site } from '@/lib/data/site'
+import type { ArticulosListing, NegociosListing, RecursosListing, RutasListing, Site } from '@/lib/data/site'
 import { filterFromSlug } from '@/lib/data/site'
 import { segments, type Locale } from '@/lib/i18n'
-import type { Municipio, Negocio, Recurso, Ruta } from '@/payload-types'
+import type { Articulo, Municipio, Negocio, Recurso, Ruta } from '@/payload-types'
 
 export type RouteMatch =
   | { type: 'municipio'; municipio: Municipio }
@@ -11,6 +11,8 @@ export type RouteMatch =
   | { type: 'ruta'; ruta: Ruta }
   | { type: 'recursosListing'; listing: RecursosListing }
   | { type: 'recurso'; recurso: Recurso }
+  | { type: 'articulosListing'; listing: ArticulosListing }
+  | { type: 'articulo'; articulo: Articulo }
 
 // Resuelve /{locale}/{...segs} contra lo que existe en ese idioma (CLAUDE.md §5).
 // Devuelve null si la página no existe (o no cumple §7.4).
@@ -33,6 +35,13 @@ export function matchRoute(site: Site, segs: string[]): RouteMatch | null {
     if (!s1) return wrap('recursosListing', site.recursosListing())
     const recurso = site.recursos.find((r) => r.slug === s1)
     return recurso ? { type: 'recurso', recurso } : null
+  }
+
+  if (s0 === segments.blog[locale]) {
+    if (s2) return null
+    if (!s1) return wrap('articulosListing', site.articulosListing())
+    const articulo = site.articulos.find((a) => a.slug === s1)
+    return articulo ? { type: 'articulo', articulo } : null
   }
 
   const municipio = [...site.municipioById.values()].find((m) => m.slug === s0)
@@ -58,7 +67,7 @@ export function matchRoute(site: Site, segs: string[]): RouteMatch | null {
   return negocio ? { type: 'negocio', negocio } : null
 }
 
-function wrap<T extends 'rutasListing' | 'recursosListing' | 'negociosListing'>(
+function wrap<T extends 'rutasListing' | 'recursosListing' | 'negociosListing' | 'articulosListing'>(
   type: T,
   listing: Extract<RouteMatch, { type: T }>['listing'] | null,
 ): RouteMatch | null {
@@ -95,6 +104,12 @@ export function pathInSite(match: RouteMatch, site: Site): string | null {
     }
     case 'recursosListing':
       return site.recursosListing() ? site.url.recursosListing() : null
+    case 'articulo': {
+      const a = site.articuloById.get(match.articulo.id)
+      return a ? site.url.articulo(a) : null
+    }
+    case 'articulosListing':
+      return site.articulosListing() ? site.url.articulosListing() : null
   }
 }
 

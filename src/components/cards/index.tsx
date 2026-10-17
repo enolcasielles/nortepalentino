@@ -4,10 +4,11 @@ import { DifficultyMark } from '@/components/content/DifficultyMark'
 import { FamilyAttributes } from '@/components/content/FamilyAttributes'
 import { imageOf } from '@/lib/data/media'
 import type { Site } from '@/lib/data/site'
-import { formatDuration, formatNumber, type Dictionary } from '@/lib/i18n'
+import { fill, formatDate, formatDuration, formatNumber, type Dictionary } from '@/lib/i18n'
 import { relId } from '@/lib/payload/relations'
 import { asColorToken } from '@/lib/ui/categoryColors'
-import type { Municipio, Negocio, Recurso, Ruta } from '@/payload-types'
+import { readingMinutes } from '@/lib/richtext/lexical'
+import type { Articulo, Municipio, Negocio, Recurso, Ruta } from '@/payload-types'
 
 import { Card } from './Card'
 
@@ -117,6 +118,30 @@ export function MunicipioCard({ municipio, site, headingLevel }: Common & { muni
       color="rutas"
       icon="cumbre"
       image={imageOf(site, municipio.foto_portada)}
+      headingLevel={headingLevel}
+    />
+  )
+}
+
+export function ArticleCard({ articulo, site, dict, headingLevel }: Common & { articulo: Articulo }) {
+  const href = site.url.articulo(articulo)
+  if (!href) return null
+  const date = articulo.fecha_publicacion ?? articulo.createdAt
+  return (
+    <Card
+      href={href}
+      title={articulo.titulo}
+      category={dict.nav.blog}
+      color="rutas"
+      icon="articulo"
+      image={imageOf(site, articulo.foto_portada)}
+      facts={
+        <p className="font-normal text-text-muted">
+          <time dateTime={date.slice(0, 10)}>{formatDate(date, site.locale)}</time>
+          {' · '}
+          {fill(dict.content.readingTime, { n: readingMinutes(articulo.cuerpo) })}
+        </p>
+      }
       headingLevel={headingLevel}
     />
   )

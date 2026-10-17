@@ -6,7 +6,7 @@ import { slugify, SLUG_PATTERN } from '@/lib/routes/slugify'
 type SlugFieldOptions = {
   // Campo del que se autogenera el slug si se deja vacío
   from: string
-  // Slugs traducidos (rutas, recursos, planes, categorías) frente a topónimos
+  // Slugs traducidos (rutas, recursos, artículos, categorías) frente a topónimos
   localized?: boolean
   // Comprobar contra la lista de slugs reservados (lib/routes/reserved.ts)
   checkReserved?: boolean

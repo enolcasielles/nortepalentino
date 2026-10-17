@@ -1,17 +1,20 @@
-import { Baby, Church, Footprints, MapPin, type LucideIcon } from 'lucide-react'
+import { Baby, BookOpenText, Church, Compass, Footprints, MapPin, type LucideIcon } from 'lucide-react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { Ridges } from '@/components/brand/Ridges'
-import { MunicipioCard, RouteCard, SightCard } from '@/components/cards'
+import { ArticleCard, MunicipioCard, RouteCard, SightCard } from '@/components/cards'
 import { CardGrid, categoryIcon } from '@/components/cards/Card'
 import { Section } from '@/components/content/Section'
+import { TrailArrow } from '@/components/content/TrailArrow'
 import { PageLayout } from '@/components/layout/PageLayout'
 import { getSite } from '@/lib/data/site'
-import { getDictionary, isLocale, locales, type Locale } from '@/lib/i18n'
+import { getDictionary, isLocale, locales, plural, type Locale } from '@/lib/i18n'
 import { homePath } from '@/lib/routes'
 import { buildMetadata } from '@/lib/seo/buildMetadata'
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo/jsonld'
+import type { ColorToken } from '@/lib/taxonomies'
+import { asColorToken, categoryPlate } from '@/lib/ui/categoryColors'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -31,8 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   })
 }
 
-// DESIGN.md §6 · Home. Planes, buscador, mapa de la comarca, "quiénes somos" y
-// FAQs llegan cuando existan sus páginas y su contenido.
+// DESIGN.md §6 · Home: resumen de las dos secciones del sitio, el directorio
+// (lo que se visita, se come, se duerme y se hace) y el blog. Solo enlaza a
+// listados que existen (§7.4).
 export default async function HomePage({ params }: Props) {
   const { locale } = await params
   // El layout también lo valida, pero la página se ejecuta en paralelo
@@ -40,17 +44,47 @@ export default async function HomePage({ params }: Props) {
   const dict = getDictionary(locale)
   const site = await getSite(locale)
 
-  // Accesos por intención: solo a listados que existen (§7.4)
-  const intents = [
-    site.rutasListing('con-ninos') && { href: site.url.rutasListing('con-ninos'), label: dict.titles.rutasFiltered, icon: Baby },
-    site.rutasListing() && { href: site.url.rutasListing(null), label: dict.titles.rutas, icon: Footprints },
-    site.recursosListing() && { href: site.url.recursosListing(), label: dict.titles.recursos, icon: Church },
+  type Tile = { href: string; label: string; icon: LucideIcon; count: string; color: ColorToken }
+  const rutasListing = site.rutasListing()
+  const recursosListing = site.recursosListing()
+  const directory = [
     ...site.categorias.map((c) => {
       const listing = site.negociosListing(null, c.id)
-      return listing && { href: site.url.negociosListing(listing), label: c.nombre_plural, icon: categoryIcon(c.icono) ?? MapPin }
+      return (
+        listing && {
+          href: site.url.negociosListing(listing),
+          label: c.nombre_plural!,
+          icon: categoryIcon(c.icono) ?? MapPin,
+          count: plural(dict.listing.count, listing.items.length, locale),
+          color: asColorToken(c.color_token),
+        }
+      )
     }),
+    rutasListing && {
+      href: site.url.rutasListing(null),
+      label: dict.nav.rutas,
+      icon: Footprints,
+      count: plural(dict.listing.countRutas, rutasListing.items.length, locale),
+      color: 'rutas' as const,
+    },
+    recursosListing && {
+      href: site.url.recursosListing(),
+      label: dict.nav.queVer,
+      icon: Church,
+      count: plural(dict.listing.count, recursosListing.items.length, locale),
+      color: 'romanico' as const,
+    },
+  ].filter((t): t is Tile => Boolean(t))
+
+  const blog = site.articulosListing()
+  // Accesos rápidos del hero: directorio, rutas con niños (público prioritario) y blog
+  const intents = [
+    directory.length > 0 && { href: '#directorio', label: dict.home.directorio, icon: Compass },
+    site.rutasListing('con-ninos') && { href: site.url.rutasListing('con-ninos'), label: dict.titles.rutasFiltered, icon: Baby },
+    blog && { href: site.url.articulosListing(), label: dict.nav.blog, icon: BookOpenText },
   ].filter((i): i is { href: string; label: string; icon: LucideIcon } => Boolean(i))
 
+  const articulos = site.articulos.slice(0, HOME_CARDS)
   const rutas = site.rutas.slice(0, HOME_CARDS)
   const recursos = site.recursos.slice(0, HOME_CARDS)
 
@@ -101,6 +135,47 @@ export default async function HomePage({ params }: Props) {
       jsonLd={[websiteJsonLd(locale), organizationJsonLd(locale)]}
     >
       <div className="space-y-16 md:space-y-20">
+        {directory.length > 0 && (
+          <Section id="directorio" title={dict.home.directorio} lead={dict.home.directorioLead}>
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {directory.map(({ href, label, icon: Icon, count, color }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    className="group flex min-h-20 items-center gap-4 rounded-lg bg-surface p-4 shadow-card ring-1 ring-border transition hover:-translate-y-0.5 hover:shadow-card-hover motion-reduce:hover:translate-y-0"
+                  >
+                    <span aria-hidden="true" className={`grid size-12 shrink-0 place-items-center rounded-md ${categoryPlate[color]}`}>
+                      <Icon size={24} strokeWidth={1.75} />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-display text-lg leading-tight font-bold text-ink group-hover:text-primary">{label}</span>
+                      <span className="block text-sm text-text-muted">{count}</span>
+                    </span>
+                    <TrailArrow />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Section>
+        )}
+
+        {articulos.length > 0 && (
+          <Section
+            id="blog"
+            title={dict.home.blog}
+            lead={dict.home.blogLead}
+            more={blog ? { href: site.url.articulosListing(), label: dict.sections.seeAll } : null}
+          >
+            <CardGrid>
+              {articulos.map((a) => (
+                <li key={a.id}>
+                  <ArticleCard articulo={a} site={site} dict={dict} />
+                </li>
+              ))}
+            </CardGrid>
+          </Section>
+        )}
+
         {site.municipios.length > 0 && (
           <Section id="municipios" title={dict.sections.municipios}>
             <CardGrid>
@@ -117,7 +192,7 @@ export default async function HomePage({ params }: Props) {
           <Section
             id="rutas"
             title={dict.titles.rutas}
-            more={site.rutasListing() ? { href: site.url.rutasListing(null), label: dict.sections.seeAll } : null}
+            more={rutasListing ? { href: site.url.rutasListing(null), label: dict.sections.seeAll } : null}
           >
             <CardGrid>
               {rutas.map((r) => (
@@ -133,7 +208,7 @@ export default async function HomePage({ params }: Props) {
           <Section
             id="que-ver"
             title={dict.titles.recursos}
-            more={site.recursosListing() ? { href: site.url.recursosListing(), label: dict.sections.seeAll } : null}
+            more={recursosListing ? { href: site.url.recursosListing(), label: dict.sections.seeAll } : null}
           >
             <CardGrid>
               {recursos.map((r) => (

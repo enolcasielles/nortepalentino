@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound, permanentRedirect } from 'next/navigation'
 
+import { ArticulosListingTemplate, articulosListingMeta } from '@/components/templates/ArticulosListingTemplate'
+import { ArticuloTemplate, articuloMeta } from '@/components/templates/ArticuloTemplate'
 import { MunicipioTemplate, municipioMeta } from '@/components/templates/MunicipioTemplate'
 import { NegociosListingTemplate, negociosListingMeta } from '@/components/templates/NegociosListingTemplate'
 import { NegocioTemplate, negocioMeta } from '@/components/templates/NegocioTemplate'
@@ -77,6 +79,12 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     case 'recurso':
       meta = recursoMeta({ match, site })
       break
+    case 'articulosListing':
+      meta = articulosListingMeta({ match, site })
+      break
+    case 'articulo':
+      meta = articuloMeta({ match, site })
+      break
   }
   return buildMetadata({ locale: r.locale, paths: r.alternates, ...meta })
 }
@@ -109,5 +117,9 @@ export default async function ContentPage({ params, searchParams }: Props) {
       return <RecursosListingTemplate match={match} {...common} />
     case 'recurso':
       return <RecursoTemplate match={match} {...common} />
+    case 'articulosListing':
+      return <ArticulosListingTemplate match={match} {...common} />
+    case 'articulo':
+      return <ArticuloTemplate match={match} {...common} />
   }
 }

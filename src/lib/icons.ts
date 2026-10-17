@@ -8,6 +8,7 @@ import {
   Bike,
   Binoculars,
   Bird,
+  BookOpenText,
   Castle,
   Church,
   CircleParking,
@@ -69,6 +70,11 @@ export const categoryIcons = {
 export type CategoryIconKey = keyof typeof categoryIcons
 
 export const categoryIconKeys = Object.keys(categoryIcons) as CategoryIconKey[]
+
+// Iconos de tipos de página que no son categorías (no se ofrecen en el panel)
+export const pageIcons = {
+  articulo: BookOpenText,
+} satisfies Record<string, LucideIcon>
 
 export const familyAttributeIcons: Record<FamilyAttribute, LucideIcon> = {
   'admite-ninos': Baby,

@@ -25,7 +25,8 @@ export const paths = {
     `/${locale}/${municipio}/${categoria}/${negocio}`,
   ruta: (locale: Locale, ruta: string) => `${segmentPath('rutas', locale)}/${ruta}`,
   recurso: (locale: Locale, recurso: string) => `${segmentPath('queVer', locale)}/${recurso}`,
-  plan: (locale: Locale, plan: string) => `${segmentPath('planes', locale)}/${plan}`,
+  blog: (locale: Locale) => segmentPath('blog', locale),
+  articulo: (locale: Locale, articulo: string) => `${segmentPath('blog', locale)}/${articulo}`,
   autor: (locale: Locale, autor: string) => `${segmentPath('autores', locale)}/${autor}`,
 }
 

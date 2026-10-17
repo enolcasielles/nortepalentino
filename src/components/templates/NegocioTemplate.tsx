@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ContactActions } from '@/components/actions/ContactActions'
 import { FamilyAttributes } from '@/components/content/FamilyAttributes'
 import { KeyFacts, type KeyRow } from '@/components/content/KeyFacts'
+import { BlogMentions } from '@/components/content/BlogMentions'
 import { NearbyList } from '@/components/content/NearbyList'
 import { Prose } from '@/components/content/Prose'
 import { VerifiedNote } from '@/components/content/VerifiedNote'
@@ -107,6 +108,7 @@ export async function NegocioTemplate({ match, site, path, alternates }: Templat
           exclude={{ collection: 'negocios', id: n.id }}
           groups={categoria.color_token === 'dormir' ? ['comer', 'rutas', 'queVer'] : ['dormir', 'rutas', 'queVer']}
         />
+        <BlogMentions relationTo="negocios" id={n.id} site={site} dict={dict} />
       </div>
     </PageLayout>
   )

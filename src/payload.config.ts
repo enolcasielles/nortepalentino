@@ -9,6 +9,7 @@ import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import { ArchivosGpx } from './collections/ArchivosGpx'
+import { Articulos } from './collections/Articulos'
 import { Autores } from './collections/Autores'
 import { CategoriasNegocio } from './collections/CategoriasNegocio'
 import { Landings } from './collections/Landings'
@@ -16,7 +17,6 @@ import { Media } from './collections/Media'
 import { Municipios } from './collections/Municipios'
 import { Negocios } from './collections/Negocios'
 import { Nucleos } from './collections/Nucleos'
-import { Planes } from './collections/Planes'
 import { Recursos } from './collections/Recursos'
 import { Redirects } from './collections/Redirects'
 import { Rutas } from './collections/Rutas'
@@ -57,7 +57,7 @@ export default buildConfig({
     TiposRecurso,
     Rutas,
     ArchivosGpx,
-    Planes,
+    Articulos,
     Landings,
     Autores,
     Media,

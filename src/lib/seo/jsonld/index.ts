@@ -1,4 +1,5 @@
 import type {
+  BlogPosting,
   BreadcrumbList,
   CollectionPage,
   FAQPage,
@@ -20,7 +21,7 @@ import { getDictionary, type Locale } from '@/lib/i18n'
 import { relId } from '@/lib/payload/relations'
 import { absoluteUrl, homePath } from '@/lib/routes'
 import { siteName, siteUrl } from '@/lib/site'
-import type { Municipio, Negocio, Recurso, Ruta } from '@/payload-types'
+import type { Articulo, Municipio, Negocio, Recurso, Ruta } from '@/payload-types'
 
 // Un generador por tipo de página (CLAUDE.md §7.2). Solo datos reales del
 // documento: un campo vacío se omite, nunca se rellena.
@@ -221,4 +222,32 @@ export function collectionJsonLd(
       mainEntity: list,
     }),
   } as WithContext<CollectionPage>
+}
+
+// Artículo del blog: autor real, fechas y lo que menciona del directorio
+export function articuloJsonLd(
+  a: Articulo,
+  path: string,
+  site: Site,
+  mentions: { name: string; path: string }[],
+): WithContext<BlogPosting> {
+  const autor = site.autorById.get(relId(a.autor) ?? -1)
+  return {
+    '@context': 'https://schema.org',
+    ...clean({
+      '@type': 'BlogPosting' as const,
+      headline: a.titulo,
+      description: a.seo_descripcion || a.resumen,
+      url: absoluteUrl(path),
+      mainEntityOfPage: absoluteUrl(path),
+      inLanguage: site.locale,
+      author: autor ? { '@type': 'Person' as const, name: autor.nombre } : undefined,
+      publisher: { '@type': 'Organization' as const, name: siteName, url: siteUrl },
+      datePublished: a.fecha_publicacion,
+      dateModified: a.updatedAt,
+      image: imagesOf(site, [a.foto_portada]),
+      keywords: [a.busqueda_objetivo, ...(a.busquedas_secundarias ?? [])].filter(Boolean).join(', '),
+      mentions: mentions.map((m) => ({ '@type': 'Thing' as const, name: m.name, url: absoluteUrl(m.path) })),
+    }),
+  } as WithContext<BlogPosting>
 }

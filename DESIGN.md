@@ -162,7 +162,7 @@ Las categorías se muestran con una píldora (icono en su color + nombre) sobre 
 - `alt` obligatorio y descriptivo en cada idioma (*"Iglesia de Santa María la Real en Aguilar de Campoo, fachada oeste"*), nunca *"imagen"* ni el nombre del archivo. Imágenes decorativas con `alt=""`.
 - El crédito aparece visible cuando la foto no es propia.
 - **Estilo fotográfico, mixto por contexto** (es la guía para quien haga las fotos propias):
-  - *Heros* de municipio, plan y home: **evocadora**. Paisaje amplio, hora dorada o niebla en los valles, con espacio limpio donde no tape el H1. Sin filtros ni HDR exagerado.
+  - *Heros* de municipio, artículo y home: **evocadora**. Paisaje amplio, hora dorada o niebla en los valles, con espacio limpio donde no tape el H1. Sin filtros ni HDR exagerado.
   - Fichas de negocio, rutas y recursos: **documental**. Luz natural y encuadres que informan (cómo es el sendero, el comedor, la habitación, el acceso, el aparcamiento). Personas reales de espaldas o en plano general (familias caminando), nunca posados de banco de imágenes.
   - Horizontal siempre. Mínimo 2000 px de lado largo en el original.
 - **Mapas estáticos** con el estilo propio de Static Maps: colores desaturados, agua en azul lago apagado, vegetación en verde muy claro, sin puntos de interés de Google. Marcadores en el color de la categoría y polyline de ruta en `--color-primary` con 4 px de grosor.
@@ -178,7 +178,7 @@ Todos son Server Components salvo los marcados con 🏝 (isla de cliente). Viven
 
 ### Estructura
 
-- **`SiteHeader`**: fija arriba. Logotipo, navegación principal (Dónde dormir · Dónde comer · Qué hacer · Rutas · Qué ver · Planes), buscador compacto (cuando exista la búsqueda) y `LanguageSwitcher`. En móvil, el menú se abre con `<details>` sin JS como panel flotante.
+- **`SiteHeader`**: fija arriba. Logotipo, navegación principal con dos entradas, **Directorio** (desplegable `<details>` sin JS con los listados que existen: categorías de negocio, Rutas, Qué ver) y **Blog**, buscador compacto (cuando exista la búsqueda) y `LanguageSwitcher`. En móvil, un único menú `<details>` como panel flotante, con el directorio agrupado y el blog debajo. Cabecera, pie y home sacan los enlaces de `components/layout/nav.ts`.
 - **`SiteFooter`**: siluetas de cumbres sobre un bloque `ink`. Logotipo y lema, enlaces a listados ("Explora") y municipios, aviso de portal independiente (texto de §2), y más adelante legales, "Sobre nosotros y metodología" y redes.
 - **`PageHero`**: cabecera a todo el ancho de toda página salvo la home (prop `hero` de `PageLayout`). Tinte de la categoría con curvas de nivel, migas, placa de icono + eyebrow, H1, resumen answer-first y, opcionalmente, chips (atributos de familia, dificultad…).
 - **`Breadcrumbs`**: visibles en todas las páginas salvo la home. Comparten datos con el JSON-LD `BreadcrumbList`.
@@ -194,15 +194,18 @@ Todos son Server Components salvo los marcados con 🏝 (isla de cliente). Viven
 - **`VerifiedNote`**: píldora discreta con icono de calendario, *"Verificado el {fecha}"* y enlace a la fuente cuando procede. Sin insignias que parezcan un sello oficial.
 - **`AuthorByline`**: avatar, nombre (enlace a la página del autor), *"Actualizado el {fecha}"*.
 - **`FaqList`**: `<details>`/`<summary>` nativos en tarjetas separadas, con un botón `+` que gira al abrir, bajo un H2 *"Preguntas frecuentes"*. Las respuestas se ven completas en el HTML.
-- **`Prose`**: estilo para rich text de Payload (planes, experiencia propia).
+- **`Prose`**: texto de un `textarea` de Payload en párrafos (descripciones, intros, experiencia propia).
+- **`RichText`**: cuerpo Lexical de los artículos, renderizado en servidor: H2/H3 con id (para el índice), listas, citas, imágenes de `media` y negrita/cursiva. Los **enlaces internos** se resuelven en el idioma de la página y se pintan subrayados en `primary`; si el destino no existe, queda el texto sin enlace. El bloque **`ficha`** se pinta con la tarjeta de su tipo (`BusinessCard`, `RouteCard`, `SightCard`), a un máximo de `max-w-md`.
+- **`BlogMentions`**: sección *"Lo contamos en el blog"* en fichas y municipios, con hasta 3 `ArticleCard` de los artículos que los enlazan.
 - **`ExperienceBlock`**: bloque en `accent-soft` con comillas en `accent` para la *experiencia propia* (*"Lo hicimos en octubre con dos niños de 4 y 7 años…"*), firmado.
 
 ### Tarjetas
 
-`MunicipioCard`, `BusinessCard`, `RouteCard`, `SightCard` y `PlanCard` comparten la anatomía **`Card`**: media 16:10 (foto o `MediaPlaceholder`) con píldora de categoría → título (enlace; toda la tarjeta es clicable mediante un pseudo-elemento) → lugar con icono → 1–3 datos clave → chips. Ejemplos:
+`MunicipioCard`, `BusinessCard`, `RouteCard`, `SightCard` y `ArticleCard` comparten la anatomía **`Card`**: media 16:10 (foto o `MediaPlaceholder`) con píldora de categoría → título (enlace; toda la tarjeta es clicable mediante un pseudo-elemento) → lugar con icono → 1–3 datos clave → chips. Ejemplos:
 
 - `BusinessCard`: píldora de categoría, núcleo, precio (`€€`) y atributos de familia.
 - `RouteCard`: baliza de dificultad en la píldora; distancia, desnivel y duración con icono; chips "niños" y "carrito".
+- `ArticleCard`: píldora "Blog" con icono de libro, foto de portada o placeholder, fecha de publicación y minutos de lectura.
 
 ### Acción y navegación
 
@@ -227,32 +230,37 @@ Añadir una isla nueva requiere justificarla y añadirla a esta lista.
 El orden es vinculante. Los bloques entre [corchetes] son condicionales.
 
 ### Home `/es`
-1. Hero a todo el ancho sobre `ink`: curvas de nivel, sol de atardecer en `accent`, eyebrow *"Guía independiente"*, H1 con propuesta de valor (*Guía de la Montaña Palentina*), entradilla, [`SearchBox`] y los **accesos por intención** como píldoras blancas con icono (solo a listados que existen: Rutas con niños · Rutas · Qué ver · categorías de negocio). Se cierra con las siluetas de cumbres. Con foto propia, la foto sustituye al fondo `ink` (con velo para el contraste).
-2. Planes destacados (3 `PlanCard`).
-3. Municipios (rejilla de `MunicipioCard`).
-4. Rutas (3 `RouteCard`, enlace al listado).
-5. Qué ver (3 `SightCard`, enlace al listado).
-6. `MapFacade` de la comarca.
-7. Bloque *"Quiénes somos"* breve, con enlace a la metodología.
-8. [FAQs generales].
+Resumen de las dos secciones del sitio. No es la página que trae el tráfico, pero es la carta de presentación.
+1. Hero a todo el ancho sobre `ink`: curvas de nivel, sol de atardecer en `accent`, eyebrow *"Guía independiente"*, H1 con propuesta de valor (*Guía de la Montaña Palentina*), entradilla, [`SearchBox`] y los **accesos rápidos** como píldoras blancas con icono: Directorio (ancla a la sección) · [Rutas con niños] · [Blog]. Se cierra con las siluetas de cumbres. Con foto propia, la foto sustituye al fondo `ink` (con velo para el contraste).
+2. **Directorio**: H2 con entradilla y una rejilla de accesos (placa de color de la categoría con icono, nombre y número de sitios) a cada listado que existe: categorías de negocio, Rutas y Qué ver.
+3. **Del blog**: los 3 artículos más recientes (`ArticleCard`), enlace al índice si existe.
+4. Municipios (rejilla de `MunicipioCard`).
+5. Rutas (3 `RouteCard`, enlace al listado).
+6. Qué ver (3 `SightCard`, enlace al listado).
+7. `MapFacade` de la comarca.
+8. Bloque *"Quiénes somos"* breve, con enlace a la metodología.
+9. [FAQs generales].
 
 ### Municipio `/es/{municipio}`
-`PageHero` (H1 *"{Municipio}: qué ver, dónde dormir y comer"* + `AnswerSummary`) → `KeyFacts` (comarca, altitud, distancia desde Palencia, Santander, Madrid y Bilbao si hay dato) → [Experiencia] → Qué ver (`SightCard`) → Dónde dormir → Dónde comer → Rutas desde aquí. Cada sección muestra 3–6 tarjetas y enlaza a su listado si existe → `MapFacade` → `FaqList` → `AuthorByline`.
+`PageHero` (H1 *"{Municipio}: qué ver, dónde dormir y comer"* + `AnswerSummary`) → `KeyFacts` (comarca, altitud, distancia desde Palencia, Santander, Madrid y Bilbao si hay dato) → [Experiencia] → Qué ver (`SightCard`) → Dónde dormir → Dónde comer → Rutas desde aquí. Cada sección muestra 3–6 tarjetas y enlaza a su listado si existe → `MapFacade` → [`BlogMentions`] → `FaqList` → `AuthorByline`.
 
 ### Listado `/es/{municipio}/{categoria}` · `/es/{categoria}` · landing de filtro
 `PageHero` (H1 *"Restaurantes en Cervera de Pisuerga"*, intro de la `landing` answer-first y número de sitios) → `FilterBar` → rejilla de tarjetas (orden: `orden` manual y luego alfabético; nunca por pago en la fase 1) → `MapFacade` con todos los puntos → `FaqList` → enlaces a la misma categoría en municipios vecinos.
 
 ### Ficha de negocio
-`PageHero` (eyebrow categoría · núcleo, municipio → H1 nombre → `FamilyAttributes`) → `KeyFacts` (dirección, teléfono, horario, rango de precio, web) → `ContactActions` → `AnswerSummary` (descripción) → `MapFacade` → [fotos] → `VerifiedNote` → `NearbyList`.
+`PageHero` (eyebrow categoría · núcleo, municipio → H1 nombre → `FamilyAttributes`) → `KeyFacts` (dirección, teléfono, horario, rango de precio, web) → `ContactActions` → `AnswerSummary` (descripción) → `MapFacade` → [fotos] → `VerifiedNote` → `NearbyList` → [`BlogMentions`].
 
 ### Ficha de ruta
-`PageHero` (H1 → `AnswerSummary` → chips de dificultad, circular, niños y carrito) → `KeyFacts` **destacado** (distancia, desnivel, duración, dificultad, circular, apta para niños y carrito, temporada, punto de inicio) → **Premio final** (qué hay al llegar, el gancho familiar) → `MapFacade` con polyline y descarga del GPX → Descripción → `ExperienceBlock` → `NearbyList` (comer y dormir cerca del inicio) → `FaqList` → `AuthorByline` + `VerifiedNote`.
+`PageHero` (H1 → `AnswerSummary` → chips de dificultad, circular, niños y carrito) → `KeyFacts` **destacado** (distancia, desnivel, duración, dificultad, circular, apta para niños y carrito, temporada, punto de inicio) → **Premio final** (qué hay al llegar, el gancho familiar) → `MapFacade` con polyline y descarga del GPX → Descripción → `ExperienceBlock` → `NearbyList` (comer y dormir cerca del inicio) → [`BlogMentions`] → `FaqList` → `AuthorByline` + `VerifiedNote`.
 
 ### Recurso (qué ver)
-`PageHero` (eyebrow tipo · lugar → H1 → `AnswerSummary`) → `KeyFacts` (tipo, horario y acceso, precio de entrada, ubicación) → Descripción → `MapFacade` → `NearbyList` → `VerifiedNote`.
+`PageHero` (eyebrow tipo · lugar → H1 → `AnswerSummary`) → `KeyFacts` (tipo, horario y acceso, precio de entrada, ubicación) → Descripción → `MapFacade` → `VerifiedNote` → `NearbyList` → [`BlogMentions`].
 
-### Plan
-H1 → `AuthorByline` → `AnswerSummary` → índice (si hay más de 3 H2) → `Prose` con tarjetas incrustadas de rutas, negocios y recursos → `FaqList`.
+### Artículo `/es/blog/{articulo}`
+`PageHero` (eyebrow *Blog* → H1 → `AnswerSummary` → `AuthorByline` + minutos de lectura) → [foto de portada 16:9, `priority`] → `RichText` con enlaces al directorio y tarjetas incrustadas, con el índice (si hay más de 3 H2) en columna lateral `sticky` desde `lg` y arriba en móvil → *"Sitios que aparecen en este artículo"* (tarjetas de las fichas enlazadas que no van ya incrustadas) → `FaqList` → *"Más artículos"* (3, primero los que comparten fichas).
+
+### Blog `/es/blog`
+`PageHero` (H1, intro de la `landing` y número de artículos) → rejilla de `ArticleCard`, del más reciente al más antiguo → `FaqList` → `AuthorByline`.
 
 ### Autor
 Foto, nombre, bio y relación con la zona → enlaces → contenido firmado.

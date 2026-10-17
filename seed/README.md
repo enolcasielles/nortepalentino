@@ -47,7 +47,7 @@ Valores cerrados (definidos en `src/lib/taxonomies.ts` y `src/lib/icons.ts`):
 - `precio_rango`: `€` a `€€€€` · `color_token`: `dormir`, `comer`, `activo`, `rutas`, `romanico`, `naturaleza`, `museo`
 - `horario_texto` en negocios admite texto plano (se guarda solo en ES) o `{ "es", "en" }`.
 
-Las fotos y los planes editoriales no se importan: se gestionan en el panel (`/admin`).
+Las fotos y los artículos del blog no se importan: se gestionan en el panel (`/admin`).
 
 ## Contra producción
 

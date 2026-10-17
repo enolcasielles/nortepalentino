@@ -9,7 +9,7 @@ Registro del avance de la implementación. **Léelo después de [`CLAUDE.md`](CL
 | | |
 | :-- | :-- |
 | Última actualización | 2026-10-17 |
-| Último commit en `main` | `b1959ee` (desplegado y verificado en producción) |
+| Último commit en `main` | Ver `git log`. Desplegado y verificado en producción hasta `b1959ee`; el blog (sesión 4) está commiteado y **sin desplegar** |
 | Producción | https://nortepalentino.vercel.app (pública, `noindex` por `SITE_INDEXABLE=false`) |
 | Contenido en producción | **Ninguno.** Neon solo tiene el usuario admin; solo existe la home. Las páginas aparecen al cargar datos que cumplan §7.4 |
 | Admin | `/admin`. El primer usuario ya está creado |
@@ -23,6 +23,7 @@ Registro del avance de la implementación. **Léelo después de [`CLAUDE.md`](CL
 - [x] Filtros de rutas funcionando (faltan las 5 rutas reales)
 - [x] Payload admin accesible para que Pablo edite
 - [x] Extensión de Claude Desktop para que Pablo gestione el contenido desde Claude (`cms-mcp/`)
+- [x] Estructura Directorio + Blog + Home (sesión 4). Faltan los primeros artículos reales
 
 ---
 
@@ -39,6 +40,8 @@ pnpm dev                      # http://localhost:3000/es · /admin (crea un usua
 ```
 
 URLs útiles con los fixtures: `/es/demo-villa`, `/es/demo-villa/demo-restaurantes`, `/es/demo-villa/demo-restaurantes/con-ninos`, `/es/demo-restaurantes`, `/es/demo-villa/demo-restaurantes/demo-restaurante-ejemplo`, `/es/rutas`, `/es/rutas/con-ninos`, `/es/rutas/demo-senda-ejemplo`, `/es/que-ver`, `/es/que-ver/demo-iglesia-ejemplo` y sus equivalentes EN (`/en/routes/...`, `/en/sights/...`).
+
+Los artículos no están en los seeds: para probar el blog en local, crea 3 artículos `[DEMO]` publicados (con autor y enlaces internos) y una landing de ámbito `articulos` desde el panel o la extensión.
 
 **El import de seeds no puede invalidar la caché de Next** (corre fuera de Next). En local, tras importar, reinicia `pnpm dev` borrando `.next`.
 
@@ -121,6 +124,17 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 - Subidas limitadas a 4,4 MB por el límite de cuerpo de las funciones de Vercel.
 - Probado de extremo a extremo contra local (crear, actualizar parcial por idioma, FAQs, errores de validación, plan en Markdown, foto, GPX, borrar). **Sin probar todavía contra producción ni dentro de Claude Desktop.**
 
+### 4.7 Directorio, blog y home (sesión 4)
+
+- **Estructura del sitio** (CLAUDE.md, cabecera): *Directorio* (fichas monetizables y sus listados; municipios como índices), *Blog* (artículos para atraer tráfico que enlazan el directorio) y *Home* como resumen. URLs del directorio sin cambios.
+- **`planes` → `articulos`** (`/es/blog`, `/en/blog`; migración `blog_articulos`, que borra las tablas de planes, vacías). Campos SEO (`busqueda_objetivo`, `busquedas_secundarias`, `seo_titulo`, `seo_descripcion`), `fecha_publicacion` automática y `enlaces` derivado del cuerpo. La landing de ámbito `articulos` da el índice `/blog` (≥ 3 artículos).
+- **Editor del cuerpo** (`collections/Articulos/editor.ts`): enlaces internos a documentos y bloque `ficha`; sin el nodo de relación genérico. Render propio en servidor (`components/content/RichText.tsx`) sobre `lib/richtext/lexical.ts`.
+- **Enlazado en las dos direcciones**: el artículo pinta los enlaces resueltos por idioma, las tarjetas incrustadas y *"Sitios que aparecen en este artículo"*; fichas y municipios muestran *"Lo contamos en el blog"*. JSON-LD `BlogPosting` con `mentions`; OG `article`.
+- **Revisión SEO** (`lib/seo/articleAudit.ts`): en el panel (campo `ui` en el desplegable SEO), en `GET /api/cms/auditoria/:id[?locale=]` y en `revisar` de la extensión. Avisa, no bloquea; umbrales en `AUDIT_LIMITS`.
+- **Extensión 0.2.0**: `[texto](interno:coleccion/slug)` y `::ficha[coleccion/slug]` en el Markdown; instrucciones para escribir artículos. **Hay que reinstalar el `.mcpb`** (se regenera con `pnpm run package`).
+- **Cabecera**: *Directorio* (desplegable `<details>`) + *Blog*; enlaces comunes en `components/layout/nav.ts`. **Home**: hero con accesos rápidos, rejilla del directorio con recuentos, últimos artículos, municipios, rutas y qué ver.
+- Verificado en local con artículos `[DEMO]`: ES/EN, hreflang, enlaces resueltos y a borrador como texto, índice, tarjetas, enlaces de vuelta, sitemap y `llms.txt`, auditoría por API y extensión de extremo a extremo; móvil sin scroll horizontal. **Sin verificar**: el desplegable de escritorio a ojo (la ventana del navegador de pruebas no pasaba de 500 px) y el panel de revisión SEO dentro del admin (el endpoint sí).
+
 ---
 
 ## 5. Decisiones y desviaciones (ya reflejadas en CLAUDE.md)
@@ -145,7 +159,9 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 7. **`dynamicParams = false` en un layout** se hereda y bloquea las rutas no generadas (incluidas las URLs antiguas que deben redirigir). La home valida el locale ella misma.
 8. **`vercel env rm NOMBRE <entorno>`** borra la variable entera si una entrada cubre varios entornos. Para variables de integraciones, reconecta el recurso con `vercel integration resource connect ... -e production`.
 9. **`.env.production.local` en local**: `next build` y `next start` (modo producción) lo cargan, así que en local leen la BD de **producción** de Neon (y `next start` escribiría en ella y en Blob). `payload migrate` no (carga `.env`). Para un `next start` local, anula esas variables en el comando o no tengas el fichero.
-10. **Subidas no transaccionales**: los ficheros (GPX, imágenes) no se deshacen con un rollback; `--dry-run` no los sube.
+10. **`migrate:create` pregunta en modo interactivo** ("created or renamed?") cuando desaparece una tabla o columna, y sin TTY muere con código 13. Ejecútalo con `expect` respondiendo Intro (crear) o desde una terminal. Revisa el SQL generado: tras un `DROP TABLE … CASCADE` emitió un `DROP CONSTRAINT` de una FK ya borrada (se corrigió con `IF EXISTS` antes de commitear).
+11. **El `next dev` en marcha no recarga la configuración de Payload** (colecciones, endpoints) y puede **reescribir `importMap.js` con la configuración vieja**. Tras cambiar la configuración, reinicia `pnpm dev` y comprueba el import map antes de commitear.
+12. **Subidas no transaccionales**: los ficheros (GPX, imágenes) no se deshacen con un rollback; `--dry-run` no los sube.
 
 ---
 
@@ -154,7 +170,7 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 1. **Pablo**: activar su API key en `/admin` de producción, mandarle `cms-mcp/nortepalentino-cms.mcpb` y probarlo con él en Claude Desktop.
 2. **Revalidación remota**: ruta protegida (p. ej. `/api/revalidar` con `REVALIDATE_SECRET`) que el import llame al terminar con `--remote`. Sin ella, un lote cargado en producción no se ve hasta el siguiente despliegue. Solo afecta al import por seeds: lo que entra por la extensión o el panel ya revalida.
 3. **Versiones `.md`** de cada página indexable (`{url}.md`, rewrite en `next.config` a un route handler), `<link rel="alternate" type="text/markdown">`, y que `llms.txt` apunte a ellas (CLAUDE.md §8).
-4. **Planes** (`/planes`, `/planes/{slug}`): plantilla con rich text de Lexical, tarjetas incrustadas, índice si > 3 H2, JSON-LD `Article`. Añadir al índice, `matchRoute` e inventario.
+4. **Primeros artículos** (Pablo, con la extensión 0.2.0): elegir las búsquedas objetivo, escribir y crear la landing `articulos` del índice. Validar `BlogPosting` en el Rich Results Test con el primero real. Antes, **desplegar** la sesión 4 (la migración borra las tablas de planes, vacías en producción).
 5. **Autores** (`/autores/{slug}`, `ProfilePage` + `Person`) y enlazar `AuthorByline`.
 6. **Búsqueda** (`/buscar?q=`, `noindex`, full-text con `unaccent`; migración con la extensión) y `SearchAction` en `WebSite`.
 7. **Sobre nosotros y legales**: plantillas listas para textos que redacta una persona (no inventar contenido).
@@ -178,6 +194,10 @@ Estructura inicial, modelo de datos completo con hooks y migraciones, despliegue
 ### Sesión 2 · 2026-10-17
 
 Rediseño de la UI hacia "producto outdoor" (§4.5): tokens, tipografía, cabecera fija, pie con siluetas, hero de la home, `PageHero`, tarjetas, KeyFacts, FAQs, filtros y acciones. DESIGN.md actualizado al nuevo sistema.
+
+### Sesión 4 · 2026-10-17
+
+Reorganización en Directorio + Blog + Home (§4.7): colección `articulos` con enlaces internos y bloque de ficha, plantillas de artículo e índice, enlaces de vuelta desde fichas y municipios, cabecera y home nuevas, revisión SEO (panel, API y extensión) y extensión 0.2.0. Commits `5bd64e4` → docs.
 
 ### Sesión 3 · 2026-10-17
 

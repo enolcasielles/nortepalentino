@@ -23,6 +23,8 @@ La API key da los mismos permisos que tu usuario del panel. No la compartas. Si 
 | `referencias` | Municipios con núcleos, categorías, tipos de recurso y autores, con slugs |
 | `buscar` | Por texto, municipio o estado, incluidos borradores |
 | `leer` | Documento completo, con los traducidos como `{es, en}` y el rich text en Markdown |
+| `cobertura` | Estado de todo el contenido: listados frente al mínimo de 3, municipios, fichas por idioma y borradores incompletos (endpoint `/api/cms/cobertura`) |
+| `mantenimiento` | Enlaces caídos (cron semanal), verificaciones de más de 6 meses y borradores abandonados (endpoint `/api/cms/mantenimiento`) |
 | `revisar` | Qué falta para publicar y si la página existe en ES y EN. En artículos, la revisión SEO de cada idioma (endpoint `/api/cms/auditoria/:id`) |
 | `crear` / `actualizar` | Escribe primero ES y luego EN. Relaciones por slug |
 | `subir_imagen` / `subir_gpx` | Desde una ruta local |

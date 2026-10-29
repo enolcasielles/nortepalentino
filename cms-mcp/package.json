@@ -1,6 +1,6 @@
 {
   "name": "nortepalentino-cms-mcp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Extensión de Claude Desktop para gestionar el contenido de Norte Palentino",
   "type": "module",

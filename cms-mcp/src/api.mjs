@@ -78,6 +78,8 @@ export function createApi({ baseUrl, apiKey }) {
     schema: () => request('GET', 'cms/esquema'),
     me: () => request('GET', 'users/me'),
     audit: (id) => request('GET', `cms/auditoria/${id}`),
+    coverage: () => request('GET', 'cms/cobertura'),
+    maintenance: () => request('GET', 'cms/mantenimiento'),
     find: (collection, query) => request('GET', collection, { query }),
     findById: (collection, id, query) => request('GET', `${collection}/${id}`, { query }),
     create: async (collection, data, locale) =>

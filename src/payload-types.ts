@@ -80,6 +80,7 @@ export interface Config {
     autores: Autore;
     media: Media;
     redirects: Redirect;
+    comprobaciones_enlaces: ComprobacionesEnlace;
     users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -101,6 +102,7 @@ export interface Config {
     autores: AutoresSelect<false> | AutoresSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
+    comprobaciones_enlaces: ComprobacionesEnlacesSelect<false> | ComprobacionesEnlacesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -708,6 +710,28 @@ export interface Redirect {
   createdAt: string;
 }
 /**
+ * Se actualiza sola cada semana. Un enlace se da por caído tras 2 fallos seguidos.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "comprobaciones_enlaces".
+ */
+export interface ComprobacionesEnlace {
+  id: number;
+  coleccion: 'negocios' | 'rutas' | 'recursos';
+  documento: number;
+  campo: 'fuente_url' | 'web';
+  nombre?: string | null;
+  url: string;
+  estado: 'ok' | 'bloqueado' | 'error';
+  codigo?: number | null;
+  fallos_seguidos?: number | null;
+  detalle?: string | null;
+  primer_fallo?: string | null;
+  ultima_comprobacion: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
@@ -812,6 +836,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'redirects';
         value: number | Redirect;
+      } | null)
+    | ({
+        relationTo: 'comprobaciones_enlaces';
+        value: number | ComprobacionesEnlace;
       } | null)
     | ({
         relationTo: 'users';
@@ -1170,6 +1198,25 @@ export interface RedirectsSelect<T extends boolean = true> {
   locale?: T;
   codigo?: T;
   origen?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "comprobaciones_enlaces_select".
+ */
+export interface ComprobacionesEnlacesSelect<T extends boolean = true> {
+  coleccion?: T;
+  documento?: T;
+  campo?: T;
+  nombre?: T;
+  url?: T;
+  estado?: T;
+  codigo?: T;
+  fallos_seguidos?: T;
+  detalle?: T;
+  primer_fallo?: T;
+  ultima_comprobacion?: T;
   updatedAt?: T;
   createdAt?: T;
 }

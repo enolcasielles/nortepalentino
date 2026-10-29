@@ -294,6 +294,7 @@ Cada ficha enlaza a su municipio, a su municipio+categoría y a 3–6 elementos 
 | `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | Maps JS API (restringida por referrer) |
 | `GOOGLE_MAPS_STATIC_API_KEY` | Static Maps (servidor) |
 | `NEXT_PUBLIC_GA_ID` | GA4 |
+| `CRON_SECRET` | Autoriza el cron semanal de enlaces (`/api/cms/mantenimiento/enlaces`, `vercel.json`) |
 
 ---
 

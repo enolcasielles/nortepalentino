@@ -14,7 +14,7 @@ const apiKey = process.env.CMS_API_KEY
 const api = createApi({ baseUrl, apiKey: apiKey ?? '' })
 const content = createContent(api)
 
-const server = new McpServer({ name: 'nortepalentino-cms', version: '0.2.0' }, { instructions })
+const server = new McpServer({ name: 'nortepalentino-cms', version: '0.3.0' }, { instructions })
 
 const text = (value) => ({
   content: [{ type: 'text', text: typeof value === 'string' ? value : JSON.stringify(value, null, 2) }],
@@ -186,6 +186,30 @@ tool(
     }
     return lines.join('\n')
   },
+)
+
+tool(
+  'cobertura',
+  {
+    title: 'Cobertura del contenido',
+    description:
+      'Estado de todo el contenido para planificar: listados (fichas por idioma frente al mínimo, si tienen landing con intro, borradores que sumarían, URL si la página existe), municipios (intro, FAQs, fichas, artículos), fichas publicadas (en qué idioma existen, qué les falta, coordenadas, fecha de verificación, artículos que las enlazan) y borradores (qué les falta para publicarse y para existir en cada idioma).',
+    inputSchema: {},
+    annotations: readOnly,
+  },
+  async () => api.coverage(),
+)
+
+tool(
+  'mantenimiento',
+  {
+    title: 'Incidencias de mantenimiento',
+    description:
+      'Incidencias detectadas con reglas fijas: enlaces (fuente_url, web) caídos en 2 comprobaciones semanales seguidas, enlaces con un primer fallo, enlaces que no dejan comprobarse, fichas publicadas con la verificación caducada (más de 6 meses) y borradores sin cambios en 60 días. Los enlaces los comprueba un proceso automático cada lunes.',
+    inputSchema: {},
+    annotations: readOnly,
+  },
+  async () => api.maintenance(),
 )
 
 tool(

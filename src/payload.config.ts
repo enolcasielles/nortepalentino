@@ -12,6 +12,7 @@ import { ArchivosGpx } from './collections/ArchivosGpx'
 import { Articulos } from './collections/Articulos'
 import { Autores } from './collections/Autores'
 import { CategoriasNegocio } from './collections/CategoriasNegocio'
+import { ComprobacionesEnlaces } from './collections/ComprobacionesEnlaces'
 import { Landings } from './collections/Landings'
 import { Media } from './collections/Media'
 import { Municipios } from './collections/Municipios'
@@ -23,6 +24,8 @@ import { Rutas } from './collections/Rutas'
 import { TiposRecurso } from './collections/TiposRecurso'
 import { Users } from './collections/Users'
 import { articleAuditEndpoint } from './endpoints/articleAudit'
+import { coverageEndpoint } from './endpoints/coverage'
+import { linkCheckEndpoint, maintenanceEndpoint } from './endpoints/maintenance'
 import { schemaEndpoint } from './endpoints/schema'
 import { defaultLocale, locales } from './lib/i18n/config'
 
@@ -63,9 +66,10 @@ export default buildConfig({
     Autores,
     Media,
     Redirects,
+    ComprobacionesEnlaces,
     Users,
   ],
-  endpoints: [schemaEndpoint, articleAuditEndpoint],
+  endpoints: [schemaEndpoint, articleAuditEndpoint, coverageEndpoint, maintenanceEndpoint, linkCheckEndpoint],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

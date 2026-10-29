@@ -142,6 +142,24 @@ export const getSite = cache(async (locale: Locale) => {
       .map((l) => [landingKey(l.ambito, relId(l.municipio), relId(l.categoria), l.filtro ?? null), l]),
   )
 
+  // Landing con intro en este idioma para una combinación de listado
+  const landingFor = (
+    ambito: Landing['ambito'],
+    municipioId: number | null = null,
+    categoriaId: number | null = null,
+    filtro: FilterValue | null = null,
+  ) => landingByKey.get(landingKey(ambito, municipioId, categoriaId, filtro)) ?? null
+
+  // Fichas de un listado, tenga o no página
+  const negociosFor = (municipioId: number | null, categoriaId: number, filtro: FilterValue | null = null) =>
+    negocios.filter(
+      (n) =>
+        relId(n.categoria) === categoriaId &&
+        (!municipioId || relId(n.municipio) === municipioId) &&
+        (!filtro || negocioFilters[filtro](n)),
+    )
+  const rutasFor = (filtro: FilterValue | null = null) => (filtro ? rutas.filter(rutaFilters[filtro]) : rutas)
+
   function negociosListing(
     municipioId: number | null,
     categoriaId: number,
@@ -150,32 +168,27 @@ export const getSite = cache(async (locale: Locale) => {
     const categoria = categoriaById.get(categoriaId)
     const municipio = municipioId ? municipioById.get(municipioId) : null
     if (!categoria || (municipioId && !municipio)) return null
-    const landing = landingByKey.get(landingKey('negocios', municipioId, categoriaId, filtro))
-    const items = negocios.filter(
-      (n) =>
-        relId(n.categoria) === categoriaId &&
-        (!municipioId || relId(n.municipio) === municipioId) &&
-        (!filtro || negocioFilters[filtro](n)),
-    )
+    const landing = landingFor('negocios', municipioId, categoriaId, filtro)
+    const items = negociosFor(municipioId, categoriaId, filtro)
     if (!landing || !isListingAvailable(items.length, landing.intro)) return null
     return { kind: 'negocios', municipio: municipio ?? null, categoria, filtro, landing, items }
   }
 
   function rutasListing(filtro: FilterValue | null = null): RutasListing | null {
-    const landing = landingByKey.get(landingKey('rutas', null, null, filtro))
-    const items = filtro ? rutas.filter(rutaFilters[filtro]) : rutas
+    const landing = landingFor('rutas', null, null, filtro)
+    const items = rutasFor(filtro)
     if (!landing || !isListingAvailable(items.length, landing.intro)) return null
     return { kind: 'rutas', filtro, landing, items }
   }
 
   function recursosListing(): RecursosListing | null {
-    const landing = landingByKey.get(landingKey('recursos', null, null, null))
+    const landing = landingFor('recursos')
     if (!landing || !isListingAvailable(recursos.length, landing.intro)) return null
     return { kind: 'recursos', landing, items: recursos }
   }
 
   function articulosListing(): ArticulosListing | null {
-    const landing = landingByKey.get(landingKey('articulos', null, null, null))
+    const landing = landingFor('articulos')
     if (!landing || !isListingAvailable(articulos.length, landing.intro)) return null
     return { kind: 'articulos', landing, items: articulos }
   }
@@ -263,11 +276,17 @@ export const getSite = cache(async (locale: Locale) => {
     tipoById,
     negocios,
     rutas,
+    rutaById,
     recursos,
+    recursoById,
+    negocioById,
     articulos,
     articuloById,
     autorById,
     mediaById,
+    landingFor,
+    negociosFor,
+    rutasFor,
     negociosListing,
     rutasListing,
     recursosListing,

@@ -24,6 +24,7 @@ Registro del avance de la implementación. **Léelo después de [`CLAUDE.md`](CL
 - [x] Payload admin accesible para que Pablo edite
 - [x] Extensión de Claude Desktop para que Pablo gestione el contenido desde Claude (`cms-mcp/`)
 - [x] Estructura Directorio + Blog + Home (sesión 4). Faltan los primeros artículos reales
+- [x] Skills de contenido para Pablo (`skills/`) y mantenimiento automático de enlaces (sesión 6)
 
 ---
 
@@ -142,6 +143,15 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 - **El import admite artículos** (`seed/articulos.json`, cuerpo en Markdown con `interno:` y `::ficha[]`, mismo conversor que la extensión) y landings de ámbito `articulos`. Valida que cada enlace interno exista en el lote o en la BD.
 - En local, la BD se reinició y tiene solo el lote real (copia de la anterior, solo `[DEMO]` y sin usuarios, en el scratchpad de la sesión). Hay que crear un usuario en `/admin`.
 
+### 4.9 Skills de contenido y mantenimiento (sesión 6)
+
+- **5 skills de Claude** en `skills/` para que Pablo mantenga el contenido: `investigar-ficha`, `redactar-ficha`, `escribir-articulo`, `plan-editorial` y `revisar-publicacion`. Se apoyan en la extensión para leer y escribir; las reglas comunes siguen en `cms-mcp/src/instructions.mjs`. Las decisiones de contenido (fuentes, coordenadas, verificación, idiomas, prioridades, publicación) están en `skills/README.md`. `pnpm skills:package` genera `skills/dist/*.zip` (ignorado por git), que se suben en claude.ai → Personalizar → Skills.
+- **`GET /api/cms/cobertura`** (`lib/data/coverage.ts`): listados posibles con fichas por idioma frente al mínimo, landing e intro; municipios; fichas publicadas por idioma; borradores con lo que les falta. Usa `getSite`, que ahora expone `landingFor`, `negociosFor`, `rutasFor` y los mapas por id.
+- **Mantenimiento determinista** (`lib/maintenance/`): cron de Vercel cada lunes a las 04:00 UTC (`vercel.json`, `CRON_SECRET`) → `/api/cms/mantenimiento/enlaces` comprueba `fuente_url` y `web` de las fichas publicadas y guarda el resultado en la colección de sistema `comprobaciones_enlaces` (migración `comprobaciones_enlaces`), separada de las fichas para no tocar su `updatedAt` ni revalidarlas. `GET /api/cms/mantenimiento` da enlaces caídos (2 fallos seguidos), verificaciones de más de 6 meses y borradores sin cambios en 60 días. 401/403/429 y errores de certificado no cuentan como fallo.
+- **Extensión 0.3.0**: herramientas `cobertura` y `mantenimiento`. Hay que reinstalar el `.mcpb`.
+- Excepción en CLAUDE.md §10: cifras de rutas desde Wikiloc o blogs de montaña si no hay fuente oficial ni track propio.
+- Verificado en local: `cobertura` con el lote real, comprobación de enlaces contra las URLs reales (46 enlaces, 35 URLs, sin falsos positivos tras tratar los certificados), endpoints por HTTP (200 con API key, 401 sin ella), colección en el panel y la extensión empaquetada por JSON-RPC. **Sin probar**: el cron real en Vercel (tras desplegar, lánzalo a mano desde *Settings → Cron Jobs* o espera al lunes) y las skills dentro de Claude con Pablo.
+
 ---
 
 ## 5. Decisiones y desviaciones (ya reflejadas en CLAUDE.md)
@@ -172,11 +182,13 @@ Colecciones: `municipios`, `nucleos`, `negocios`, `categorias_negocio`, `recurso
 13. **El dataloader de un `req` cachea consultas**: en un proceso largo con un solo `req` (el import), la validación de relaciones puede dar por inexistente un documento creado después de una consulta que no lo encontró. El import renueva `req.payloadDataLoader` antes de cada escritura.
 14. **`pnpm build` en local con `.env.production.local` presente** lee Neon de producción (trampa 9). Para los checks, exporta vacías las variables de ese fichero y carga `.env` en el mismo comando.
 
+15. **Descripción de las skills en claude.ai: 200 caracteres como máximo.** Es el límite que da la documentación de claude.ai. Lo que no quepa va al cuerpo del `SKILL.md`.
+
 ---
 
 ## 7. Pendiente (en orden sugerido)
 
-1. **Pablo**: activar su API key en `/admin` de producción, mandarle `cms-mcp/nortepalentino-cms.mcpb` y probarlo con él en Claude Desktop.
+1. **Pablo**: activar su API key en `/admin` de producción, mandarle `cms-mcp/nortepalentino-cms.mcpb` (0.3.0) y los `.zip` de `skills/dist/`, y probarlos con él en Claude. Antes, **desplegar** (migración `comprobaciones_enlaces`) y lanzar una vez el cron desde Vercel para tener datos de enlaces.
 2. **Revalidación remota**: ruta protegida (p. ej. `/api/revalidar` con `REVALIDATE_SECRET`) que el import llame al terminar con `--remote`. Sin ella, un lote cargado en producción no se ve hasta el siguiente despliegue. Solo afecta al import por seeds: lo que entra por la extensión o el panel ya revalida.
 3. **Versiones `.md`** de cada página indexable (`{url}.md`, rewrite en `next.config` a un route handler), `<link rel="alternate" type="text/markdown">`, y que `llms.txt` apunte a ellas (CLAUDE.md §8).
 4. **Lote real a producción**: revisar `seed/REVISION.md` y los textos, **desplegar** la sesión 4 (la migración borra las tablas de planes, vacías en producción), `pnpm seed:prod --dry-run` y `pnpm seed:prod` (lo lanza una persona), y validar `BlogPosting`, `Hotel`/`Restaurant`, `TouristTrip` y `Church` en el Rich Results Test.
@@ -211,6 +223,10 @@ Reorganización en Directorio + Blog + Home (§4.7): colección `articulos` con 
 ### Sesión 5 · 2026-10-17
 
 Primer lote de contenido real (§4.8): investigación en la web con fuentes, textos ES/EN, import de artículos en los seeds y corrección del dataloader en el import. Cargado y verificado en local (todas las plantillas en ES/EN, enlaces de los artículos resueltos, idempotencia con y sin `--update`). Sin cargar en producción.
+
+### Sesión 6 · 2026-10-17
+
+Sistema de skills de contenido para Pablo (§4.9): cinco skills definidas con Enol una a una, endpoint y herramienta `cobertura`, mantenimiento determinista con cron semanal de enlaces y herramienta `mantenimiento`, extensión 0.3.0 y empaquetado de skills.
 
 ### Sesión 3 · 2026-10-17
 

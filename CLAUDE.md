@@ -263,7 +263,7 @@ Cada ficha enlaza a su municipio, a su municipio+categoría y a 3–6 elementos 
 
 ### Reglas de contenido (resumen del brief §8)
 
-- Los datos factuales salen de la web del negocio o de fuentes oficiales, siempre con `fuente_url` y `fecha_verificacion`.
+- Los datos factuales salen de la web del negocio o de fuentes oficiales, siempre con `fuente_url` y `fecha_verificacion`. **Excepción:** las cifras de las rutas (distancia, desnivel, duración) pueden salir, si no hay fuente oficial ni track propio del editor, de Wikiloc o de blogs de montaña, citando la página concreta en `fuente_url`. El orden de preferencia y el resto de criterios de fuentes están en `skills/README.md`.
 - Textos con redacción propia; nunca copiados de otros portales. Fotos solo propias o con licencia, con `credito`.
 - Inglés con redacción nativa para el turista extranjero, no una traducción literal.
 - Calidad antes que volumen: mejor 30 fichas buenas que 300 vacías.
@@ -311,6 +311,7 @@ Cada ficha enlaza a su municipio, a su municipio+categoría y a 3–6 elementos 
 | `Plan` (guías editoriales en `/planes`) | Blog: colección `articulos` en `/blog`, orientada a búsquedas y enlazada al directorio |
 | `llms.txt` | Más `llms-full.txt` y versiones `.md` (§8) |
 | Formato de seeds | Slugs localizados y ficheros nuevos (§10) |
+| Datos solo de la web del negocio o fuentes oficiales | Además, para las cifras de rutas sin fuente oficial ni track propio: Wikiloc o blogs de montaña, citando la página (§10) |
 
 <!-- BEGIN:nextjs-agent-rules -->
 

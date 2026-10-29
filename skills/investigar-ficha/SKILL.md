@@ -1,6 +1,6 @@
 ---
 name: investigar-ficha
-description: Investiga y verifica los datos factuales de un negocio, ruta o recurso de la Montaña Palentina (dirección, teléfono, web, horario, coordenadas, precios, cifras de ruta) y crea o actualiza su borrador en Norte Palentino con su fuente y fecha de verificación. Úsala cuando el editor pida añadir un sitio nuevo ("añade el restaurante X de Cervera"), reverificar o completar los datos de una ficha, o hacer inventario de lo que existe en un municipio ("todos los alojamientos de Guardo"). No redacta descripciones ni FAQs.
+description: Verifica en fuentes los datos de un negocio, ruta o recurso (contacto, horario, coordenadas, cifras) y crea o actualiza su borrador en Norte Palentino. Para añadir, reverificar o inventariar.
 ---
 
 # Investigar y verificar una ficha
@@ -14,7 +14,7 @@ Lo que no haces: descripciones, resúmenes, FAQs, intros ni fotos. Eso es de la 
 | El editor dice | Modo |
 | :-- | :-- |
 | "Añade el restaurante X", "mete la ruta Y" | **Ficha nueva** |
-| "Revisa los datos de X", "¿sigue abierto X?", "completa el horario de X" | **Reverificar** |
+| "Revisa los datos de X", "¿sigue abierto X?", "completa el horario de X", un enlace caído o una verificación caducada de `mantenimiento` | **Reverificar** |
 | "Todos los restaurantes de Aguilar", "¿qué alojamientos nos faltan en Guardo?" | **Inventario** |
 
 ## Fuentes: qué vale y en qué orden

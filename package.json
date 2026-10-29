@@ -5,6 +5,7 @@
   "description": "Norte Palentino: guía independiente de la Montaña Palentina",
   "type": "module",
   "scripts": {
+    "skills:package": "sh skills/package.sh",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "build": "cross-env NODE_OPTIONS=--no-deprecation PAYLOAD_MIGRATING=true payload migrate && cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" next build",
